@@ -5,6 +5,12 @@
     padding: auto;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
+    border: 10px solid black;
 }
 
+.timer-text{
+    padding: 0;
+    margin: 0;
+}

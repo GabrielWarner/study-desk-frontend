@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import ProgressProvider from '../ProgressProvider.js';
-
+import './style.css';
 
 export default function Pomodoro() {
     const [minuteInput, setMinuteInput] = useState(0)
@@ -74,7 +74,7 @@ export default function Pomodoro() {
         <h1>Pomodoro Timer</h1>
         <button onClick={()=>{startToggle()}}>Start/Stop</button>
 
-        <p>Or choose your own time</p>
+        <p className='timer-text'>Or choose your own time</p>
         <form onSubmit={(e)=>{setTimer(e)}}>
             <input value={minuteInput} onChange={handleInputChange} type="text" name='value'></input>
             <button>Set</button>
