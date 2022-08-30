@@ -1,4 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import { CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import ProgressProvider from '../ProgressProvider.js';
+
 
 export default function Pomodoro() {
     const [minuteInput, setMinuteInput] = useState(0)
@@ -8,6 +12,7 @@ export default function Pomodoro() {
     const [displayMessage, setDisplayMessage] = useState(false)
     const [startButton, setStartButton] = useState(false)
 
+
     const startToggle = () => {
         // 👇️ passed function to setState
         setStartButton(current => !current);
@@ -16,8 +21,8 @@ export default function Pomodoro() {
     const setTimer = (e) => {
         e.preventDefault()
         setMinutes(parseInt(minuteInput))
+        setSeconds(0)
         setMinuteInput(0)
-        startToggle()
     }
 
     const handleInputChange = (e) => {
@@ -32,7 +37,7 @@ export default function Pomodoro() {
         if(startButton){
 
             let interval = setInterval(()=>{
-                clearInterval(interval)
+            clearInterval(interval)
     
             if (seconds === 0) {
                 if(minutes !== 0) {
@@ -53,29 +58,34 @@ export default function Pomodoro() {
             }
             },1000)
         }else{
-            setSeconds(0)
-            setMinutes(25)
+
             
             return
         }
     }, [seconds, startButton])
+
     
     const timerMinutes = minutes  < 10 ? `0${minutes}` : minutes;
-    const timerSeconds = minutes  < 10 ? `0${seconds}` : seconds;
+    const timerSeconds = seconds  < 10 ? `0${seconds}` : seconds;
+    const timeInSeconds = (minutes * 60) + seconds
 
   return (
     <div className='pomodoro-container'>
         <h1>Pomodoro Timer</h1>
-        <button onClick={()=>{startToggle()}}>Start</button>
+        <button onClick={()=>{startToggle()}}>Start/Stop</button>
+
         <p>Or choose your own time</p>
         <form onSubmit={(e)=>{setTimer(e)}}>
             <input value={minuteInput} onChange={handleInputChange} type="text" name='value'></input>
-            <button>Submit</button>
+            <button>Set</button>
         </form>
         <div className='message'>
            {displayMessage && <div>Session over. Break starts now.</div>}
         </div>
-        <div className='timer'>{timerMinutes}:{timerSeconds}</div>
+        <h2 className='timer'>{timerMinutes}:{timerSeconds}</h2>
+        {/* <ProgressProvider valueStart={timeInSeconds} valueEnd={0}>
+  {(value) => <CircularProgressbar value={timeInSeconds} />}
+</ProgressProvider> */}
     </div>
   )
 }
