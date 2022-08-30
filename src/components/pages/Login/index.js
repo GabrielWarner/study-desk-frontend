@@ -8,6 +8,12 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [user, setUser] = useState({
+      id:0,
+      email:''
+    });
+    const [token, setToken] = useState('');
+
 
     const handleInputChange = (e) => {
         // Getting the value and name of the input which triggered the change
@@ -55,6 +61,11 @@ export default function Login() {
           return res.json()
        }).then(data=>{
         console.log(data)
+        setUser({
+          id:data.user._id,
+          email:data.user.email
+        })
+        setToken(data.token)
        })
 
 
