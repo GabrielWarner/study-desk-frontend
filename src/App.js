@@ -5,6 +5,7 @@ import Homepage from './components/pages/Home';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Dashboard from './components/pages/Dasboard';
+import Pomodoro from './components/Pomodoro';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div className="App">
+      <Pomodoro/>
       <Navbar currentPage={currentPage} handlePageChange={handlePageChange}/>
       {renderPage()}
       
