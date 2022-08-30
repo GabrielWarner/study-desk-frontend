@@ -5,7 +5,7 @@ import Homepage from './components/pages/Home';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Dashboard from './components/pages/Dasboard';
-import Pomodoro from './components/Pomodoro';
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -94,6 +94,7 @@ function App() {
       return <Login 
       handleFormSubmit={handleFormSubmit} 
       handleInputChange={handleInputChange}
+      setCurrentPage={setCurrentPage}
       user={user}
       email={email}
       password={password}
@@ -102,12 +103,15 @@ function App() {
     if (currentPage === 'Register') {
       return <Register />;
     }
-    return <Dashboard />;
+    if (currentPage === 'Dashboard') {
+      return <Dashboard />;
+    }
+    
   };
 
   return (
     <div className="App">
-      <Navbar currentPage={currentPage} handlePageChange={handlePageChange}/>
+      <Navbar user={user} currentPage={currentPage} handlePageChange={handlePageChange} setUser={setUser}/>
       {renderPage()}
 
       

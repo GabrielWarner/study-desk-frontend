@@ -4,12 +4,12 @@ import './style.css';
 // Here we import a helper function that will check if the email is valid
 import { checkPassword, validateEmail } from '../../../utils/helpers';
 
-export default function Login({handleFormSubmit, handleInputChange,user,email,password }) {
+export default function Login({handleFormSubmit, handleInputChange,user,email,password,setCurrentPage }) {
 
 
   return (
     <div>
-        {user.id? <h3>Hello {user.email} </h3>:(
+        {user.id? setCurrentPage('Dashboard') :(
 
       <>
         <h2 className="text-dark">Login</h2>
