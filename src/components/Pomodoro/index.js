@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 
 export default function Pomodoro() {
+    const [minuteInput, setMinuteInput] = useState(0)
     const [minutes, setMinutes] = useState(25)
+
     const [seconds, setSeconds] = useState(0)
     const [displayMessage, setDisplayMessage] = useState(false)
     const [startButton, setStartButton] = useState(false)
@@ -13,10 +15,18 @@ export default function Pomodoro() {
 
     const setTimer = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
-        setMinutes(parseInt(e.target.value))
+        setMinutes(parseInt(minuteInput))
+        setMinuteInput(0)
         startToggle()
     }
+
+    const handleInputChange = (e) => {
+        // Getting the value and name of the input which triggered the change
+        
+    
+        // Ternary statement that will call either setFirstName or setLastName based on what field the user is typing in
+        return setMinuteInput(e.target.value)
+      };
 
     useEffect(() => {
         if(startButton){
@@ -45,7 +55,7 @@ export default function Pomodoro() {
         }else{
             setSeconds(0)
             setMinutes(25)
-            setDisplayMessage(!displayMessage)
+            
             return
         }
     }, [seconds, startButton])
@@ -59,7 +69,7 @@ export default function Pomodoro() {
         <button onClick={()=>{startToggle()}}>Start</button>
         <p>Or choose your own time</p>
         <form onSubmit={(e)=>{setTimer(e)}}>
-            <input type="text" name='value'></input>
+            <input value={minuteInput} onChange={handleInputChange} type="text" name='value'></input>
             <button>Submit</button>
         </form>
         <div className='message'>
