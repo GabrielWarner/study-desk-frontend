@@ -15,7 +15,7 @@ function App() {
 
   const renderPage = () => {
     if (currentPage === 'Home') {
-      return <Homepage />;
+      return <Homepage handlePageChange={handlePageChange} />;
     }
     if (currentPage === 'Login') {
       return <Login />;
@@ -28,9 +28,9 @@ function App() {
 
   return (
     <div className="App">
-      <Pomodoro/>
       <Navbar currentPage={currentPage} handlePageChange={handlePageChange}/>
       {renderPage()}
+
       
     </div>
   );
