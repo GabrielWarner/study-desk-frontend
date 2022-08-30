@@ -42,7 +42,22 @@ export default function Login() {
           return;
         }
 
-        
+       fetch("http://localhost:3001/api/users/login",{
+        method:"POST",
+        body:JSON.stringify({
+          email,
+          password
+        }),
+        headers:{
+          "Content-Type":"application/json"
+        }
+       }).then(res=>{
+          return res.json()
+       }).then(data=>{
+        console.log(data)
+       })
+
+
     
         // If everything goes according to plan, we want to clear out the input after a successful registration.
         setPassword('');
