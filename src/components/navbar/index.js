@@ -17,9 +17,15 @@ export default function NavigationBar({ user, handlePageChange, setUser }) {
           
             {/* We might not need a homebutton since there is no point in going to homepage once you are logged in */}
             <button onClick={() => handlePageChange('Home')}>HOME</button>
+            
 
             {/* onClick logout user and send them to home page */}
-            {user.id? <button onClick={() => logout()}>LOGOUT</button>:(
+            {user.id? 
+            <>
+            <button onClick={() => handlePageChange('Dashboard')}>DASHBOARD</button>
+            <button onClick={() => logout()}>LOGOUT</button>
+            </>
+              :(
               <>
               <button onClick={() => handlePageChange('Login')}>LOGIN</button>
               </>

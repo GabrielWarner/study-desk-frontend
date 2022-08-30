@@ -113,7 +113,7 @@ function App() {
     <div className="App">
       <Navbar user={user} currentPage={currentPage} handlePageChange={handlePageChange} setUser={setUser}/>
       {renderPage()}
-
+      
       
     </div>
   );
