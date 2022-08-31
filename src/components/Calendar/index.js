@@ -6,7 +6,7 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import "./App.css";
+import "./index.css";
 
 const DnDCalendar = withDragAndDrop(Calendar);
 
