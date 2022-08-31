@@ -168,6 +168,7 @@ function App() {
       {renderPage()}
       {/* <Inspirational /> */}
       {/* <GoogleSearch /> */}
+      {/* <Weather />   */}
     </div>
   );
 }
