@@ -14,7 +14,7 @@ export default function index({handleFormCreate, handleInputChange,user, usernam
             className="form-input"
             type="text" id="userName-login"
             value={username}
-            name="userName"
+            name="username"
             onChange={handleInputChange}
             placeholder="insert user name" />
             </div>

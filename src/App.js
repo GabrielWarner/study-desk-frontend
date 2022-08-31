@@ -54,7 +54,7 @@ function App() {
       setEmail(inputValue);
     } else if (inputType === 'password') {
       setPassword(inputValue);
-    }else if (inputType === 'userName') {
+    }else if (inputType === 'username') {
       setUserName(inputValue);
     }
   };
@@ -109,7 +109,7 @@ function App() {
           setUser({
             id:data.user._id,
             email:data.user.email,
-            username:data.username
+            username:data.user.username
           })
           setToken(data.token)
           localStorage.setItem("token", data.token)
