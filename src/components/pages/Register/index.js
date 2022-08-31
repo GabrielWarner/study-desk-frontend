@@ -19,7 +19,7 @@ export default function index({handleFormCreate, handleInputChange,user, usernam
             placeholder="insert user name" />
             </div>
 
-            <div>
+            <div className='form-group text-dark row justify-content-center'>
             <input
             className="form-input"
             type="text" id="email-login"
