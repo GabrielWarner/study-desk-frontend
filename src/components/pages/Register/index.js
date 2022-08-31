@@ -4,7 +4,7 @@ export default function index({handleFormCreate, handleInputChange,user, usernam
   return (
 <div>
         {user.id? setCurrentPage('Dashboard') :(
-
+          
       <>
         <h2 className="text-dark">Create Account</h2>
         <form className="form login-form">

@@ -7,6 +7,8 @@ import Register from "./components/pages/Register";
 import Dashboard from "./components/pages/Dasboard";
 import Inspirational from "./components/Inspirational";
 import GoogleSearch from "./components/GoogleSearch";
+import Weather from "./components/Weather";
+import Pomodoro from "./components/Pomodoro";
 
 import Weather from "./components/Weather";
 import Notes from "./components/Notes";
