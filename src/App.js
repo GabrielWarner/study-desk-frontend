@@ -7,6 +7,8 @@ import Register from "./components/pages/Register";
 import Dashboard from "./components/pages/Dasboard";
 import Inspirational from "./components/Inspirational";
 import GoogleSearch from "./components/GoogleSearch";
+import Weather from "./components/Weather";
+import Pomodoro from "./components/Pomodoro";
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -166,9 +168,10 @@ function App() {
         setUser={setUser}
       />
       {renderPage()}
-      {/* <Inspirational /> */}
-      {/* <GoogleSearch /> */}
-      {/* <Weather />   */}
+      {/* <Pomodoro/>
+      <Inspirational />
+      <GoogleSearch />
+      <Weather />   */}
     </div>
   );
 }
