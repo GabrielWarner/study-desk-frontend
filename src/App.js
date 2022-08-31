@@ -143,10 +143,7 @@ function App() {
       handleInputChange={handleInputChange}
       setCurrentPage={setCurrentPage}
       user={user}
-      userName={usern
-        
-        
-        ame}
+      userName={username}
       email={email}
       password={password} />;
     }
