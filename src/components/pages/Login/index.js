@@ -1,8 +1,6 @@
 import React from 'react'
 import './style.css';
 
-// Here we import a helper function that will check if the email is valid
-import { checkPassword, validateEmail } from '../../../utils/helpers';
 
 export default function Login({handleFormSubmit, handleInputChange,user,email,password,setCurrentPage }) {
 
@@ -43,7 +41,7 @@ export default function Login({handleFormSubmit, handleInputChange,user,email,pa
             
             {/* TODO: have create account button link to create account page */}
             <div className="row justify-content-center">
-            <a className="btn btn-primary btn-sizing" href="/create-account">Create Account</a>
+            <button onClick={(e)=>{ setCurrentPage('Register')}} className="btn btn-primary btn-sizing" href="/create-account">Create Account</button>
             </div>
         </form>
         </>
