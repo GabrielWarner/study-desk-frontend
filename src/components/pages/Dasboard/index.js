@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import Pomodoro from '../../Pomodoro'
 import GoogleSearch from '../../GoogleSearch'
+import Inspirational from '../../Inspirational'
 
 export default function Dashboard() {
   return (
@@ -33,10 +34,10 @@ export default function Dashboard() {
   fontWeight='bold'
 >
   <GridItem pl='2' bg='orange.300' area={'search'}>
-    
+    <GoogleSearch/>
   </GridItem>
   <GridItem pl='2' bg='blue.300' area={'quote'}>
-    
+    <Inspirational/>
     </GridItem>
   <GridItem pl='2' bg='pink.300' area={'side'}>
     side
