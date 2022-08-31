@@ -7,7 +7,12 @@ import Register from "./components/pages/Register";
 import Dashboard from "./components/pages/Dasboard";
 import Inspirational from "./components/Inspirational";
 import GoogleSearch from "./components/GoogleSearch";
+
+import Weather from "./components/Weather";
+import Notes from "./components/Notes";
+import Pomodoro from "./components/Pomodoro";
 import Calendar from "./components/Calendar";
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -167,10 +172,15 @@ function App() {
         setUser={setUser}
       />
       {renderPage()}
+      {/* <Pomodoro /> */}
       {/* <Inspirational /> */}
       {/* <GoogleSearch /> */}
       {/* <Weather />   */}
+
+      {/* <Notes /> */}
+
       {/* <Calendar />  */}
+
     </div>
   );
 }
