@@ -9,12 +9,14 @@ import Inspirational from "./components/Inspirational";
 import GoogleSearch from "./components/GoogleSearch";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("Home");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [currentPage, setCurrentPage] = useState('Home');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUserName] = useState('');
   const [user, setUser] = useState({
-    id: 0,
-    email: "",
+    id:0,
+    email:'',
+    username:''
   });
   const [token, setToken] = useState("");
 
@@ -33,10 +35,11 @@ function App() {
         res.json().then((data) => {
           setToken(storedToken);
           setUser({
-            id: data._id,
-            email: data.email,
-          });
-        });
+            id:data._id,
+            email:data.email,
+            username:data.username
+          })
+        })
       }
     });
   }, []);
@@ -52,6 +55,8 @@ function App() {
       setEmail(inputValue);
     } else if (inputType === "password") {
       setPassword(inputValue);
+    }else if (inputType === 'username') {
+      setUserName(inputValue);
     }
   };
   //function that handles the submit, here we can use fetch request to get TOKEN
@@ -86,6 +91,39 @@ function App() {
     setEmail("");
   };
 
+        const handleFormCreate = (e) => {
+          // Preventing the default behavior of the form submit (which is to refresh the page)
+          e.preventDefault();
+  
+         fetch("http://localhost:3001/api/users/signup",{
+          method:"POST",
+          body:JSON.stringify({
+            username,
+            email,
+            password
+          }),
+          headers:{
+            "Content-Type":"application/json"
+          }
+         }).then(res=>{
+            return res.json()
+         }).then(data=>{
+          console.log(data)
+          setUser({
+            id:data.user._id,
+            email:data.user.email,
+            username:data.user.username
+          })
+          setToken(data.token)
+          localStorage.setItem("token", data.token)
+         })
+          // If everything goes according to plan, we want to clear out the input after a successful registration.
+          setPassword('');
+          setEmail('');
+          setUserName('')
+        };
+
+
   const handlePageChange = (page) => setCurrentPage(page);
 
   const renderPage = () => {
@@ -104,8 +142,15 @@ function App() {
         />
       );
     }
-    if (currentPage === "Register") {
-      return <Register />;
+    if (currentPage === 'Register') {
+      return <Register
+      handleFormCreate={handleFormCreate}
+      handleInputChange={handleInputChange}
+      setCurrentPage={setCurrentPage}
+      user={user}
+      userName={username}
+      email={email}
+      password={password} />;
     }
     if (currentPage === "Dashboard") {
       return <Dashboard />;
