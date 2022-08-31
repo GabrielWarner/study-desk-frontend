@@ -20,7 +20,7 @@ export default function NavigationBar({ user, handlePageChange, setUser }) {
             
 
             {/* onClick logout user and send them to home page */}
-            {user.id? 
+            {user.email? 
             <>
             <button onClick={() => handlePageChange('Dashboard')}>DASHBOARD</button>
             <button onClick={() => logout()}>LOGOUT</button>

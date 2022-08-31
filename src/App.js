@@ -32,6 +32,7 @@ function App() {
       } else {
         console.log("valid token");
         res.json().then((data) => {
+          console.log(data)
           setToken(storedToken);
           setUser({
             id:data._id,
@@ -127,7 +128,7 @@ function App() {
 
   const renderPage = () => {
     if (currentPage === "Home") {
-      return <Homepage handlePageChange={handlePageChange} />;
+      return <Homepage setToken={setToken} setUser={setUser} user={user} handlePageChange={handlePageChange} />;
     }
     if (currentPage === "Login") {
       return (
@@ -164,6 +165,7 @@ function App() {
         handlePageChange={handlePageChange}
         setUser={setUser}
       />
+
       {renderPage()}
       {/* <Pomodoro /> */}
       {/* <Inspirational /> */}
