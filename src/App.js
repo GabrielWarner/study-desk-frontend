@@ -6,6 +6,17 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Dashboard from "./components/pages/Dasboard";
 
+import Inspirational from "./components/Inspirational";
+import GoogleSearch from "./components/GoogleSearch";
+import Weather from "./components/Weather";
+import Pomodoro from "./components/Pomodoro";
+
+
+import Notes from "./components/Notes";
+
+import Calendar from "./components/Calendar";
+
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
