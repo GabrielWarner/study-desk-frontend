@@ -127,6 +127,7 @@ function App() {
   const handlePageChange = (page) => setCurrentPage(page);
 
   const renderPage = () => {
+
     if (currentPage === "Home") {
       return <Homepage setToken={setToken} setUser={setUser} user={user} handlePageChange={handlePageChange} />;
     }
@@ -165,7 +166,7 @@ function App() {
         handlePageChange={handlePageChange}
         setUser={setUser}
       />
-
+      
       {renderPage()}
       {/* <Pomodoro /> */}
       {/* <Inspirational /> */}
