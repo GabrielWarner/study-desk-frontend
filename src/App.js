@@ -5,15 +5,17 @@ import Homepage from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Dashboard from "./components/pages/Dasboard";
+
 import Inspirational from "./components/Inspirational";
 import GoogleSearch from "./components/GoogleSearch";
 import Weather from "./components/Weather";
 import Pomodoro from "./components/Pomodoro";
 
-// import Weather from "./components/Weather";
+
 import Notes from "./components/Notes";
-// import Pomodoro from "./components/Pomodoro";
+
 import Calendar from "./components/Calendar";
+
 
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
       } else {
         console.log("valid token");
         res.json().then((data) => {
+          console.log(data)
           setToken(storedToken);
           setUser({
             id:data._id,
@@ -135,8 +138,9 @@ function App() {
   const handlePageChange = (page) => setCurrentPage(page);
 
   const renderPage = () => {
+
     if (currentPage === "Home") {
-      return <Homepage handlePageChange={handlePageChange} />;
+      return <Homepage setToken={setToken} setUser={setUser} user={user} handlePageChange={handlePageChange} />;
     }
     if (currentPage === "Login") {
       return (
@@ -173,6 +177,7 @@ function App() {
         handlePageChange={handlePageChange}
         setUser={setUser}
       />
+      
       {renderPage()}
       {/* <Pomodoro /> */}
       {/* <Inspirational /> */}

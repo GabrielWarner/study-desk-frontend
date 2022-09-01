@@ -1,11 +1,35 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import Pomodoro from '../../Pomodoro'
 import GoogleSearch from '../../GoogleSearch'
 import Inspirational from '../../Inspirational'
 import Weather from '../../Weather'
 
-export default function Dashboard() {
+export default function Dashboard({setUser, setToken}) {
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    fetch("http://localhost:3001/api/users/check-token", {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      },
+    }).then((res) => {
+      if (!res.ok) {
+        console.log("invalid token");
+        localStorage.removeItem("token");
+      } else {
+        console.log("valid token");
+        res.json().then((data) => {
+          setToken(storedToken);
+          setUser({
+            id:data._id,
+            email:data.email,
+            username:data.username
+          })
+        })
+      }
+    });
+  }, []);
+
   return (
     <div className='dashboard'>
 
