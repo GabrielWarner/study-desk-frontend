@@ -9,22 +9,34 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   // const [forecast, setForecast] = useState(null);
 
-  const [lat, setLat] = useState([]);
+  const [lats, setLat] = useState([]);
   const [long, setLong] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
+    const fetchData = async () =>{
     navigator.geolocation.getCurrentPosition(function(position) {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
 
-    console.log("Latitude is:", lat)
+    await fetch(`${WEATHER_API_URL}/weather?lat=${lats}&lon=${long}&appid=${WEATHER_API_KEY}&units=metric`)
+    .then(res => res.json() )
+    .then(result => {
+      setData(result);
+      const is400 = result.cod === '400';
+      const hasWeather = result?.weather?.length || null;
+      if (!is400 && hasWeather) {
+        setCurrentWeather({ city: result.name, ...result });
+      }
+    });
+  }
+  fetchData();
+    console.log("Latitude is:", lats)
     console.log("Longitude is:", long)
-  }, [lat, long]);
+  }, [lats, long]);
 
-  //TODO: Need initial setup function that if long and lat exists, to display your location, else allow your user to enter a city for display
-// on Load -> IF Lat && Long, run API search with Lat, Long
-//            ELSE wait for onSearchChange to GET Lat, Long from user
+  
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
 
@@ -35,12 +47,17 @@ function App() {
     //   `${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
     // );
 
+    // const currentWeatherFetch = fetch(
+    //   `${WEATHER_API_URL}/weather?lat=${lats}&lon=${long}&appid=${WEATHER_API_KEY}&units=metric`
+    // );
+
 
 
     Promise.all([currentWeatherFetch])
       .then(async (response) => {
         const weatherResponse = await response[0].json();
         // const forcastResponse = await response[1].json();
+        console.log(weatherResponse);
 
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
         // setForecast({ city: searchData.label, ...forcastResponse });
@@ -49,12 +66,13 @@ function App() {
   };
 
   return (
-    <div style={{ minHeight:"0" }} className="container">
+    <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
       {/* {forecast && <Forecast data={forecast} />} */}
     </div>
   );
 }
+
 
 export default App;
