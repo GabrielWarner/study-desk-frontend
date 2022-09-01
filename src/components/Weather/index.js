@@ -3,7 +3,7 @@ import Search from "./weather-components/search/search";
 import CurrentWeather from "./weather-components/current-weather/current-weather";
 // import Forecast from "./components/forecast/forecast";
 import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
-import "./Index.css";
+import "./index.css";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);

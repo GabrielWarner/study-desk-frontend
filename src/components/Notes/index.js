@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import NotesList from './notes-components/NotesList';
 import Search from './notes-components/Search';
 import Header from './notes-components/Header';
-import "./Index.css";
+import "./index.css";
 
 const Notes = () => {
 
