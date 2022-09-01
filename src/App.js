@@ -15,6 +15,7 @@ import Pomodoro from "./components/Pomodoro";
 import Notes from "./components/Notes";
 // import Pomodoro from "./components/Pomodoro";
 import Calendar from "./components/Calendar";
+import Calculator from "./components/Calculator";
 
 
 
@@ -187,6 +188,7 @@ function App() {
       {/* <Notes /> */}
 
       {/* <Calendar />  */}
+      {/* { <Calculator />} */}
 
     </div>
   );
