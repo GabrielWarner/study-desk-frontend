@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import NotesList from './notes-components/NotesList';
 import Search from './notes-components/Search';
 import Header from './notes-components/Header';
-import "./Index.css";
+import "./index.css";
 
 const Notes = () => {
 
@@ -69,7 +69,7 @@ const Notes = () => {
 
 	return (
 		<div className={`${darkMode && 'dark-mode'}`}>
-			<div className='container'>
+			<div style={{minHeight:"0"}} className='container'>
 				<Header handleToggleDarkMode={setDarkMode} />
 				<Search handleSearchNote={setSearchText} />
 				<NotesList

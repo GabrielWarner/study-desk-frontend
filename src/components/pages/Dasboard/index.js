@@ -1,11 +1,35 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import Pomodoro from '../../Pomodoro'
 import GoogleSearch from '../../GoogleSearch'
 import Inspirational from '../../Inspirational'
 import Weather from '../../Weather'
+import Notes from '../../Notes'
+export default function Dashboard({setUser, setToken}) {
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    fetch("http://localhost:3001/api/users/check-token", {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      },
+    }).then((res) => {
+      if (!res.ok) {
+        console.log("invalid token");
+        localStorage.removeItem("token");
+      } else {
+        console.log("valid token");
+        res.json().then((data) => {
+          setToken(storedToken);
+          setUser({
+            id:data._id,
+            email:data.email,
+            username:data.username
+          })
+        })
+      }
+    });
+  }, []);
 
-export default function Dashboard() {
   return (
     <div className='dashboard'>
 
@@ -44,7 +68,7 @@ export default function Dashboard() {
     <Weather/>
   </GridItem>
   <GridItem pl='2' bg='green.300' area={'main'}>
-    Main
+    <Notes/>
   </GridItem>
 
   <GridItem style={{justifyContent:"center",wordBreak:"break-all"}} pl='2' bg='blue.300' area={'clock'}>

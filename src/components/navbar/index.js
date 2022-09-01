@@ -12,7 +12,7 @@ export default function NavigationBar({ user, handlePageChange, setUser }) {
   return (
     <div>
     <Navbar bg="dark" expand="lg">
-      <Container>
+      <Container style={{ minHeight:"0" }}>
         {/* Need to use conditional rendering to render either LOGOUT or HOME depending on if they are signed in or not */}
           
             {/* We might not need a homebutton since there is no point in going to homepage once you are logged in */}
@@ -20,7 +20,7 @@ export default function NavigationBar({ user, handlePageChange, setUser }) {
             
 
             {/* onClick logout user and send them to home page */}
-            {user.id? 
+            {user.email? 
             <>
             <button onClick={() => handlePageChange('Dashboard')}>DASHBOARD</button>
             <button onClick={() => logout()}>LOGOUT</button>

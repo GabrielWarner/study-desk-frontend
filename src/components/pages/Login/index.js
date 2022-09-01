@@ -7,7 +7,7 @@ export default function Login({handleFormSubmit, handleInputChange,user,email,pa
 
   return (
     <div>
-        {user.id? setCurrentPage('Dashboard') :(
+        {user.email? setCurrentPage('Dashboard') :(
 
       <>
         <h2 className="text-dark">Login</h2>
