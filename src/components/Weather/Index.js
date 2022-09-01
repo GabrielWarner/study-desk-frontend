@@ -49,7 +49,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div style={{ minHeight:"0" }} className="container">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
       {/* {forecast && <Forecast data={forecast} />} */}
