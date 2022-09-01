@@ -4,7 +4,7 @@ import Pomodoro from '../../Pomodoro'
 import GoogleSearch from '../../GoogleSearch'
 import Inspirational from '../../Inspirational'
 import Weather from '../../Weather'
-
+import Notes from '../../Notes'
 export default function Dashboard({setUser, setToken}) {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -68,7 +68,7 @@ export default function Dashboard({setUser, setToken}) {
     <Weather/>
   </GridItem>
   <GridItem pl='2' bg='green.300' area={'main'}>
-    Main
+    <Notes/>
   </GridItem>
 
   <GridItem style={{justifyContent:"center",wordBreak:"break-all"}} pl='2' bg='blue.300' area={'clock'}>

@@ -3,7 +3,7 @@ import React from 'react'
 export default function index({handleFormCreate, handleInputChange,user, username,email,password,setCurrentPage }) {
   return (
 <div>
-        {user.id? setCurrentPage('Dashboard') :(
+        {user.email? setCurrentPage('Dashboard') :(
           
       <>
         <h2 className="text-dark">Create Account</h2>
