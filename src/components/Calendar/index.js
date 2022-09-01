@@ -42,10 +42,13 @@ const events = [
     //     start: new Date("2022, 8, 28"),
     //     end: new Date("2022, 8, 31"),
     // },
+
 ];
+
 
 function App() {
     
+    // Modal
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
   
@@ -61,12 +64,37 @@ function App() {
       setIsOpen(false);
     }
 
+    // Calendar 
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
     const [allEvents, setAllEvents] = useState(events);
 
+    // Add Calendar Event to DB
     function handleAddEvent() {
+        fetch("http://localhost:3001/api/events",{
+            method:"POST",
+            body:JSON.stringify({
+                ...newEvent
+            }),
+            headers:{
+              "Content-Type":"application/json"
+            }
+           }).then(res=>{
+              return res.json()
+           }).then(data=>{
+            console.log(data)
+            setNewEvent({
+              title:newEvent.title,
+              start:newEvent.start,
+              end:newEvent.end
+            })
+           })
+
         setAllEvents([...allEvents, newEvent]);
+
     }
+
+    // Fetch DB and Render to page
+    
 
 
     return (
