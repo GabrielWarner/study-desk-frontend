@@ -5,6 +5,7 @@ export default function GoogleSearch() {
   return (
     <div className="container">
       <form
+        target="_blank"
         action="https://www.google.com/search"
         method="get"
         className="searchbar"
