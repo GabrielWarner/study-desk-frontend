@@ -42,7 +42,6 @@ const events = [
     //     start: new Date("2022, 8, 28"),
     //     end: new Date("2022, 8, 31"),
     // },
-
 ];
 
 
@@ -89,12 +88,13 @@ function App() {
             })
            })
 
+
+
         setAllEvents([...allEvents, newEvent]);
 
     }
 
     // Fetch DB and Render to page
-    
 
 
     return (
