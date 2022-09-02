@@ -44,7 +44,7 @@ max-width: 100%;
 
     .grid-container{
         grid-template-columns: 1fr;
-        grid-template-rows: .25fr .25fr .25 1fr 1fr;
+        grid-template-rows: 1fr .25fr .25 1fr 1fr;
         grid-template-areas: "quote"
                             "search"
                             "timer"
