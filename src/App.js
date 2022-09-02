@@ -11,10 +11,11 @@ import GoogleSearch from "./components/GoogleSearch";
 import Weather from "./components/Weather";
 import Pomodoro from "./components/Pomodoro";
 
-
+// import Weather from "./components/Weather";
 import Notes from "./components/Notes";
-
+// import Pomodoro from "./components/Pomodoro";
 import Calendar from "./components/Calendar";
+import Calculator from "./components/Calculator";
 
 
 
@@ -165,7 +166,7 @@ function App() {
       password={password} />;
     }
     if (currentPage === "Dashboard") {
-      return <Dashboard />;
+      return <Dashboard setUser={setUser} setToken={setToken}/>;
     }
   };
 
@@ -176,6 +177,7 @@ function App() {
         currentPage={currentPage}
         handlePageChange={handlePageChange}
         setUser={setUser}
+        setToken={setToken}
       />
       
       {renderPage()}
@@ -187,6 +189,7 @@ function App() {
       {/* <Notes /> */}
 
       {/* <Calendar />  */}
+      {/* { <Calculator />} */}
 
     </div>
   );

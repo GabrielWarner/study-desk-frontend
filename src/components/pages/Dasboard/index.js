@@ -5,6 +5,9 @@ import GoogleSearch from '../../GoogleSearch'
 import Inspirational from '../../Inspirational'
 import Weather from '../../Weather'
 import Notes from '../../Notes'
+import "./style.css";
+import { Calendar } from 'react-big-calendar'
+
 export default function Dashboard({setUser, setToken}) {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -46,7 +49,16 @@ export default function Dashboard({setUser, setToken}) {
 </Grid> */}
 
 
-      <Grid
+<div className='grid-container'>
+  <div id='timer' className='timer'><Pomodoro/></div>
+  <div id='side' className='side'><Weather/></div>
+  <div id='search' className='search-bar'><GoogleSearch/></div>
+  <div id='quote' className='quote-widget'><Inspirational/></div>
+  <div id='main' className='main'><Notes/></div>
+</div>
+
+      {/* <Grid
+      className=''
   templateAreas={`"clock quote"
                   "side search"
                   "side main"
@@ -75,7 +87,7 @@ export default function Dashboard({setUser, setToken}) {
   <Pomodoro/>
   </GridItem>
 
-  </Grid>
+  </Grid> */}
     </div>
   )
 }
