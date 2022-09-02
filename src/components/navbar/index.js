@@ -3,16 +3,17 @@ import './style.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-export default function NavigationBar({ user, handlePageChange, setUser }) {
+export default function NavigationBar({ user, handlePageChange, setUser, setToken }) {
   const logout = () => {
     localStorage.removeItem("token")
     setUser("")
     handlePageChange('Home')
+    setToken("")
   }
   return (
     <div>
     <Navbar bg="dark" expand="lg">
-      <Container style={{ minHeight:"0" }}>
+      <div style={{ minHeight:"0" }}>
         {/* Need to use conditional rendering to render either LOGOUT or HOME depending on if they are signed in or not */}
           
             {/* We might not need a homebutton since there is no point in going to homepage once you are logged in */}
@@ -32,7 +33,7 @@ export default function NavigationBar({ user, handlePageChange, setUser }) {
             )}
             
 
-      </Container>
+      </div>
     </Navbar>
     </div>
   )
