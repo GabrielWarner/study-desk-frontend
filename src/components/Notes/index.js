@@ -5,7 +5,10 @@ import Search from './notes-components/Search';
 import Header from './notes-components/Header';
 import "./index.css";
 
+
 const Notes = () => {
+
+  const storedToken = localStorage.getItem("token");	
 
   const [notes, setNotes] = useState([
     {
@@ -49,15 +52,57 @@ const Notes = () => {
 			'react-notes-app-data',
 			JSON.stringify(notes)
 		);
-	}, [notes]);
+		getNote();
+	}, []);
+
+	const getNote = () => {
+		fetch("http://localhost:3001/api/notes", {
+			headers: {
+				Authorization: `Bearer ${storedToken}`,
+			},
+			
+		}).then((res)=>{
+			if (!res.ok){
+				console.log("invalid token");
+			} else {
+				res.json().then((data) => {
+					setNotes(data)
+				})
+			}
+		})
+	}
 
 	const addNote = (text) => {
 		const date = new Date();
 		const newNote = {
 			id: nanoid(),
 			text: text,
-			date: date.toLocaleDateString(),
+			date: date.toLocaleDateString(),		
 		};
+		fetch("http://localhost:3001/api/notes", {
+			headers: {
+				Authorization: `Bearer ${storedToken}`,
+				'Content-Type': 'application/json'
+				
+			},
+			method: "POST",
+			body: JSON.stringify(newNote),
+		}).then((res)=>{
+			if (!res.ok){
+				console.log("invalid token");
+			} 
+			// else {
+			// 	res.json().then((data) => {
+			// 		setNotes(
+			// 			[{
+			// 			id:data.id,
+			// 			text:data.text,
+			// 			data:data.date
+			// 	}]
+			// 	)
+			// 	})
+			// }
+		})
 		const newNotes = [...notes, newNote];
 		setNotes(newNotes);
 	};
@@ -65,6 +110,18 @@ const Notes = () => {
 	const deleteNote = (id) => {
 		const newNotes = notes.filter((note) => note.id !== id);
 		setNotes(newNotes);
+		fetch("http://localhost:3001/api/notes", {
+			headers: {
+				Authorization: `Bearer ${storedToken}`,
+				
+			},
+			method: "DELETE",
+			body: JSON.stringify({id}),
+		}).then((res)=>{
+			if (!res.ok){
+				console.log("invalid token");
+			}
+		})
 	};
 
 	return (
