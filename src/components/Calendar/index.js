@@ -144,7 +144,7 @@ function App() {
                 events={allEvents} 
                 startAccessor="start" 
                 endAccessor="end" 
-                style={{ height: "80vh", margin: "20px", zIndex: "-9999"}}
+                style={{ height: "80vh", margin: "20px", backgroundColor: "#ddbdd5"}}
             />
             </div>
 
