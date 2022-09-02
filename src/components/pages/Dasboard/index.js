@@ -5,8 +5,8 @@ import GoogleSearch from '../../GoogleSearch'
 import Inspirational from '../../Inspirational'
 import Weather from '../../Weather'
 import Notes from '../../Notes'
+import Calendar from '../../Calendar'
 import "./style.css";
-import { Calendar } from 'react-big-calendar'
 
 export default function Dashboard({setUser, setToken}) {
   useEffect(() => {
@@ -55,6 +55,7 @@ export default function Dashboard({setUser, setToken}) {
   <div id='search' className='search-bar'><GoogleSearch/></div>
   <div id='quote' className='quote-widget'><Inspirational/></div>
   <div id='main' className='notes-main'><Notes/></div>
+  <div id='calendar' className='calendar'><Calendar/></div>
 </div>
 
       {/* <Grid
