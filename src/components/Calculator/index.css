@@ -45,7 +45,7 @@
   box-sizing: border-box;
 }
 
-body {
+.Calcbody {
   height: 100vh;
   background: #f4fefe;
   display: flex;
