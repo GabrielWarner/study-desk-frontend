@@ -73,7 +73,7 @@ function App() {
 
 
 
-        // setAllEvents([...allEvents, newEvent]);
+        setAllEvents([...allEvents, newEvent]);
 
     }
 
