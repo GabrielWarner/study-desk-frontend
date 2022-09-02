@@ -13,10 +13,15 @@
 .quote-widget{
 background-color: red;
 grid-area: quote;
+max-width: 100%;
 }
 .search-bar{
     background-color: blue;
     grid-area: search;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .timer{
     background-color: green;
@@ -31,12 +36,19 @@ grid-area: quote;
     grid-area: main;
 }
 
+.quote {
+    max-width: 100%;
+    margin: 0 auto;
+    max-height: 100%;
+  
+  }
+
 
 @media only screen and (max-width: 766px) {
 
     .grid-container{
         grid-template-columns: 1fr;
-        grid-template-rows: .25fr .25fr .25 1fr 1fr;
+        grid-template-rows: 1fr .25fr .25 1fr 1fr;
         grid-template-areas: "quote"
                             "search"
                             "timer"

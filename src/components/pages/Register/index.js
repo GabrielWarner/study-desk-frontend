@@ -17,6 +17,12 @@ export default function index({
         setCurrentPage("Dashboard")
       ) : (
         <div className="registerContainer">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
           <h1 className="registerTitle">Create Account</h1>
           <form className="register-form">
             <div>
@@ -45,6 +51,7 @@ export default function index({
 
             <div>
               <input
+                className="form-input"
                 value={password}
                 name="password"
                 onChange={handleInputChange}
@@ -55,8 +62,8 @@ export default function index({
 
             <div>
               <button
-                onClick={handleFormCreate}
                 className="form-input registerBtn"
+                onClick={handleFormCreate}
                 type="submit"
               >
                 Create

@@ -3,24 +3,104 @@
   background-color: #f7ebec;
 }
 
+.loginContainer li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 25px;
+  height: 25px;
+  background: rgba(221, 189, 213, 0.4);
+  animation: animate 20s linear infinite;
+  bottom: 0px;
+  z-index: 2;
+}
+
+.loginContainer li:nth-child(1) {
+  left: 86%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.loginContainer li:nth-child(2) {
+  left: 12%;
+  width: 30px;
+  height: 30px;
+  animation-delay: 1.5s;
+  animation-duration: 10s;
+}
+
+.loginContainer li:nth-child(3) {
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  animation-delay: 5.5s;
+}
+
+.loginContainer li:nth-child(4) {
+  left: 42%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 15s;
+}
+
+.loginContainer li:nth-child(5) {
+  left: 65%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 0s;
+}
+
+.loginContainer li:nth-child(6) {
+  left: 15%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3.5s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-800px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
 .loginTitle {
-  padding-top: 10vh;
+  padding-top: 8vh;
   padding-bottom: 15px;
   color: #1d1e2c;
 }
 
 .login-form {
-  width: 20%;
+  width: 25%;
   margin: 0 auto;
   padding: 5%;
-  border-color: #77878b;
-  border-style: solid;
+  border: 2px solid #414361;
+  border-radius: 100px;
 }
 
 .form-input {
-  margin: 10px 0;
+  margin: 5% 0;
+  width: 100%;
+  min-height: 35px;
+  background-color: #f7ebec;
+  border: 2px solid #414361;
+  border-radius: 100px;
+  --outline-color: #ddbdd5;
+  color: #1d1e2c;
+  text-align: center;
 }
 
-.loginBtn {
-  width: 150px;
+.loginBtn:hover {
+  background-color: #ebd94c;
+  box-shadow: rgba(248, 229, 84, 0.35) 0 -25px 18px -14px inset,
+    rgba(248, 229, 84, 0.25) 0 1px 2px, rgba(248, 229, 84, 0.25) 0 2px 4px,
+    rgba(248, 229, 84, 0.25) 0 4px 8px, rgba(248, 229, 84, 0.25) 0 8px 16px,
+    rgba(248, 229, 84, 0.25) 0 16px 32px;
+  transform: scale(1.05);
 }

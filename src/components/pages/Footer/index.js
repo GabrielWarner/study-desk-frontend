@@ -16,29 +16,33 @@ export default function Footer() {
       </a>
       <a
         className="linkedIn"
-        href="https://www.linkedin.com/in/zhao-ming-zhong/"
         target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.linkedin.com/in/gabriel-warner-083ab4211/"
       >
-        Zhao-Ming Zhong
+        Gabriel Warner
       </a>
       <a
         className="linkedIn"
-        href="https://www.linkedin.com/in/zhao-ming-zhong/"
         target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.linkedin.com/in/david-hruza-860699159/"
       >
-        Zhao-Ming Zhong
+        David Hruza
       </a>
       <a
         className="linkedIn"
-        href="https://www.linkedin.com/in/zhao-ming-zhong/"
         target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.linkedin.com/in/jiajieheuhm/"
       >
-        Zhao-Ming Zhong
+        Jiajie He
       </a>
       <a
         className="linkedIn"
-        href="https://www.linkedin.com/in/zhao-ming-zhong/"
         target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.linkedin.com/in/zhao-ming-zhong/"
       >
         Zhao-Ming Zhong
       </a>
