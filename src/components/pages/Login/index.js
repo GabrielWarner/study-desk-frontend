@@ -16,6 +16,12 @@ export default function Login({
         setCurrentPage("Dashboard")
       ) : (
         <div className="loginContainer">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
           <h1 className="loginTitle">Login</h1>
           <form className="login-form">
             <div>
