@@ -66,6 +66,7 @@ const Notes = () => {
 				console.log("invalid token");
 			} else {
 				res.json().then((data) => {
+					console.log(data)
 					setNotes(data)
 				})
 			}
@@ -108,15 +109,15 @@ const Notes = () => {
 	};
 
 	const deleteNote = (id) => {
-		const newNotes = notes.filter((note) => note.id !== id);
+		console.log(id)
+		const newNotes = notes.filter((note) => note._id !== id);
 		setNotes(newNotes);
-		fetch("http://localhost:3001/api/notes", {
+		fetch(`http://localhost:3001/api/notes/${id}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 				
 			},
 			method: "DELETE",
-			body: JSON.stringify({id}),
 		}).then((res)=>{
 			if (!res.ok){
 				console.log("invalid token");
