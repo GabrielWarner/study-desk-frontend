@@ -1,0 +1,29 @@
+.footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  min-height: 10vh;
+  padding: 0 1rem;
+  background-color: #414361;
+  color: #ffa9e7;
+}
+
+.footer > a {
+  padding: 0 15px;
+}
+
+.gitHub:hover {
+  background-color: #f8e554;
+}
+
+.linkedIn {
+  color: #ddbdd5;
+}
+
+.linkedIn:hover {
+  text-decoration: none;
+  color: #f8e554;
+}

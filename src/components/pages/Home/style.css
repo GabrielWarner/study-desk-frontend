@@ -2,3 +2,19 @@
   height: 80vh;
   background-color: #f7ebec;
 }
+
+.homeTitle {
+  padding: 20px;
+  color: #1d1e2c;
+}
+
+p {
+  color: #1d1e2c;
+  font-weight: 600;
+}
+
+.homeBorder {
+  width: 40%;
+  margin: 0 auto;
+  padding: 5%;
+}
