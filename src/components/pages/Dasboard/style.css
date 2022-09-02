@@ -31,9 +31,10 @@ max-width: 100%;
     background-color: yellow;
     grid-area: side;
 }
-.main{
+.notes-main{
     background-color: purple;
     grid-area: main;
+    overflow-y: scroll;
 }
 
 .quote {

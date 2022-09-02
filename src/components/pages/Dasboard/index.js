@@ -54,7 +54,7 @@ export default function Dashboard({setUser, setToken}) {
   <div id='side' className='side'><Weather/></div>
   <div id='search' className='search-bar'><GoogleSearch/></div>
   <div id='quote' className='quote-widget'><Inspirational/></div>
-  <div id='main' className='main'><Notes/></div>
+  <div id='main' className='notes-main'><Notes/></div>
 </div>
 
       {/* <Grid
