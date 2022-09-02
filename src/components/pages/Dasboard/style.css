@@ -1,9 +1,11 @@
 .grid-container{
+    padding: 1em;
+    gap: 1rem;
     width: 100%;
     display:grid;
     height: 90vh;
     grid-template-columns: .6fr 1.5fr;
-    grid-template-rows: .25fr .25fr .5fr 1.5fr;
+    grid-template-rows: .25fr .25fr .5fr 2fr;
     grid-template-areas: "timer quote"
                          "side search"
                          "side main"
@@ -34,7 +36,8 @@ max-width: 100%;
 .notes-main{
     background-color: purple;
     grid-area: main;
-    overflow-y: scroll;
+    overflow-y: auto;
+    
 }
 
 .quote {
@@ -49,11 +52,16 @@ max-width: 100%;
 
     .grid-container{
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr .25fr .25 1fr 1fr;
+        grid-template-rows: 1fr .25fr .25 1fr 5fr;
         grid-template-areas: "quote"
                             "search"
                             "timer"
                             "side"
                             "main";
+    
+    }
+
+    .notes-main{
+        overflow-y: visible;
     }
 }
