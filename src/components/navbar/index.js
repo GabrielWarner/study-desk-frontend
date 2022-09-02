@@ -16,7 +16,7 @@ export default function NavigationBar({
     setToken("");
   };
   return (
-    <div>
+    <div className="navContainer">
       <Navbar className="navColor" expand="lg">
         <Container style={{ minHeight: "0" }}>
           {/* Need to use conditional rendering to render either LOGOUT or HOME depending on if they are signed in or not */}

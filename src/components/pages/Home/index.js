@@ -11,15 +11,21 @@ export default function index({
 }) {
   return (
     <div className="homeContainer">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
       <h1 className="homeTitle">Title Name</h1>
       <p> Welcome to our application</p>
       {user.id ? (
         setCurrentPage("Dashboard")
       ) : (
         <div className="homeBorder">
-          <p>
-            Welcome to our Study Dashboard! Please login or make an account to
-            proceed to the dashboard.
+          <p className="welcome">
+            Welcome to Title Name "STILL THINKING" Please login or make an
+            account to proceed to the dashboard.
           </p>
         </div>
       )}
