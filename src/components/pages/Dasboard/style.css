@@ -1,3 +1,46 @@
-.dashboard{
+.grid-container{
+    width: 100%;
+    display:grid;
+    height: 93vh;
+    grid-template-columns: .6fr 1.5fr;
+    grid-template-rows: .25fr .25fr .5fr 1.5fr;
+    grid-template-areas: "timer quote"
+                         "side search"
+                         "side main"
+                         "side main";
+}
 
+.quote-widget{
+background-color: red;
+grid-area: quote;
+}
+.search-bar{
+    background-color: blue;
+    grid-area: search;
+}
+.timer{
+    background-color: green;
+    grid-area: timer;
+}
+.side{
+    background-color: yellow;
+    grid-area: side;
+}
+.main{
+    background-color: purple;
+    grid-area: main;
+}
+
+
+@media only screen and (max-width: 766px) {
+
+    .grid-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: .25fr .25fr .25 1fr 1fr;
+        grid-template-areas: "quote"
+                            "search"
+                            "timer"
+                            "side"
+                            "main";
+    }
 }
