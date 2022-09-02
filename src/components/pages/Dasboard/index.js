@@ -5,8 +5,8 @@ import GoogleSearch from '../../GoogleSearch'
 import Inspirational from '../../Inspirational'
 import Weather from '../../Weather'
 import Notes from '../../Notes'
-import "./style.css";
 import Calendar from '../../Calendar'
+import "./style.css";
 
 export default function Dashboard({setUser, setToken}) {
   useEffect(() => {
