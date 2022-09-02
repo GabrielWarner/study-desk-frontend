@@ -1,0 +1,23 @@
+.homeContainer {
+  height: 80vh;
+  background-color: #f7ebec;
+}
+
+.homeTitle {
+  padding-top: 10vh;
+  padding-bottom: 15px;
+  color: #1d1e2c;
+}
+
+p {
+  color: #1d1e2c;
+  font-weight: 600;
+}
+
+.homeBorder {
+  width: 35%;
+  margin: 0 auto;
+  padding: 5%;
+  border-color: #77878b;
+  border-style: solid;
+}

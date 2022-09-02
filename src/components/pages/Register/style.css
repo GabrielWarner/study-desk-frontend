@@ -1,0 +1,26 @@
+.registerContainer {
+  height: 80vh;
+  background-color: #f7ebec;
+}
+
+.registerTitle {
+  padding-top: 10vh;
+  padding-bottom: 15px;
+  color: #1d1e2c;
+}
+
+.register-form {
+  width: 20%;
+  margin: 0 auto;
+  padding: 5%;
+  border-color: #77878b;
+  border-style: solid;
+}
+
+.form-input {
+  margin: 10px 0;
+}
+
+.registerBtn {
+  width: 150px;
+}
