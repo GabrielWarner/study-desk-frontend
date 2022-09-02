@@ -3,8 +3,6 @@ import './style.css';
 
 
 export default function Login({handleFormSubmit, handleInputChange,user,email,password,setCurrentPage }) {
-
-
   return (
     <div>
         {user.email? setCurrentPage('Dashboard') :(
