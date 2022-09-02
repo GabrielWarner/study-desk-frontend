@@ -134,8 +134,8 @@ function App() {
             </div>
 
 
-            <DnDCalendar
-                localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: "80vh", margin: "20px" }}
+            <Calendar
+                localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: "80vh", margin: "20px"}}
             />
 
 
