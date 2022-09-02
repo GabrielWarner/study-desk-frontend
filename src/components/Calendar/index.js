@@ -73,31 +73,28 @@ function App() {
 
 
 
-        setAllEvents([...allEvents, newEvent]);
+        // setAllEvents([...allEvents, newEvent]);
 
     }
 
-    // // Fetch DB and Render to page
-    // // onMount - before
-    // // useEffect - callback
-    // useEffect(() => {
-    //     // on page load
-    //     // fetch the backend
-    //     fetch("http://localhost:3001/api/events", {
-    //         // method:"GET", default get route unleast specify
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-
-    //     })
-    //         .then(res => {
-    //             return res.json()
-    //         })
-    //         .then(data => {
-    //             console.log(data)
-    //             setAllEvents(data)
-    //         })
-    // })
+    // Fetch DB and Render to page
+    // onMount - before
+    // useEffect - callback
+    useEffect(() => {
+        // on page load
+        // fetch the backend
+        fetch("http://localhost:3001/api/events", {
+            // method:"GET", default get route unleast specify
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            console.log(data)
+            setAllEvents(data)
+        })
+    }, [])
 
 
     return (
