@@ -127,7 +127,7 @@ const Notes = () => {
 
 	return (
 		<div className={`${darkMode && 'dark-mode'}`}>
-			<div style={{minHeight:"0"}} className='container'>
+			<div className='notes-container'>
 				<Header handleToggleDarkMode={setDarkMode} />
 				<Search handleSearchNote={setSearchText} />
 				<NotesList

@@ -77,27 +77,24 @@ function App() {
 
     }
 
-    // // Fetch DB and Render to page
-    // // onMount - before
-    // // useEffect - callback
-    // useEffect(() => {
-    //     // on page load
-    //     // fetch the backend
-    //     fetch("http://localhost:3001/api/events", {
-    //         // method:"GET", default get route unleast specify
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-
-    //     })
-    //         .then(res => {
-    //             return res.json()
-    //         })
-    //         .then(data => {
-    //             console.log(data)
-    //             setAllEvents(data)
-    //         })
-    // })
+    // Fetch DB and Render to page
+    // onMount - before
+    // useEffect - callback
+    useEffect(() => {
+        // on page load
+        // fetch the backend
+        fetch("http://localhost:3001/api/events", {
+            // method:"GET", default get route unleast specify
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            console.log(data)
+            setAllEvents(data)
+        })
+    }, [])
 
 
     return (
@@ -107,7 +104,7 @@ function App() {
 
 
             <div>
-                <button onClick={openModal}>Add Event</button>
+                <button className="cButton" onClick={openModal}>Add Event</button>
                 <Modal
                     ariaHideApp={false}
                     isOpen={modalIsOpen}
@@ -117,7 +114,7 @@ function App() {
                     contentLabel="Calendar Modal"
                 >
                     <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Add New Event</h2>
-                    <button onClick={closeModal}>Close</button>
+                    <button className="cButton" onClick={closeModal}>Close</button>
 
 
                     <div>
@@ -127,7 +124,7 @@ function App() {
                             onChange={(start) => setNewEvent({ ...newEvent, start })} />
                         <DatePicker placeholderText="End Date" selected={newEvent.end}
                             onChange={(end) => setNewEvent({ ...newEvent, end })} />
-                        <button onClick={handleAddEvent}>
+                        <button className="cButton" onClick={handleAddEvent}>
                             Add Event
                         </button>
                     </div>
@@ -137,8 +134,8 @@ function App() {
             </div>
 
 
-            <DnDCalendar
-                localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: "80vh", margin: "20px" }}
+            <Calendar
+                localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: "80vh", margin: "20px"}}
             />
 
 

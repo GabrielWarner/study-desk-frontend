@@ -1,54 +1,78 @@
-import React from 'react'
+import React from "react";
+import "./style.css";
+import Footer from "../Footer";
 
-export default function index({handleFormCreate, handleInputChange,user, username,email,password,setCurrentPage }) {
+export default function index({
+  handleFormCreate,
+  handleInputChange,
+  user,
+  username,
+  email,
+  password,
+  setCurrentPage,
+}) {
   return (
-<div>
-        {user.email? setCurrentPage('Dashboard') :(
-          
-      <>
-        <h2 className="text-dark">Create Account</h2>
-        <form className="form login-form">
-
-            <div className="form-group text-dark row justify-content-center">
-            <input
-            className="form-input"
-            type="text" id="userName-login"
-            value={username}
-            name="username"
-            onChange={handleInputChange}
-            placeholder="insert user name" />
+    <div>
+      {user.email ? (
+        setCurrentPage("Dashboard")
+      ) : (
+        <div className="registerContainer">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <h1 className="registerTitle">Create Account</h1>
+          <form className="register-form">
+            <div>
+              <input
+                className="form-input"
+                type="text"
+                id="userName-login"
+                value={username}
+                name="username"
+                onChange={handleInputChange}
+                placeholder="Insert User Name"
+              />
             </div>
 
-            <div className='form-group text-dark row justify-content-center'>
-            <input
-            className="form-input"
-            type="text" id="email-login"
-            value={email}
-            name="email"
-            onChange={handleInputChange}
-            placeholder="insert email" />
+            <div>
+              <input
+                className="form-input"
+                type="text"
+                id="email-login"
+                value={email}
+                name="email"
+                onChange={handleInputChange}
+                placeholder="Insert Email"
+              />
             </div>
 
-            <div className="form-group text-dark row justify-content-center">
-            <input 
-            value={password}
-            name="password"
-            onChange={handleInputChange}
-            type="password"
-            placeholder="Insert Password" />
+            <div>
+              <input
+                className="form-input"
+                value={password}
+                name="password"
+                onChange={handleInputChange}
+                type="password"
+                placeholder="Insert Password"
+              />
             </div>
-            
-            <div className="row justify-content-center mb-3">
-            <button
-            onClick={handleFormCreate}
-            className="btn btn-primary btn-sizing"
-            type="submit">Create</button>
-            </div>
-            
 
-        </form>
-        </>
-        )}
+            <div>
+              <button
+                className="form-input registerBtn"
+                onClick={handleFormCreate}
+                type="submit"
+              >
+                Create
+              </button>
+            </div>
+          </form>
+          <Footer />
+        </div>
+      )}
     </div>
-  )
+  );
 }

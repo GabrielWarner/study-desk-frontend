@@ -1,10 +1,13 @@
-.container{
-  max-width: 1080px;
-  margin: 20px auto;
+.weather-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
 }
 
 .css-b62m3t-container{
-  width:33%;
+  width:55%;
   align-items:center;
-  margin: auto;
+  margin-top: 1em;
 }
