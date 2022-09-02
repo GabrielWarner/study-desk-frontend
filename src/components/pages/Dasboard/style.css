@@ -18,6 +18,10 @@ max-width: 100%;
 .search-bar{
     background-color: blue;
     grid-area: search;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .timer{
     background-color: green;

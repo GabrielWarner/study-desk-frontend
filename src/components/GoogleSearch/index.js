@@ -3,7 +3,7 @@ import "./style.css";
 
 export default function GoogleSearch() {
   return (
-    <div style={{ minHeight:"0" }} className="container">
+    <div className="search-container">
       <form
         target="_blank"
         action="https://www.google.com/search"
@@ -11,7 +11,7 @@ export default function GoogleSearch() {
         className="searchbar"
       >
         <input type="text" placeholder="search anything" name="q" />
-        <button type="submit" value="Submit">
+        <button className="search-btn" type="submit" value="Submit">
           Submit
         </button>
       </form>
