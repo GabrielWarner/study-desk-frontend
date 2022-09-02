@@ -2,6 +2,9 @@
     text-align: center;
   }
 
+
+
+
 .cButton {
   background-color: #c2fbd7;
   border-radius: 100px;
@@ -33,3 +36,10 @@
   transform: scale(1.05);
 }
 
+.ReactModalPortal, *{
+  z-index: 1;
+}
+
+* {
+  z-index: 0;
+}

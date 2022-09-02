@@ -2,13 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import DatePicker from "react-datepicker";
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+// import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import Modal from 'react-modal';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+// import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "./index.css";
 
+// import { flexbox } from "@chakra-ui/react";
+
+
+//   Modal.setAppElement('main');
+
+// const DnDCalendar = withDragAndDrop(Calendar);
+
+const localizer = momentLocalizer(moment);
 const customStyles = {
     content: {
         top: '50%',
@@ -19,12 +27,6 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
     },
 };
-//   Modal.setAppElement('main');
-
-const DnDCalendar = withDragAndDrop(Calendar);
-
-const localizer = momentLocalizer(moment);
-
 
 
 
@@ -103,7 +105,7 @@ function App() {
             <h1>Calendar</h1>
 
 
-            <div>
+            <div className="ccc">
                 <button className="cButton" onClick={openModal}>Add Event</button>
                 <Modal
                     ariaHideApp={false}
@@ -114,7 +116,7 @@ function App() {
                     contentLabel="Calendar Modal"
                 >
                     <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Add New Event</h2>
-                    <button className="cButton" onClick={closeModal}>Close</button>
+
 
 
                     <div>
@@ -127,16 +129,24 @@ function App() {
                         <button className="cButton" onClick={handleAddEvent}>
                             Add Event
                         </button>
+                        <button className="cButton" onClick={closeModal}>
+                            Close
+                        </button>
                     </div>
 
 
                 </Modal>
             </div>
 
-
+            <div className="cDiv">
             <Calendar
-                localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: "80vh", margin: "20px"}}
+                localizer={localizer} 
+                events={allEvents} 
+                startAccessor="start" 
+                endAccessor="end" 
+                style={{ height: "80vh", margin: "20px", zIndex: "-9999"}}
             />
+            </div>
 
 
         </div>
