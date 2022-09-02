@@ -4,7 +4,8 @@
 }
 
 .homeTitle {
-  padding: 20px;
+  padding-top: 10vh;
+  padding-bottom: 15px;
   color: #1d1e2c;
 }
 
@@ -14,7 +15,9 @@ p {
 }
 
 .homeBorder {
-  width: 40%;
+  width: 35%;
   margin: 0 auto;
   padding: 5%;
+  border-color: #77878b;
+  border-style: solid;
 }
