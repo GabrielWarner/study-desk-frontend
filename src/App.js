@@ -18,7 +18,6 @@ import Calendar from "./components/Calendar";
 import Calculator from "./components/Calculator";
 
 
-
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
   const [email, setEmail] = useState('');
