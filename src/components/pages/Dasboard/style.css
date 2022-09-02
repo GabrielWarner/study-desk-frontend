@@ -1,3 +1,13 @@
+:root{
+    --main-color:#ffb845;
+    --accent-color:#ffb845;
+    --accent2-color:#556dc8;
+    --accent3-color:#556dc8;
+    --accent4-color:#556dc8;
+    --trim-color:#674ab3;
+    --light-color:#8549ad;
+}
+
 .grid-container{
     padding: 1em;
     gap: 1rem;
@@ -13,38 +23,43 @@
 }
 
 .quote-widget{
-background-color: red;
+
+background-color: var(--main-color);
 grid-area: quote;
 max-width: 100%;
+border-radius: 10px;
 }
 .search-bar{
-    background-color: blue;
+    background-color: var(--main-color);
     grid-area: search;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
 }
 .timer{
-    background-color: green;
+    background-color: var(--main-color);
     grid-area: timer;
+    border-radius: 10px;
 }
 .side{
-    background-color: yellow;
+    background-color: var(--main-color);
     grid-area: side;
+    border-radius: 10px;
 }
 .notes-main{
-    background-color: purple;
+    background-color: var(--main-color);
     grid-area: main;
     overflow-y: auto;
-    
+    border-radius: 10px;
 }
 
 .quote {
     max-width: 100%;
     margin: 0 auto;
     max-height: 100%;
-  
+    border-radius: 10px;
   }
 
 
