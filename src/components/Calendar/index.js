@@ -73,7 +73,7 @@ function App() {
 
 
 
-        // setAllEvents([...allEvents, newEvent]);
+        setAllEvents([...allEvents, newEvent]);
 
     }
 
@@ -104,7 +104,7 @@ function App() {
 
 
             <div>
-                <button onClick={openModal}>Add Event</button>
+                <button className="cButton" onClick={openModal}>Add Event</button>
                 <Modal
                     ariaHideApp={false}
                     isOpen={modalIsOpen}
@@ -114,7 +114,7 @@ function App() {
                     contentLabel="Calendar Modal"
                 >
                     <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Add New Event</h2>
-                    <button onClick={closeModal}>Close</button>
+                    <button className="cButton" onClick={closeModal}>Close</button>
 
 
                     <div>
@@ -124,7 +124,7 @@ function App() {
                             onChange={(start) => setNewEvent({ ...newEvent, start })} />
                         <DatePicker placeholderText="End Date" selected={newEvent.end}
                             onChange={(end) => setNewEvent({ ...newEvent, end })} />
-                        <button onClick={handleAddEvent}>
+                        <button className="cButton" onClick={handleAddEvent}>
                             Add Event
                         </button>
                     </div>
