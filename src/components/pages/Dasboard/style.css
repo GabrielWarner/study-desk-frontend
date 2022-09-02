@@ -13,6 +13,7 @@
 .quote-widget{
 background-color: red;
 grid-area: quote;
+max-width: 100%;
 }
 .search-bar{
     background-color: blue;
@@ -30,6 +31,13 @@ grid-area: quote;
     background-color: purple;
     grid-area: main;
 }
+
+.quote {
+    max-width: 100%;
+    margin: 0 auto;
+    max-height: 100%;
+  
+  }
 
 
 @media only screen and (max-width: 766px) {
