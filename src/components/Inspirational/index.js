@@ -32,12 +32,11 @@ export default function Inspirational() {
 
   return (
     <div className="inspirationalQ">
-      <div className="quote">
-        <h2>{quote}</h2>
+      <div style={{color:"white"}} className="quote">
+        <h2 style={{fontSize:"1rem"}}>{quote}</h2>
         <small>-{author}-</small>
       </div>
-      <br />
-      <button className="btn" onClick={fetchNewQuote}>
+      <button className="quote-btn" onClick={fetchNewQuote}>
         Generate New Quote
       </button>
     </div>
