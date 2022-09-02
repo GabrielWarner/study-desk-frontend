@@ -22,6 +22,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin: 10px;
 }
 
 .cButton:hover {
@@ -31,6 +32,18 @@
     rgba(44, 187, 99, 0.25) 0 16px 32px;
   /* transform: scale(1.05) rotate(-1deg); */
   transform: scale(1.05);
+}
+
+.cInput{
+  margin: 5% 0;
+  width: 100%;
+  min-height: 35px;
+  background-color: #f7ebec;
+  border: 2px solid #414361;
+  border-radius: 100px;
+  --outline-color: #ddbdd5;
+  color: #1d1e2c;
+  text-align: center;
 }
 
 .ReactModalPortal, *{

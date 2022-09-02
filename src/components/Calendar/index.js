@@ -23,8 +23,11 @@ const customStyles = {
         left: '50%',
         right: 'auto',
         bottom: 'auto',
-        marginRight: '-50%',
+        margin: '50px',
+        textAlign: 'center',
         transform: 'translate(-50%, -50%)',
+        backgroundColor: '#3174ad',
+        borderRadius: '50px'
     },
 };
 
@@ -120,11 +123,11 @@ function App() {
 
 
                     <div>
-                        <input type="text" placeholder="Add Title" value={newEvent.title}
+                        <input type="text" className="cInput" placeholder="Add Title" value={newEvent.title}
                             onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-                        <DatePicker placeholderText="Start Date" selected={newEvent.start}
+                        <DatePicker placeholderText="Start Date" className="cInput" selected={newEvent.start}
                             onChange={(start) => setNewEvent({ ...newEvent, start })} />
-                        <DatePicker placeholderText="End Date" selected={newEvent.end}
+                        <DatePicker placeholderText="End Date" className="cInput" selected={newEvent.end}
                             onChange={(end) => setNewEvent({ ...newEvent, end })} />
                         <button className="cButton" onClick={handleAddEvent}>
                             Add Event
