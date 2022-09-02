@@ -166,7 +166,7 @@ function App() {
       password={password} />;
     }
     if (currentPage === "Dashboard") {
-      return <Dashboard />;
+      return <Dashboard setUser={setUser} setToken={setToken}/>;
     }
   };
 
@@ -177,6 +177,7 @@ function App() {
         currentPage={currentPage}
         handlePageChange={handlePageChange}
         setUser={setUser}
+        setToken={setToken}
       />
       
       {renderPage()}
