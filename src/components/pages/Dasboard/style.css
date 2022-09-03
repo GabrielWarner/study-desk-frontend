@@ -13,14 +13,15 @@
     gap: 1rem;
     width: 100%;
     display:grid;
-    /* height: 90vh; */
+    height: 90vh;
     grid-template-columns: .6fr 1.5fr;
     grid-template-rows: .25fr .25fr .5fr 2fr;
     grid-template-areas: "timer quote"
                          "side search"
                          "side main"
                          "side main"
-                         "side calendar";
+                         "side main";
+                         
 }
 
 .quote-widget{
@@ -52,7 +53,7 @@ border-radius: 10px;
 .notes-main{
     background-color: var(--main-color);
     grid-area: main;
-    overflow-y: auto;
+    overflow-y: scroll;
     border-radius: 10px;
 }
 

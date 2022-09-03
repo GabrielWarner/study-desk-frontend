@@ -30,6 +30,7 @@ padding: 1em;
   grid-gap: 1rem;
   grid-template-columns: 32% 32% 32%;
   grid-auto-rows: .3fr;
+  
 }
 
 .note.new {
