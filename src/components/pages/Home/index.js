@@ -17,15 +17,16 @@ export default function index({
       <li></li>
       <li></li>
       <li></li>
-      <h1 className="homeTitle">Title Name</h1>
+      <h1 className="homeTitle">Focus</h1>
+      {/* place logo? */}
       <p> Welcome to our application</p>
       {user.id ? (
         setCurrentPage("Dashboard")
       ) : (
         <div className="homeBorder">
           <p className="welcome">
-            Welcome to Title Name "STILL THINKING" Please login or make an
-            account to proceed to the dashboard.
+            Welcome to Focus. Please login or make an
+            account to proceed to the study dashboard.
           </p>
         </div>
       )}
