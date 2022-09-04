@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> ff0563b8a7d092432e9668957e1ec31085195e3d
 import AddNote from './AddNote';
 
 import { MdDeleteForever } from 'react-icons/md';
