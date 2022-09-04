@@ -1,7 +1,7 @@
 :root {
   --pomodoro-color: #fb7974;
   --weather-color: #ffb845;
-  --searchbar-color: #6783db;
+  --searchbar-color: #674ab3;
   --inspirationalQ-color: #a348a6;
   --notes-color: #ce5f9f;
   --trim-color: #674ab3;
@@ -15,7 +15,7 @@
   display: grid;
   height: 90vh;
   grid-template-columns: 0.6fr 1.5fr;
-  grid-template-rows: 0.25fr 0.25fr 0.25fr 0.5fr 2fr;
+  grid-template-rows: 0.25fr 1.1fr 0.25fr 0.5fr 2fr;
   grid-template-areas:
     "quote quote"
     "timer search"
@@ -28,14 +28,35 @@
   z-index: 3;
 }
 
-/* .lofiBackground {
-  width: 100%;
-  height: 100%;
-  background-image: url(../../../img/Rain.gif);
-  background-size: cover;
-  background-position: center;
-  z-index: 3;
+/* Modal */
+.modalBorder{
+
+}
+
+.modalTitle {
+  margin: 0 auto;
+}
+.gadgetSetting {
+  margin-top: 1em;
+  position: relative;
+}
+
+/* Text Opacity
+.textOpacity{
+  opacity: 1;
 } */
+
+/* Quote */
+.quote {
+  max-width: 100%;
+  margin: 0 auto;
+  max-height: 100%;
+  border-radius: 10px;
+  opacity: 0.7;
+}
+.quote:hover {
+  opacity: 0.9;
+}
 
 .quote-widget {
   background-color: var(--inspirationalQ-color);
@@ -44,11 +65,11 @@
   border-radius: 10px;
   opacity: 0.7;
 }
-
 .quote-widget:hover {
   opacity: 0.9;
 }
 
+/* Google Search Bar */
 .search-bar {
   background-color: var(--searchbar-color);
   grid-area: search;
@@ -59,33 +80,51 @@
   border-radius: 10px;
   opacity: 0.8;
 }
-
+.hideSearchBar{
+  grid-area: search;
+  border-radius: 10px;
+  opacity: 0.7;
+  opacity: 0;
+}
 .search-bar:hover {
   opacity: 0.9;
 }
 
+/* Pomodoro Timer */
 .timer {
   background-color: var(--pomodoro-color);
   grid-area: timer;
   border-radius: 10px;
   opacity: 0.7;
 }
-
+.hideTimer{
+  grid-area: timer;
+  border-radius: 10px;
+  opacity: 0.7;
+  opacity: 0;
+}
 .timer:hover {
   opacity: 0.9;
 }
 
+/* Weather + Calendar */
 .side {
   background-color: var(--weather-color);
   grid-area: side;
   border-radius: 10px;
   opacity: 0.7;
 }
-
+.hideSide{
+  grid-area: side;
+  border-radius: 10px;
+  opacity: 0.7;
+  opacity: 0;
+}
 .side:hover {
   opacity: 0.9;
 }
 
+/* Notes */
 .notes-main {
   background-color: var(--notes-color);
   grid-area: main;
@@ -93,20 +132,13 @@
   border-radius: 10px;
   opacity: 0.7;
 }
-
-.notes-main:hover {
-  opacity: 0.9;
-}
-
-.quote {
-  max-width: 100%;
-  margin: 0 auto;
-  max-height: 100%;
+.hideNote{
+  grid-area: main;
   border-radius: 10px;
   opacity: 0.7;
+  opacity: 0;
 }
-
-.quote:hover {
+.notes-main:hover {
   opacity: 0.9;
 }
 
