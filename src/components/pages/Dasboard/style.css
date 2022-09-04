@@ -1,11 +1,11 @@
 :root {
-  --pomodoro-color: #fb7974;
-  --weather-color: #ffb845;
-  --searchbar-color: #674ab3;
-  --inspirationalQ-color: #a348a6;
-  --notes-color: #ce5f9f;
-  --trim-color: #674ab3;
-  --light-color: #ce5f9f;
+  --pomodoro-color: rgba(251, 121, 116, .6);
+  --weather-color: rgba(255, 184, 69, .6);
+  --searchbar-color: rgba(103, 74, 179, .6);
+  --inspirationalQ-color: rgba(163, 72, 166, .4);
+  --notes-color: rgba(206, 95, 159, .6);
+  --trim-color: rgba(103, 74, 179, .6);
+  --light-color: rgba(206, 95, 159, .6);
 }
 
 .grid-container {
@@ -39,6 +39,7 @@
 .gadgetSetting {
   margin-top: 1em;
   position: relative;
+  padding: 1.2em;
 }
 
 /* Text Opacity
@@ -52,10 +53,9 @@
   margin: 0 auto;
   max-height: 100%;
   border-radius: 10px;
-  opacity: 0.7;
 }
 .quote:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .quote-widget {
@@ -63,7 +63,7 @@
   grid-area: quote;
   max-width: 100%;
   border-radius: 10px;
-  opacity: 0.7;
+  
 }
 .quote-widget:hover {
   opacity: 0.9;
@@ -78,7 +78,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  opacity: 0.8;
+  
 }
 .hideSearchBar{
   grid-area: search;
@@ -95,7 +95,7 @@
   background-color: var(--pomodoro-color);
   grid-area: timer;
   border-radius: 10px;
-  opacity: 0.7;
+  
 }
 .hideTimer{
   grid-area: timer;
@@ -112,13 +112,13 @@
   background-color: var(--weather-color);
   grid-area: side;
   border-radius: 10px;
-  opacity: 0.7;
+
 }
 .hideSide{
   grid-area: side;
   border-radius: 10px;
   opacity: 0.7;
-  opacity: 0;
+  
 }
 .side:hover {
   opacity: 0.9;
@@ -130,7 +130,7 @@
   grid-area: main;
   overflow-y: auto;
   border-radius: 10px;
-  opacity: 0.7;
+
 }
 .hideNote{
   grid-area: main;
