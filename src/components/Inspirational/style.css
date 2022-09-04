@@ -1,7 +1,19 @@
-.inspirationalQ{
-    display: flex;
-    min-height: 10rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.inspirationalQ {
+  display: flex;
+  min-height: 10rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-btn {
+  background-color: #e1e1e1;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px 5px 10px;
+}
+
+.quote-btn:hover {
+  background-color: #ededed;
+  cursor: pointer;
 }

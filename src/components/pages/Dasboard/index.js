@@ -1,14 +1,15 @@
-import React, {useEffect} from 'react'
-import { Grid, GridItem } from '@chakra-ui/react'
-import Pomodoro from '../../Pomodoro'
-import GoogleSearch from '../../GoogleSearch'
-import Inspirational from '../../Inspirational'
-import Weather from '../../Weather'
-import Notes from '../../Notes'
-import Calendar from '../../Calendar'
+import React, { useEffect } from "react";
+import { Grid, GridItem } from "@chakra-ui/react";
+import Pomodoro from "../../Pomodoro";
+import GoogleSearch from "../../GoogleSearch";
+import Inspirational from "../../Inspirational";
+import Weather from "../../Weather";
+import Notes from "../../Notes";
+import Calendar from "../../Calendar";
+
 import "./style.css";
 
-export default function Dashboard({setUser, setToken}) {
+export default function Dashboard({ setUser, setToken }) {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     fetch("http://localhost:3001/api/users/check-token", {
@@ -24,19 +25,18 @@ export default function Dashboard({setUser, setToken}) {
         res.json().then((data) => {
           setToken(storedToken);
           setUser({
-            id:data._id,
-            email:data.email,
-            username:data.username
-          })
-        })
+            id: data._id,
+            email: data.email,
+            username: data.username,
+          });
+        });
       }
     });
   }, []);
 
   return (
-    <div className='dashboard'>
-
-{/* <Grid
+    <div className="dashboard">
+      {/* <Grid
   templateRows='repeat(4, 1fr)'
   templateColumns='repeat(5, 1fr)'
   gap={4}
@@ -48,14 +48,24 @@ export default function Dashboard({setUser, setToken}) {
   <GridItem colSpan={4}  bg='tomato' />
 </Grid> */}
 
-
-<div className='grid-container'>
-  <div id='timer' className='timer'><Pomodoro/></div>
-  <div id='side' className='side'><Weather/></div>
-  <div id='search' className='search-bar'><GoogleSearch/></div>
-  <div id='quote' className='quote-widget'><Inspirational/></div>
-  <div id='main' className='notes-main'><Notes/></div>
-</div>
+      <div className="grid-container">
+        <div className="lofiBackground"></div>
+        <div id="timer" className="timer">
+          <Pomodoro />
+        </div>
+        <div id="side" className="side">
+          <Weather />
+        </div>
+        <div id="search" className="search-bar">
+          <GoogleSearch />
+        </div>
+        <div id="quote" className="quote-widget">
+          <Inspirational />
+        </div>
+        <div id="main" className="notes-main">
+          <Notes />
+        </div>
+      </div>
 
       {/* <Grid
       className=''
@@ -89,5 +99,5 @@ export default function Dashboard({setUser, setToken}) {
 
   </Grid> */}
     </div>
-  )
+  );
 }
