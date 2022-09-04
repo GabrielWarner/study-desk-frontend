@@ -41,7 +41,7 @@
   grid-area: quote;
   max-width: 100%;
   border-radius: 10px;
-  opacity: 0.3;
+  opacity: 0.7;
 }
 
 .quote-widget:hover {
@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  opacity: 0.3;
+  opacity: 0.8;
 }
 
 .search-bar:hover {
@@ -67,7 +67,7 @@
   background-color: var(--pomodoro-color);
   grid-area: timer;
   border-radius: 10px;
-  opacity: 0.3;
+  opacity: 0.7;
 }
 
 .timer:hover {
@@ -78,7 +78,7 @@
   background-color: var(--weather-color);
   grid-area: side;
   border-radius: 10px;
-  opacity: 0.3;
+  opacity: 0.7;
 }
 
 .side:hover {
@@ -90,7 +90,7 @@
   grid-area: main;
   overflow-y: auto;
   border-radius: 10px;
-  opacity: 0.3;
+  opacity: 0.7;
 }
 
 .notes-main:hover {
@@ -102,7 +102,7 @@
   margin: 0 auto;
   max-height: 100%;
   border-radius: 10px;
-  opacity: 0.3;
+  opacity: 0.7;
 }
 
 .quote:hover {

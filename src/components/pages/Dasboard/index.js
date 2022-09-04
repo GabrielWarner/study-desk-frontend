@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import Pomodoro from "../../Pomodoro";
 import GoogleSearch from "../../GoogleSearch";
@@ -10,6 +10,7 @@ import Calendar from "../../Calendar";
 import "./style.css";
 
 export default function Dashboard({ setUser, setToken }) {
+const [show, setShow] = useState(false)
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     fetch("http://localhost:3001/api/users/check-token", {
@@ -48,11 +49,13 @@ export default function Dashboard({ setUser, setToken }) {
   <GridItem colSpan={4}  bg='tomato' />
 </Grid> */}
 
+        <button onClick={()=>{setShow(!show)}}>test</button>
       <div className="grid-container">
         <div className="lofiBackground"></div>
-        <div id="timer" className="timer">
+        {show ?<div id="timer" className="timer">
           <Pomodoro />
-        </div>
+        </div>:null}
+
         <div id="side" className="side">
           <Weather />
         </div>
