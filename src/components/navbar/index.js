@@ -1,22 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 import "./style.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Modal from 'react-bootstrap/Modal';
-
-
 export default function NavigationBar({
   user,
   handlePageChange,
   setUser,
   setToken,
 }) {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const logout = () => {
     localStorage.removeItem("token");
     setUser("");
@@ -49,24 +41,6 @@ export default function NavigationBar({
               <button className="homeButton" onClick={() => logout()}>
                 LOGOUT
               </button>
-              <button className="homeButton" onClick={handleShow}>
-        Launch demo modal
-      </button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <button className="homeButton" onClick={handleClose}>
-            Close
-          </button>
-          <button className="homeButton" onClick={handleClose}>
-            Save Changes
-          </button>
-        </Modal.Footer>
-      </Modal>
             </>
           ) : (
             <>

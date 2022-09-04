@@ -9,8 +9,8 @@ import Calendar from "../../Calendar";
 
 import "./style.css";
 
-export default function Dashboard({ setUser, setToken }) {
-const [show, setShow] = useState(false)
+export default function Dashboard({ setUser, setToken,setTimerToggle }) {
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     fetch("http://localhost:3001/api/users/check-token", {
@@ -37,24 +37,11 @@ const [show, setShow] = useState(false)
 
   return (
     <div className="dashboard">
-      {/* <Grid
-  templateRows='repeat(4, 1fr)'
-  templateColumns='repeat(5, 1fr)'
-  gap={4}
->
-  <GridItem rowSpan={1} colSpan={1} bg='tomato'> <Pomodoro/></GridItem>
-  <GridItem colSpan={2} bg='papayawhip'> <GoogleSearch/> </GridItem>
-  <GridItem colSpan={2} bg='papayawhip' />
-  <GridItem rowSpan={4} bg='papayawhip' />
-  <GridItem colSpan={4}  bg='tomato' />
-</Grid> */}
-
-        <button onClick={()=>{setShow(!show)}}>test</button>
       <div className="grid-container">
         <div className="lofiBackground"></div>
-        {show ?<div id="timer" className="timer">
+      <div id="timer" className="timer">
           <Pomodoro />
-        </div>:null}
+      </div>
 
         <div id="side" className="side">
           <Weather />
@@ -69,38 +56,6 @@ const [show, setShow] = useState(false)
           <Notes />
         </div>
       </div>
-
-      {/* <Grid
-      className=''
-  templateAreas={`"clock quote"
-                  "side search"
-                  "side main"
-                  "side main"`}
-  gridTemplateRows={'.25fr .25fr .5fr 1.5fr'}
-  gridTemplateColumns={'.6fr 1.5fr'}
-  h='93vh'
-  gap='1'
-  color='blackAlpha.700'
-  fontWeight='bold'
->
-  <GridItem pl='2' bg='orange.300' area={'search'}>
-    <GoogleSearch/>
-  </GridItem>
-  <GridItem pl='2' bg='blue.300' area={'quote'}>
-    <Inspirational/>
-    </GridItem>
-  <GridItem pl='2' bg='pink.300' area={'side'}>
-    <Weather/>
-  </GridItem>
-  <GridItem pl='2' bg='green.300' area={'main'}>
-    <Notes/>
-  </GridItem>
-
-  <GridItem style={{justifyContent:"center",wordBreak:"break-all"}} pl='2' bg='blue.300' area={'clock'}>
-  <Pomodoro/>
-  </GridItem>
-
-  </Grid> */}
     </div>
   );
 }

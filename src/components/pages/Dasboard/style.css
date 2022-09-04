@@ -15,10 +15,11 @@
   display: grid;
   height: 90vh;
   grid-template-columns: 0.6fr 1.5fr;
-  grid-template-rows: 0.25fr 0.25fr 0.5fr 2fr;
+  grid-template-rows: 0.25fr 0.25fr 0.25fr 0.5fr 2fr;
   grid-template-areas:
-    "timer quote"
-    "side search"
+    "quote quote"
+    "timer search"
+    "side main"
     "side main"
     "side main";
   background-image: url(../../../img/Rain.gif);
