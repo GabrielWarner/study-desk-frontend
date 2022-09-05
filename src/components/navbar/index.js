@@ -1,14 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import "./style.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+
+
+
 export default function NavigationBar({
   user,
   handlePageChange,
   setUser,
   setToken,
 }) {
+
   const logout = () => {
     localStorage.removeItem("token");
     setUser("");
@@ -41,6 +45,7 @@ export default function NavigationBar({
               <button className="homeButton" onClick={() => logout()}>
                 LOGOUT
               </button>
+              
             </>
           ) : (
             <>

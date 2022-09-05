@@ -1,4 +1,3 @@
-
 import AddNote from './AddNote';
 
 import { MdDeleteForever } from 'react-icons/md';
