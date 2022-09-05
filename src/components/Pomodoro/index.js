@@ -75,10 +75,16 @@ export default function Pomodoro() {
         <button className='timerBtn' onClick={()=>{startToggle()}}>Start/Stop</button>
 
         <p className='timer-text'>Or choose your own time</p>
+
+
         <form className="timerForm" onSubmit={(e)=>{setTimer(e)}}>
-            <input className='form-input' value={minuteInput} onChange={handleInputChange} type="text" name='value'></input>
-            <button className='timerBtn'>Set</button>
+            <input type='text' value={minuteInput} onChange={handleInputChange} name='value'></input>
+            <button className="timerBtn" type="submit">
+          Set
+        </button>
         </form>
+
+
         <h2 style={{backgroundColor:"transparent"}} className='timer'>{timerMinutes}:{timerSeconds}</h2>
         <div className='message'>
            {displayMessage && <div>Session over. Break starts now.</div>}

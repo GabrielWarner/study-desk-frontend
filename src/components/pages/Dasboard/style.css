@@ -14,7 +14,7 @@
   width: 100%;
   display: grid;
   height: 90vh;
-  grid-template-columns: 0.6fr 1.5fr;
+  grid-template-columns: .5fr 1.5fr;
   grid-template-rows: 0.25fr 1.1fr 0.25fr 0.5fr 2fr;
   grid-template-areas:
     "quote quote"
@@ -73,12 +73,11 @@
 .search-bar {
   background-color: var(--searchbar-color);
   grid-area: search;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  
 }
 .hideSearchBar{
   grid-area: search;
@@ -95,7 +94,10 @@
   background-color: var(--pomodoro-color);
   grid-area: timer;
   border-radius: 10px;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .hideTimer{
   grid-area: timer;
