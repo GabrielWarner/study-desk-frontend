@@ -96,6 +96,7 @@ function App() {
         });
         setToken(data.token);
         localStorage.setItem("token", data.token);
+        localStorage.setItem("userid", data.user._id);
       });
     // If everything goes according to plan, we want to clear out the input after a successful registration.
     setPassword("");

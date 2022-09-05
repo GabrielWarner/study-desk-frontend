@@ -56,7 +56,8 @@ const Notes = () => {
 	}, []);
 
 	const getNote = () => {
-		fetch("http://localhost:3001/api/notes", {
+		const userid = localStorage.getItem('userid')
+		fetch(`http://localhost:3001/api/notes?userid=${userid}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 			},
@@ -78,6 +79,7 @@ const Notes = () => {
 		const newNote = {
 			id: nanoid(),
 			text: text,
+			userid: localStorage.getItem('userid'),
 			date: date.toLocaleDateString(),		
 		};
 		fetch("http://localhost:3001/api/notes", {
