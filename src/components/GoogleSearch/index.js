@@ -10,7 +10,7 @@ export default function GoogleSearch() {
         method="get"
         className="searchbar"
       >
-        <input type="text" placeholder="search anything" name="q" />
+        <input className="searchInput" type="text" placeholder="Google Search" name="q" />
         <button className="search-btn" type="submit" value="Submit">
           Submit
         </button>

@@ -1,94 +1,166 @@
-:root{
-    --main-color:#556dc8;
-    --accent-color:#ffb845;
-    --accent2-color:#556dc8;
-    --accent3-color:#556dc8;
-    --accent4-color:#556dc8;
-    --trim-color:#674ab3;
-    --light-color:#8549ad;
+:root {
+  --pomodoro-color: rgba(251, 121, 116, .6);
+  --weather-color: rgba(255, 184, 69, .6);
+  --searchbar-color: rgba(103, 74, 179, .6);
+  --inspirationalQ-color: rgba(163, 72, 166, .4);
+  --notes-color: rgba(206, 95, 159, .6);
+  --trim-color: rgba(103, 74, 179, .6);
+  --light-color: rgba(206, 95, 159, .6);
 }
 
-.grid-container{
-    padding: 1em;
-    gap: 1rem;
-    width: 100%;
-    display:grid;
-    /* height: 90vh; */
-    grid-template-columns: .6fr 1.5fr;
-    grid-template-rows: .25fr .25fr .5fr 2fr;
-    grid-template-areas: "timer quote"
-                         "side search"
-                         "side main"
-                         "side main"
-                         "side calendar";
+.grid-container {
+  padding: 1em;
+  gap: 1rem;
+  width: 100%;
+  display: grid;
+  height: 90vh;
+  grid-template-columns: .5fr 1.5fr;
+  grid-template-rows: 0.25fr 0.25fr 0.5fr 2fr;
+  grid-template-areas:
+    "quote quote"
+    "timer search"
+    "side main"
+    "side main"
+    "side main";
+  background-image: url(../../../img/Rain.gif);
+  background-size: cover;
+  background-position: center;
+  z-index: 3;
 }
 
-.quote-widget{
+/* Modal */
+.modalBorder{
 
-background-color: var(--main-color);
-grid-area: quote;
-max-width: 100%;
-border-radius: 10px;
-}
-.search-bar{
-    background-color: var(--main-color);
-    grid-area: search;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-}
-.timer{
-    background-color: var(--main-color);
-    grid-area: timer;
-    border-radius: 10px;
-}
-.side{
-    background-color: var(--main-color);
-    grid-area: side;
-    border-radius: 10px;
-}
-.notes-main{
-    background-color: var(--main-color);
-    grid-area: main;
-    overflow-y: auto;
-    border-radius: 10px;
 }
 
+.modalTitle {
+  margin: 0 auto;
+}
+.gadgetSetting {
+  margin-top: 1em;
+  position: relative;
+  padding: 1.2em;
+}
+
+/* Text Opacity
+.textOpacity{
+  opacity: 1;
+} */
+
+/* Quote */
 .quote {
-    max-width: 100%;
-    margin: 0 auto;
-    max-height: 100%;
-    border-radius: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+  max-height: 100%;
+  border-radius: 10px;
+}
+.quote:hover {
+  opacity: 1;
 }
 
+.quote-widget {
+  background-color: var(--inspirationalQ-color);
+  grid-area: quote;
+  max-width: 100%;
+  border-radius: 10px;
+  
+}
+.quote-widget:hover {
+  opacity: 0.9;
+}
 
-.calendar{
-    background-color: var(--main-color);
-    grid-area: calendar;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
+/* Google Search Bar */
+.search-bar {
+  background-color: var(--searchbar-color);
+  grid-area: search;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hideSearchBar{
+  grid-area: search;
+  border-radius: 10px;
+  opacity: 0.7;
+  opacity: 0;
+}
+.search-bar:hover {
+  opacity: 0.9;
+}
+
+/* Pomodoro Timer */
+.timer {
+  background-color: var(--pomodoro-color);
+  grid-area: timer;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hideTimer{
+  background-color: var(--pomodoro-color);
+  grid-area: timer;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.timer:hover {
+  opacity: 0.9;
+}
+
+/* Weather + Calendar */
+.side {
+  background-color: var(--weather-color);
+  grid-area: side;
+  border-radius: 10px;
+
+}
+.hideSide{
+  grid-area: side;
+  border-radius: 10px;
+  opacity: 0;
+  
+}
+.side:hover {
+  opacity: 0.9;
+}
+
+/* Notes */
+.notes-main {
+  background-color: var(--notes-color);
+  grid-area: main;
+  overflow-y: auto;
+  border-radius: 10px;
+
+}
+.hideNote{
+  grid-area: main;
+  border-radius: 10px;
+  opacity: 0.7;
+  opacity: 0;
+}
+.notes-main:hover {
+  opacity: 0.9;
 }
 
 @media only screen and (max-width: 766px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.25fr 0.25 1fr 5fr;
+    grid-template-areas:
+      "quote"
+      "search"
+      "timer"
+      "side"
+      "main";
+  }
 
-    .grid-container{
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr .25fr .25 1fr 5fr;
-        grid-template-areas: "quote"
-                            "search"
-                            "timer"
-                            "side"
-                            "main"
-                            "calendar";
-    
-    }
-
-    .notes-main{
-        overflow-y: visible;
-    }
+  .notes-main {
+    overflow-y: visible;
+  }
 }

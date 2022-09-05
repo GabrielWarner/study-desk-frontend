@@ -179,18 +179,14 @@ function App() {
         setUser={setUser}
         setToken={setToken}
       />
-      
       {renderPage()}
       {/* <Pomodoro /> */}
       {/* <Inspirational /> */}
       {/* <GoogleSearch /> */}
       {/* <Weather />   */}
-
       {/* <Notes /> */}
-
       {/* <Calendar />  */}
       {/* { <Calculator />} */}
-
     </div>
   );
 }

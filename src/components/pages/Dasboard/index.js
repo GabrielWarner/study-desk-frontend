@@ -1,14 +1,25 @@
-import React, {useEffect} from 'react'
-import { Grid, GridItem } from '@chakra-ui/react'
-import Pomodoro from '../../Pomodoro'
-import GoogleSearch from '../../GoogleSearch'
-import Inspirational from '../../Inspirational'
-import Weather from '../../Weather'
-import Notes from '../../Notes'
-import Calendar from '../../Calendar'
+import React, { useEffect, useState } from "react";
+import { Grid, GridItem } from "@chakra-ui/react";
+import Pomodoro from "../../Pomodoro";
+import GoogleSearch from "../../GoogleSearch";
+import Inspirational from "../../Inspirational";
+import Weather from "../../Weather";
+import Notes from "../../Notes";
+import Calendar from "../../Calendar";
+import Modal from "react-bootstrap/Modal";
 import "./style.css";
 
-export default function Dashboard({setUser, setToken}) {
+export default function Dashboard({ setUser, setToken, setTimerToggle }) {
+  const [show, setShow] = useState(false);
+
+  const [timer, setTimer] = useState(true);
+  const [search, setSearch] = useState(true);
+  const [side, setSide] = useState(true);
+  const [notes, setNotes] = useState(true);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     fetch("http://localhost:3001/api/users/check-token", {
@@ -24,71 +35,123 @@ export default function Dashboard({setUser, setToken}) {
         res.json().then((data) => {
           setToken(storedToken);
           setUser({
-            id:data._id,
-            email:data.email,
-            username:data.username
-          })
-        })
+            id: data._id,
+            email: data.email,
+            username: data.username,
+          });
+        });
       }
     });
   }, []);
 
   return (
-    <div className='dashboard'>
+    <div className="dashboard">
+      <div className="grid-container">
+        <div className="lofiBackground"></div>
+        <div id="quote" className="quote-widget">
+          <button className="homeButton gadgetSetting" onClick={handleShow}>
+            GADGET SETTINGS
+          </button>
+          <Modal className="modalBorder" show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title className="modalTitle">Settings</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <input
+                onClick={() => {
+                  setTimer(!timer);
+                }}
+                id="timer"
+                type="checkbox"
+              ></input>
+              <label for="timer"> Pomodoro</label>
+              <br />
 
-{/* <Grid
-  templateRows='repeat(4, 1fr)'
-  templateColumns='repeat(5, 1fr)'
-  gap={4}
->
-  <GridItem rowSpan={1} colSpan={1} bg='tomato'> <Pomodoro/></GridItem>
-  <GridItem colSpan={2} bg='papayawhip'> <GoogleSearch/> </GridItem>
-  <GridItem colSpan={2} bg='papayawhip' />
-  <GridItem rowSpan={4} bg='papayawhip' />
-  <GridItem colSpan={4}  bg='tomato' />
-</Grid> */}
+              <input
+                onClick={() => {
+                  setSearch(!search);
+                }}
+                id="search"
+                type="checkbox"
+              ></input>
+              <label for="search"> Search</label>
+              <br />
 
+              <input
+                onClick={() => {
+                  setSide(!side);
+                }}
+                id="side"
+                type="checkbox"
+              ></input>
+              <label for="side"> Side</label>
+              <br />
 
-<div className='grid-container'>
-  <div id='timer' className='timer'><Pomodoro/></div>
-  <div id='side' className='side'><Weather/></div>
-  <div id='search' className='search-bar'><GoogleSearch/></div>
-  <div id='quote' className='quote-widget'><Inspirational/></div>
-  <div id='main' className='notes-main'><Notes/></div>
-  <div id='calendar' className='calendar'><Calendar/></div>
-</div>
+              <input
+                onClick={() => {
+                  setNotes(!notes);
+                }}
+                id="notes"
+                type="checkbox"
+              ></input>
+              <label for="notes"> Notes</label>
+              <br />
+            </Modal.Body>
+            <Modal.Footer>
+              <button className="homeButton" onClick={handleClose}>
+                Close
+              </button>
+              <button className="homeButton" onClick={handleClose}>
+                Save Changes
+              </button>
+            </Modal.Footer>
+          </Modal>
+          <Inspirational />
+        </div>
 
-      {/* <Grid
-      className=''
-  templateAreas={`"clock quote"
-                  "side search"
-                  "side main"
-                  "side main"`}
-  gridTemplateRows={'.25fr .25fr .5fr 1.5fr'}
-  gridTemplateColumns={'.6fr 1.5fr'}
-  h='93vh'
-  gap='1'
-  color='blackAlpha.700'
-  fontWeight='bold'
->
-  <GridItem pl='2' bg='orange.300' area={'search'}>
-    <GoogleSearch/>
-  </GridItem>
-  <GridItem pl='2' bg='blue.300' area={'quote'}>
-    <Inspirational/>
-    </GridItem>
-  <GridItem pl='2' bg='pink.300' area={'side'}>
-    <Weather/>
-  </GridItem>
-  <GridItem pl='2' bg='green.300' area={'main'}>
-    <Notes/>
-  </GridItem>
+        {timer ? (
+          <div id="timer" className="timer">
+            {/* <div className="textOpacity"> */}
+            <Pomodoro />
+            {/* </div> */}
+          </div>
+        ) : (
+          <div id="timer" className="hideTimer">
+          <Pomodoro />
+        </div>
+        )
+        }
 
-  <GridItem style={{justifyContent:"center",wordBreak:"break-all"}} pl='2' bg='blue.300' area={'clock'}>
-  <Pomodoro/>
-  </GridItem>
+        {search ? (
+          <div id="search" className="search-bar">
+            <GoogleSearch />
+          </div>
+        ) : (
+          <div id="search" className="hideSearchBar">
+          <GoogleSearch />
+        </div>
+        )}
 
-  </Grid> */}
+        {side ? (
+          <div id="side" className="side">
+            <Weather />
+          </div>
+        ) : (
+          <div id="side" className="hideSide">
+          <Weather />
+        </div>
+        )}
+
+        {notes ? (
+          <div id="main" className="notes-main">
+            <Notes />
+          </div>
+        ) : (
+          <div id="main" className="hideNote">
+          <Notes />
+        </div>
+        )}
+      </div>
     </div>
-  )
+  );
 }
