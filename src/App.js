@@ -187,7 +187,7 @@ function App() {
 
       {/* <Notes /> */}
 
-      {/* <Calendar />  */}
+      <Calendar /> 
       {/* { <Calculator />} */}
 
     </div>

@@ -57,7 +57,7 @@ function App() {
 
     // Add Calendar Event to DB
     function handleAddEvent() {
-        fetch("http://localhost:3001/api/events", {
+        fetch("http://localhost:3001/api/events/:userId", {
             method: "POST",
             body: JSON.stringify({
                 ...newEvent
@@ -88,7 +88,7 @@ function App() {
     useEffect(() => {
         // on page load
         // fetch the backend
-        fetch("http://localhost:3001/api/events", {
+        fetch("http://localhost:3001/api/events/:userId", {
             // method:"GET", default get route unleast specify
             headers: {
                 "Content-Type": "application/json"
