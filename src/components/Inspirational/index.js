@@ -36,7 +36,7 @@ export default function Inspirational() {
         <h2 style={{fontSize:"1rem"}}>{quote}</h2>
         <small>-{author}-</small>
       </div>
-      <button className="quote-btn" onClick={fetchNewQuote}>
+      <button className="inspirationalButton" onClick={fetchNewQuote}>
         Generate New Quote
       </button>
     </div>

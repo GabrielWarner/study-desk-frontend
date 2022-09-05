@@ -72,17 +72,23 @@ export default function Pomodoro() {
   return (
     <div className='pomodoro-container'>
         <h1>Pomodoro Timer</h1>
-        <button onClick={()=>{startToggle()}}>Start/Stop</button>
+        <button className='timerBtn' onClick={()=>{startToggle()}}>Start/Stop</button>
 
         <p className='timer-text'>Or choose your own time</p>
-        <form onSubmit={(e)=>{setTimer(e)}}>
-            <input value={minuteInput} onChange={handleInputChange} type="text" name='value'></input>
-            <button>Set</button>
+
+
+        <form className="timerForm" onSubmit={(e)=>{setTimer(e)}}>
+            <input type='text' value={minuteInput} onChange={handleInputChange} name='value'></input>
+            <button className="timerBtn" type="submit">
+          Set
+        </button>
         </form>
+
+
+        <h2 style={{backgroundColor:"transparent"}} className='timer'>{timerMinutes}:{timerSeconds}</h2>
         <div className='message'>
            {displayMessage && <div>Session over. Break starts now.</div>}
         </div>
-        <h2 className='timer'>{timerMinutes}:{timerSeconds}</h2>
         {/* <ProgressProvider valueStart={timeInSeconds} valueEnd={0}>
   {(value) => <CircularProgressbar value={timeInSeconds} />}
 </ProgressProvider> */}
