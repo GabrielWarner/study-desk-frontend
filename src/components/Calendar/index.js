@@ -34,7 +34,8 @@ const customStyles = {
 
 
 function App() {
-
+    const storedToken = localStorage.getItem("token");	
+    const userId = localStorage.getItem('userid')
     // Modal
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -52,17 +53,19 @@ function App() {
     }
 
     // Calendar 
-    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+    const [newEvent, setNewEvent] = useState({ userId:"", title: "", start: "", end: "" });
     const [allEvents, setAllEvents] = useState([]);
+
 
     // Add Calendar Event to DB
     function handleAddEvent() {
-        fetch("http://localhost:3001/api/events/:userId", {
+        fetch(`http://localhost:3001/api/events/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 ...newEvent
             }),
             headers: {
+                Authorization: `Bearer ${storedToken}`,
                 "Content-Type": "application/json"
             }
         }).then(res => {
@@ -70,6 +73,7 @@ function App() {
         }).then(data => {
             console.log(data)
             setNewEvent({
+                userId : localStorage.getItem('userid'),
                 title: newEvent.title,
                 start: newEvent.start,
                 end: newEvent.end
@@ -88,14 +92,21 @@ function App() {
     useEffect(() => {
         // on page load
         // fetch the backend
-        fetch("http://localhost:3001/api/events/:userId", {
+
+        fetch(`http://localhost:3001/api/events/${userId}`, {
             // method:"GET", default get route unleast specify
             headers: {
+                Authorization: `Bearer ${storedToken}`,
                 "Content-Type": "application/json"
             }
-        }).then(res => {
+        })
+        .then(res => {
+            if (!res.ok){
+				console.log("invalid token");
+            }
             return res.json()
-        }).then(data => {
+        })
+        .then(data => {
             console.log(data)
             setAllEvents(data)
         })
