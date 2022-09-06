@@ -5,11 +5,12 @@ import GoogleSearch from "../../GoogleSearch";
 import Inspirational from "../../Inspirational";
 import Weather from "../../Weather";
 import Notes from "../../Notes";
-import Calendar from "../../Calendar";
 import Calculator from "../../Calculator";
-import Modal from "react-bootstrap/Modal";
+import Modal from "react-bootstrap/Modal"
+import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time;
+import Resizable from "re-resizable";
 
-import calenderpic from '../../../img/Calender.JPG'
+import calenderpic from "../../../img/Calender.JPG";
 
 import AncientWindAudio from "../audio/Ancient-Wind.mp3";
 import DeepInTheOceanAudio from "../audio/Deep-In-The-Ocean.mp3";
@@ -21,27 +22,22 @@ import SoftAmbientAudio from "../audio/Soft-Ambient.mp3";
 import SpaceJourneyAudio from "../audio/Space-Journey.mp3";
 import "./style.css";
 
-
-
-const useAudio = url => {
+const useAudio = (url) => {
   const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(false);
   const toggle = () => setPlaying(!playing);
   useEffect(() => {
-      if(playing){
-        audio.play()
-        audio.loop = true;
-      } 
-      else {
-        audio.pause();
-      }
-    },
-    [playing]
-  );
+    if (playing) {
+      audio.play();
+      audio.loop = true;
+    } else {
+      audio.pause();
+    }
+  }, [playing]);
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
+    audio.addEventListener("ended", () => setPlaying(false));
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
+      audio.removeEventListener("ended", () => setPlaying(false));
     };
   }, []);
   return [playing, toggle];
@@ -53,6 +49,8 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const [search, setSearch] = useState(true);
   const [side, setSide] = useState(true);
   const [notes, setNotes] = useState(true);
+  const [calender, setCalender] = useState(true);
+  const [weather, setWeather] = useState(true);
 
   const [playingWind, toggleWind] = useAudio(AncientWindAudio);
   const [playingOcean, toggleOcean] = useAudio(DeepInTheOceanAudio);
@@ -66,8 +64,16 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  useEffect(()=>{
+    localStorage.setItem('weather', weather)
+    console.log(weather)
+  }, [weather])
+
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
+    const weatherToggle =JSON.parse(localStorage.getItem("weather"))
     fetch("http://localhost:3001/api/users/check-token", {
       headers: {
         Authorization: `Bearer ${storedToken}`,
@@ -85,7 +91,9 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             email: data.email,
             username: data.username,
           });
+          setWeather(weatherToggle)
         });
+        
       }
     });
   }, []);
@@ -94,6 +102,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
     <div className="dashboard">
       <div className="grid-container">
         <div className="lofiBackground"></div>
+        <Draggable>
         <div id="quote" className="quote-widget">
           <button className="homeButton gadgetSetting" onClick={handleShow}>
             GADGET SETTINGS
@@ -103,15 +112,39 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <Modal.Title className="modalTitle">Settings</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <h4>Hide Gadget</h4>
+              <h4>Hide Gadget</h4>
+
+              <input
+                onClick={() => {
+                  setWeather(!weather);
+
+                }}
+                id="weather"
+                type="checkbox"
+              ></input>
+              <label for="timer"> Weather</label>
+              <br />
+
               <input
                 onClick={() => {
                   setTimer(!timer);
+                  console.log(timer)
                 }}
                 id="timer"
                 type="checkbox"
               ></input>
               <label for="timer"> Pomodoro</label>
+              <br />
+
+
+              <input
+                onClick={() => {
+                  setCalender(!calender);
+                }}
+                id="calender"
+                type="checkbox"
+              ></input>
+              <label for="timer"> Calender</label>
               <br />
 
               <input
@@ -131,7 +164,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
                 id="side"
                 type="checkbox"
               ></input>
-              <label for="side"> Side</label>
+              <label for="side"> Calculator</label>
               <br />
 
               <input
@@ -148,37 +181,52 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <h4>Audio</h4>
               <div className="inBlock">
                 <div>Ancient Wind</div>
-              <button className="homeButton" onClick={toggleWind}>{playingWind ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={toggleWind}>
+                  {playingWind ? "Pause" : "Play"}
+                </button>
               </div>
               <div className="inBlock">
                 <div>Deep In The Ocean</div>
-              <button className="homeButton" onClick={toggleOcean}>{playingOcean ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={toggleOcean}>
+                  {playingOcean ? "Pause" : "Play"}
+                </button>
               </div>
               <div className="inBlock">
                 <div>Forest</div>
-              <button className="homeButton" onClick={toggleForest}>{playingForest ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={toggleForest}>
+                  {playingForest ? "Pause" : "Play"}
+                </button>
               </div>
               <div className="inBlock">
                 <div>Lofi Study</div>
-              <button className="homeButton" onClick={toggleLofi}>{playingLofi ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={toggleLofi}>
+                  {playingLofi ? "Pause" : "Play"}
+                </button>
               </div>
               <div className="inBlock">
                 <div>Peaceful Piano</div>
-              <button className="homeButton" onClick={togglePiano}>{playingPiano ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={togglePiano}>
+                  {playingPiano ? "Pause" : "Play"}
+                </button>
               </div>
               <div className="inBlock">
                 <div>Rain</div>
-              <button className="homeButton" onClick={toggleRain}>{playingRain ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={toggleRain}>
+                  {playingRain ? "Pause" : "Play"}
+                </button>
               </div>
               <div className="inBlock">
                 <div>Soft Ambient</div>
-              <button className="homeButton" onClick={toggleSoftAmbient}>{playingSoftAmbient ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={toggleSoftAmbient}>
+                  {playingSoftAmbient ? "Pause" : "Play"}
+                </button>
               </div>
               <div className="inBlock">
                 <div>Space Journey</div>
-              <button className="homeButton" onClick={toggleSpace}>{playingSpace ? "Pause" : "Play"}</button>
+                <button className="homeButton" onClick={toggleSpace}>
+                  {playingSpace ? "Pause" : "Play"}
+                </button>
               </div>
-
             </Modal.Body>
             <Modal.Footer>
               <button className="homeButton" onClick={handleClose}>
@@ -190,59 +238,97 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             </Modal.Footer>
           </Modal>
           <Inspirational />
+          
         </div>
+        </Draggable>
 
-        {/* TODO: add ability to hide weather gadget */}
-        <div id="weather" className="weather-gadget"><Weather/></div>
+
+
+        {weather ? (
+          
+          <Draggable>
+          <div id="weather" className="weather-gadget">
+            <Weather />
+          </div>
+          </Draggable>
+        ) : (
+          <div id="weather" className="hide-weather">
+            <Weather />
+          </div>
+        )}
+
         {timer ? (
+          <Draggable>
           <div id="timer" className="timer">
             {/* <div className="textOpacity"> */}
             <Pomodoro />
             {/* </div> */}
           </div>
+          </Draggable>
         ) : (
           <div id="timer" className="hideTimer">
-          <Pomodoro />
-        </div>
-        )
-        }
+            <Pomodoro />
+          </div>
+        )}
 
         {/* TODO: add ability to hide weather gadget */}
+        {calender? (
+        <Draggable>
         <div id="calender" className="calender-gadget">
           <h2>Calender</h2>
-          <img onClick={()=>{setCurrentPage("CalenderPage")}} className="calender-img"  src={calenderpic}></img>
-          {/* <button onClick={()=>{setCurrentPage("CalenderPage")}}>CALENDER</button> */}
-        </div>
+          <img
+            onClick={() => {
+              setCurrentPage("CalenderPage");
+            }}
+            className="calender-img"
+            src={calenderpic}
+          ></img></div></Draggable>
+          ): (<div id="calender" className="calender-hide">
+          <h2>Calender</h2>
+          <img
+            onClick={() => {
+              setCurrentPage("CalenderPage");
+            }}
+            className="calender-img"
+            src={calenderpic}
+          ></img>
+        </div>)}
+
 
         {search ? (
+          <Draggable>
           <div id="search" className="search-bar">
             <GoogleSearch />
           </div>
+          </Draggable>
         ) : (
           <div id="search" className="hideSearchBar">
-          <GoogleSearch />
-        </div>
+            <GoogleSearch />
+          </div>
         )}
 
         {side ? (
+          <Draggable>
           <div id="side" className="side">
-            <Calculator/>
+            <Calculator />
           </div>
+          </Draggable>
         ) : (
           <div id="side" className="hideSide">
-          <Weather />
-          
-        </div>
+            <Weather />
+          </div>
         )}
 
         {notes ? (
+          <Draggable>
           <div id="main" className="notes-main">
             <Notes />
           </div>
+          </Draggable>
         ) : (
           <div id="main" className="hideNote">
-          <Notes />
-        </div>
+            <Notes />
+          </div>
         )}
       </div>
     </div>
