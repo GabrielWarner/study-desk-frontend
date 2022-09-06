@@ -18,7 +18,8 @@
 
 .screen {
   height: 4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  /* max-width:fit-content; */
 }
 
 .wrapper {
