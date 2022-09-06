@@ -44,7 +44,7 @@ function App() {
     }
 
     function afterOpenModal() {
-        subtitle.style.color = '#000000';
+        subtitle.style.color = '#fdfdfe';
     }
 
     function closeModal() {
@@ -118,7 +118,7 @@ function App() {
     return (
         <div className="App">
 
-            <h1>Calendar</h1>
+            <h2 className="cTitle">Calendar</h2>
 
 
             <div className="ccc">
@@ -160,6 +160,10 @@ function App() {
                 events={allEvents} 
                 startAccessor="start" 
                 endAccessor="end" 
+                // selectable={false}
+                // defaultDate={new Date()}
+                // view='month' 
+                views={['month']}
                 style={{ height: "80vh", margin: "20px", backgroundColor: "#ddbdd5"}}
             />
             </div>

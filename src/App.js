@@ -185,7 +185,7 @@ function App() {
       {/* <GoogleSearch /> */}
       {/* <Weather />   */}
       {/* <Notes /> */}
-      <Calendar /> 
+      {/* <Calendar />  */}
       {/* { <Calculator />} */}
     </div>
   );
