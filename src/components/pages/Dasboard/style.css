@@ -14,14 +14,12 @@
   width: 100%;
   display: grid;
   height: 90vh;
-  grid-template-columns: 0.5fr 1.5fr;
-  grid-template-rows: 0.25fr 0.25fr 0.5fr 2fr;
+  grid-template-columns: 0.5fr .5fr 1.5fr;
+  grid-template-rows: 0.25fr 0.25fr 2fr;
   grid-template-areas:
-    "quote quote"
-    "timer search"
-    "side main"
-    "side main"
-    "side main";
+    "weather quote quote"
+    "timer calender search"
+    "side main main";
   background-image: url(../../../img/Rain.gif);
   background-size: cover;
   background-position: center;
@@ -79,13 +77,21 @@ h4 {
   opacity: 0.9;
 }
 
+.weather-gadget{
+  grid-area: weather;
+  background-color: var(--inspirationalQ-color);
+
+  max-height: 100%;
+  border-radius: 10px;
+}
+
 /* Google Search Bar */
 .search-bar {
   background-color: var(--searchbar-color);
   grid-area: search;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -123,6 +129,29 @@ h4 {
   opacity: 0.9;
 }
 
+.calender-gadget{
+  grid-area: calender;
+  background-color: var(--pomodoro-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calender-img{
+  margin: 1em;
+border-radius: 10px;
+  height: 150px;
+  opacity: .8;
+}
+
+.calender-img:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+
 /* Weather + Calendar */
 .side {
   background-color: var(--weather-color);
@@ -157,12 +186,15 @@ h4 {
 
 @media only screen and (max-width: 766px) {
   .grid-container {
+    background-image: url();
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 0.25fr 0.25 1fr 5fr;
+    grid-template-rows: 1fr 0.25fr .25fr 0.25fr 1fr 5fr;
     grid-template-areas:
       "quote"
-      "search"
+      "weather"
       "timer"
+      "calender"
+      "search"
       "side"
       "main";
   }

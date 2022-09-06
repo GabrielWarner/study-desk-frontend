@@ -6,7 +6,10 @@ import Inspirational from "../../Inspirational";
 import Weather from "../../Weather";
 import Notes from "../../Notes";
 import Calendar from "../../Calendar";
+import Calculator from "../../Calculator";
 import Modal from "react-bootstrap/Modal";
+
+import calenderpic from '../../../img/Calender.JPG'
 
 import AncientWindAudio from "../audio/Ancient-Wind.mp3";
 import DeepInTheOceanAudio from "../audio/Deep-In-The-Ocean.mp3";
@@ -44,7 +47,7 @@ const useAudio = url => {
   return [playing, toggle];
 };
 
-export default function Dashboard({ setUser, setToken, setTimerToggle }) {
+export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const [show, setShow] = useState(false);
   const [timer, setTimer] = useState(true);
   const [search, setSearch] = useState(true);
@@ -189,6 +192,8 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
           <Inspirational />
         </div>
 
+        {/* TODO: add ability to hide weather gadget */}
+        <div id="weather" className="weather-gadget"><Weather/></div>
         {timer ? (
           <div id="timer" className="timer">
             {/* <div className="textOpacity"> */}
@@ -202,6 +207,13 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
         )
         }
 
+        {/* TODO: add ability to hide weather gadget */}
+        <div id="calender" className="calender-gadget">
+          <h2>Calender</h2>
+          <img onClick={()=>{setCurrentPage("CalenderPage")}} className="calender-img"  src={calenderpic}></img>
+          {/* <button onClick={()=>{setCurrentPage("CalenderPage")}}>CALENDER</button> */}
+        </div>
+
         {search ? (
           <div id="search" className="search-bar">
             <GoogleSearch />
@@ -214,11 +226,12 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
 
         {side ? (
           <div id="side" className="side">
-            <Weather />
+            <Calculator/>
           </div>
         ) : (
           <div id="side" className="hideSide">
           <Weather />
+          
         </div>
         )}
 
