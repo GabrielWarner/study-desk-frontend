@@ -18,7 +18,7 @@
   grid-template-rows: 0.25fr 0.25fr 2fr;
   grid-template-areas:
     "weather quote quote"
-    "timer search search"
+    "timer calender search"
     "side main main";
   background-image: url(../../../img/Rain.gif);
   background-size: cover;
@@ -79,6 +79,10 @@ h4 {
 
 .weather-gadget{
   grid-area: weather;
+  background-color: var(--inspirationalQ-color);
+
+  max-height: 100%;
+  border-radius: 10px;
 }
 
 /* Google Search Bar */
@@ -123,6 +127,12 @@ h4 {
 }
 .timer:hover {
   opacity: 0.9;
+}
+
+.calender-gadget{
+  grid-area: calender;
+  background-color: var(--pomodoro-color);
+  border-radius: 10px;
 }
 
 /* Weather + Calendar */

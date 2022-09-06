@@ -203,8 +203,8 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
         )
         }
 
-        <div id="weather" className="weather-gadget"><Weather/></div>
-        
+        <div id="calender" className="calender-gadget">CALENDER</div>
+
         {search ? (
           <div id="search" className="search-bar">
             <GoogleSearch />
