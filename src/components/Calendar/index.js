@@ -34,8 +34,7 @@ const customStyles = {
 
 
 function App() {
-    const storedToken = localStorage.getItem("token");	
-    const userId = localStorage.getItem('userid')
+
     // Modal
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -59,6 +58,8 @@ function App() {
 
     // Add Calendar Event to DB
     function handleAddEvent() {
+        const storedToken = localStorage.getItem("token");	
+        const userId = localStorage.getItem('userid')
         fetch(`http://localhost:3001/api/events/${userId}`, {
             method: "POST",
             body: JSON.stringify({
@@ -92,7 +93,8 @@ function App() {
     useEffect(() => {
         // on page load
         // fetch the backend
-
+        const storedToken = localStorage.getItem("token");	
+        const userId = localStorage.getItem('userid')
         fetch(`http://localhost:3001/api/events/${userId}`, {
             // method:"GET", default get route unleast specify
             headers: {
