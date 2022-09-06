@@ -14,14 +14,12 @@
   width: 100%;
   display: grid;
   height: 90vh;
-  grid-template-columns: 0.5fr 1.5fr;
-  grid-template-rows: 0.25fr 0.25fr 0.5fr 2fr;
+  grid-template-columns: 0.5fr .5fr 1.5fr;
+  grid-template-rows: 0.25fr 0.25fr 2fr;
   grid-template-areas:
-    "quote quote"
-    "timer search"
-    "side main"
-    "side main"
-    "side main";
+    "weather quote quote"
+    "timer search search"
+    "side main main";
   background-image: url(../../../img/Rain.gif);
   background-size: cover;
   background-position: center;
@@ -79,13 +77,17 @@ h4 {
   opacity: 0.9;
 }
 
+.weather-gadget{
+  grid-area: weather;
+}
+
 /* Google Search Bar */
 .search-bar {
   background-color: var(--searchbar-color);
   grid-area: search;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }

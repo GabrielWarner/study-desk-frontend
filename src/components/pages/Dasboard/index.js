@@ -6,6 +6,7 @@ import Inspirational from "../../Inspirational";
 import Weather from "../../Weather";
 import Notes from "../../Notes";
 import Calendar from "../../Calendar";
+import Calculator from "../../Calculator";
 import Modal from "react-bootstrap/Modal";
 
 import AncientWindAudio from "../audio/Ancient-Wind.mp3";
@@ -188,7 +189,7 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
           </Modal>
           <Inspirational />
         </div>
-
+        <div id="weather" className="weather-gadget"><Weather/></div>
         {timer ? (
           <div id="timer" className="timer">
             {/* <div className="textOpacity"> */}
@@ -202,6 +203,8 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
         )
         }
 
+        <div id="weather" className="weather-gadget"><Weather/></div>
+        
         {search ? (
           <div id="search" className="search-bar">
             <GoogleSearch />
@@ -214,11 +217,12 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
 
         {side ? (
           <div id="side" className="side">
-            <Weather />
+            <Calculator/>
           </div>
         ) : (
           <div id="side" className="hideSide">
           <Weather />
+          
         </div>
         )}
 
