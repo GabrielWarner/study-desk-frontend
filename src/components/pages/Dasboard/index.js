@@ -120,6 +120,17 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <label for="timer"> Pomodoro</label>
               <br />
 
+
+              <input
+                onClick={() => {
+                  setCalender(!calender);
+                }}
+                id="calender"
+                type="checkbox"
+              ></input>
+              <label for="timer"> Calender</label>
+              <br />
+
               <input
                 onClick={() => {
                   setSearch(!search);
@@ -238,7 +249,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         )}
 
         {/* TODO: add ability to hide weather gadget */}
-        <div id="calender" className="calender-gadget">
+        {calender? (        <div id="calender" className="calender-gadget">
           <h2>Calender</h2>
           <img
             onClick={() => {
@@ -247,8 +258,17 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             className="calender-img"
             src={calenderpic}
           ></img>
-          {/* <button onClick={()=>{setCurrentPage("CalenderPage")}}>CALENDER</button> */}
-        </div>
+        </div>): (<div id="calender" className="calender-hide">
+          <h2>Calender</h2>
+          <img
+            onClick={() => {
+              setCurrentPage("CalenderPage");
+            }}
+            className="calender-img"
+            src={calenderpic}
+          ></img>
+        </div>)}
+
 
         {search ? (
           <div id="search" className="search-bar">
