@@ -11,7 +11,6 @@ import "./index.css";
 
 // import { flexbox } from "@chakra-ui/react";
 
-
 //   Modal.setAppElement('main');
 
 // const DnDCalendar = withDragAndDrop(Calendar);
@@ -30,8 +29,6 @@ const customStyles = {
         borderRadius: '50px'
     },
 };
-
-
 
 function App() {
 
@@ -52,13 +49,13 @@ function App() {
     }
 
     // Calendar 
-    const [newEvent, setNewEvent] = useState({ userId:"", title: "", start: "", end: "" });
+    const [newEvent, setNewEvent] = useState({ userId: "", title: "", start: "", end: "" });
     const [allEvents, setAllEvents] = useState([]);
-
+    // const formatted = moment(time).toDate();
 
     // Add Calendar Event to DB
     function handleAddEvent() {
-        const storedToken = localStorage.getItem("token");	
+        const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
         fetch(`http://localhost:3001/api/events/${userId}`, {
             method: "POST",
@@ -74,7 +71,7 @@ function App() {
         }).then(data => {
             console.log(data)
             setNewEvent({
-                userId : localStorage.getItem('userid'),
+                userId: localStorage.getItem('userid'),
                 title: newEvent.title,
                 start: newEvent.start,
                 end: newEvent.end
@@ -93,7 +90,7 @@ function App() {
     useEffect(() => {
         // on page load
         // fetch the backend
-        const storedToken = localStorage.getItem("token");	
+        const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
         fetch(`http://localhost:3001/api/events/${userId}`, {
             // method:"GET", default get route unleast specify
@@ -102,18 +99,17 @@ function App() {
                 "Content-Type": "application/json"
             }
         })
-        .then(res => {
-            if (!res.ok){
-				console.log("invalid token");
-            }
-            return res.json()
-        })
-        .then(data => {
-            console.log(data)
-            setAllEvents(data)
-        })
+            .then(res => {
+                if (!res.ok) {
+                    console.log("invalid token");
+                }
+                return res.json()
+            })
+            .then(data => {
+                console.log(data);
+                setAllEvents(data);
+            })
     }, [])
-
 
     return (
         <div className="App">
@@ -123,6 +119,7 @@ function App() {
 
             <div className="ccc">
                 <button className="cButton" onClick={openModal}>Add Event</button>
+
                 <Modal
                     ariaHideApp={false}
                     isOpen={modalIsOpen}
@@ -155,17 +152,17 @@ function App() {
             </div>
 
             <div className="cDiv">
-            <Calendar
-                localizer={localizer} 
-                events={allEvents} 
-                startAccessor="start" 
-                endAccessor="end" 
-                // selectable={false}
-                // defaultDate={new Date()}
-                // view='month' 
-                views={['month']}
-                style={{ height: "80vh", margin: "20px", backgroundColor: "#ddbdd5"}}
-            />
+                <Calendar
+                    localizer={localizer}
+                    events={allEvents}
+                    startAccessor="start"
+                    endAccessor="end"
+                    // selectable={false}
+                    // defaultDate={new Date()}
+                    // view='month' 
+                    views={['month']}
+                    style={{ height: "75vh", margin: "10px", backgroundColor: "#ddbdd5", fontFamily: "Roboto" }}
+                />
             </div>
 
 
