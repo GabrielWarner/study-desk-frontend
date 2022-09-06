@@ -165,7 +165,7 @@ function App() {
     if (currentPage === "Dashboard") {
       return <Dashboard setCurrentPage={setCurrentPage} setUser={setUser} setToken={setToken}/>;
     }
-    if (currentPage === "Calender") {
+    if (currentPage === "CalenderPage") {
       return <CalenderPage setUser={setUser} setToken={setToken}/>
     }
   };
