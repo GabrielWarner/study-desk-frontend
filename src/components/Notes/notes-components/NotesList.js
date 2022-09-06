@@ -2,6 +2,8 @@ import AddNote from './AddNote';
 
 import { MdDeleteForever } from 'react-icons/md';
 
+import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
+
 const NotesList = ({
 	notes,
 	handleAddNote,
@@ -10,6 +12,7 @@ const NotesList = ({
 	return (
 		<div className='notes-list'>
 			{notes.map((note) => (
+				<Draggable>
 				<div className='note' id={note._id} key={note._id} >
 				<span>{note.text}</span>
 				<div className='note-footer'>
@@ -21,6 +24,7 @@ const NotesList = ({
 					/>
 				</div>
 			</div>
+			</Draggable>
 
 			))}
 			<AddNote handleAddNote={handleAddNote} />
