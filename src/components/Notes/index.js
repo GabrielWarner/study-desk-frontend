@@ -38,34 +38,32 @@ const Notes = () => {
 
 	const [darkMode, setDarkMode] = useState(false);
 
-	useEffect(() => {
-		const savedNotes = JSON.parse(
-			localStorage.getItem('react-notes-app-data')
-		);
+	// useEffect(() => {
+	// 	const savedNotes = JSON.parse(
+	// 		localStorage.getItem('react-notes-app-data')
+	// 	);
 
-		if (savedNotes) {
-			setNotes(savedNotes);
-		}
-	}, []);
+	// 	if (savedNotes) {
+	// 		setNotes(savedNotes);
+	// 	}
+	// }, []);
 
 	useEffect(() => {
-		localStorage.setItem(
-			'react-notes-app-data',
-			JSON.stringify(notes)
-		);
+		// localStorage.setItem(
+		// 	'react-notes-app-data',
+		// 	JSON.stringify(notes)
+		// );
 		getNote();
 	}, []);
 
 	const getNote = () => {
 		const userid = localStorage.getItem('userid')
-		fetch('http://localhost:3001/api/notes', {
+		fetch(`http://localhost:3001/api/notes/${userid}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 			},
 			method: "GET",
-			body:{
-				userId:userid
-			}
+
 			
 		}).then((res)=>{
 			if (!res.ok){
@@ -137,9 +135,15 @@ const Notes = () => {
 			// 	)
 			// 	})
 			// }
+			setNewNote({
+				text:newNote.text,
+				date:newNote.date,
+				userId: localStorage.getItem('userid')
+
+			})
 		})
-		const newNotes = [...notes, newNote];
-		setNotes(newNotes);
+		// const newNotes = [...notes, newNote];
+		setNotes([...notes, newNote]);
 	};
 
 	const deleteNote = (id) => {
