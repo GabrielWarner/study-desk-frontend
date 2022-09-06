@@ -133,7 +133,24 @@ h4 {
   grid-area: calender;
   background-color: var(--pomodoro-color);
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.calender-img{
+  margin: 1em;
+border-radius: 10px;
+  height: 150px;
+  opacity: .8;
+}
+
+.calender-img:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 
 /* Weather + Calendar */
 .side {

@@ -9,6 +9,8 @@ import Calendar from "../../Calendar";
 import Calculator from "../../Calculator";
 import Modal from "react-bootstrap/Modal";
 
+import calenderpic from '../../../img/Calender.JPG'
+
 import AncientWindAudio from "../audio/Ancient-Wind.mp3";
 import DeepInTheOceanAudio from "../audio/Deep-In-The-Ocean.mp3";
 import ForestAudio from "../audio/Forest.mp3";
@@ -207,7 +209,9 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
 
         {/* TODO: add ability to hide weather gadget */}
         <div id="calender" className="calender-gadget">
-          <button onClick={()=>{setCurrentPage("CalenderPage")}}>CALENDER</button>
+          <h2>Calender</h2>
+          <img onClick={()=>{setCurrentPage("CalenderPage")}} className="calender-img"  src={calenderpic}></img>
+          {/* <button onClick={()=>{setCurrentPage("CalenderPage")}}>CALENDER</button> */}
         </div>
 
         {search ? (
