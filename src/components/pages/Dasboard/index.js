@@ -148,7 +148,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
                 id="side"
                 type="checkbox"
               ></input>
-              <label for="side"> Side</label>
+              <label for="side"> Calculator</label>
               <br />
 
               <input
