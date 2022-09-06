@@ -10,27 +10,28 @@ const Notes = () => {
 
   const storedToken = localStorage.getItem("token");	
 
+  const [newNote, setNewNote] = useState({ text:"", date: "", userid: "" })
   const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      text: "This is my first note!",
-      date: '12/12/2021',
-    },
-    {
-      id: nanoid(),
-      text: "This is my second note!",
-      date: '12/12/2021',
-    },
-    {
-      id: nanoid(),
-      text: "This is my third note!",
-      date: '12/12/2021',
-    },
-    {
-      id: nanoid(),
-      text: "This is my fourth note!",
-      date: '12/12/2021',
-    },
+    // {
+    //   id: nanoid(),
+    //   text: "This is my first note!",
+    //   date: '12/12/2021',
+    // },
+    // {
+    //   id: nanoid(),
+    //   text: "This is my second note!",
+    //   date: '12/12/2021',
+    // },
+    // {
+    //   id: nanoid(),
+    //   text: "This is my third note!",
+    //   date: '12/12/2021',
+    // },
+    // {
+    //   id: nanoid(),
+    //   text: "This is my fourth note!",
+    //   date: '12/12/2021',
+    // },
 
   ])
   const [searchText, setSearchText] = useState('');
@@ -57,10 +58,14 @@ const Notes = () => {
 
 	const getNote = () => {
 		const userid = localStorage.getItem('userid')
-		fetch(`http://localhost:3001/api/notes?userid=${userid}`, {
+		fetch('http://localhost:3001/api/notes', {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 			},
+			method: "GET",
+			body:{
+				userId:userid
+			}
 			
 		}).then((res)=>{
 			if (!res.ok){
@@ -74,15 +79,42 @@ const Notes = () => {
 		})
 	}
 
+	// function addNote() {
+	// 	const userid = localStorage.getItem('userid')
+    //     fetch(`http://localhost:3001/api/notes/${userid}`, {
+    //         method: "POST",
+    //         body: JSON.stringify({
+    //             ...newNote
+    //         }),
+    //         headers: {
+    //             Authorization: `Bearer ${storedToken}`,
+    //             "Content-Type": "application/json"
+    //         }
+    //     }).then(res => {
+    //         return res.json()
+    //     }).then(data => {
+    //         console.log(data)
+    //         setNewNote({
+    //             userid : localStorage.getItem('userid'),
+    //             text: newNote.text,
+    //             date: newNote.date
+    //         })
+    //     })
+
+
+
+    //     setNewNote([...notes, newNote]);
+
+    // }
+
 	const addNote = (text) => {
 		const date = new Date();
 		const newNote = {
-			id: nanoid(),
 			text: text,
-			userid: localStorage.getItem('userid'),
+			userId: localStorage.getItem('userid'),
 			date: date.toLocaleDateString(),		
 		};
-		fetch("http://localhost:3001/api/notes", {
+		fetch("http://localhost:3001/api/notes/", {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 				'Content-Type': 'application/json'
