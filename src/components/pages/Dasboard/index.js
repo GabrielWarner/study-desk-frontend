@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
+// import { Grid, GridItem } from "@chakra-ui/react";
 import Pomodoro from "../../Pomodoro";
 import GoogleSearch from "../../GoogleSearch";
 import Inspirational from "../../Inspirational";
@@ -7,15 +7,58 @@ import Weather from "../../Weather";
 import Notes from "../../Notes";
 import Calendar from "../../Calendar";
 import Modal from "react-bootstrap/Modal";
+
+import AncientWindAudio from "../audio/Ancient-Wind.mp3";
+import DeepInTheOceanAudio from "../audio/Deep-In-The-Ocean.mp3";
+import ForestAudio from "../audio/Forest.mp3";
+import Lofi from "../audio/Lofi-Study.mp3";
+import PeacefulPianoAudio from "../audio/Peaceful-Piano.mp3";
+import RainAudio from "../audio/Rain.mp3";
+import SoftAmbientAudio from "../audio/Soft-Ambient.mp3";
+import SpaceJourneyAudio from "../audio/Space-Journey.mp3";
 import "./style.css";
+
+
+
+const useAudio = url => {
+  const [audio] = useState(new Audio(url));
+  const [playing, setPlaying] = useState(false);
+  const toggle = () => setPlaying(!playing);
+  useEffect(() => {
+      if(playing){
+        audio.play()
+        audio.loop = true;
+      } 
+      else {
+        audio.pause();
+      }
+    },
+    [playing]
+  );
+  useEffect(() => {
+    audio.addEventListener('ended', () => setPlaying(false));
+    return () => {
+      audio.removeEventListener('ended', () => setPlaying(false));
+    };
+  }, []);
+  return [playing, toggle];
+};
 
 export default function Dashboard({ setUser, setToken, setTimerToggle }) {
   const [show, setShow] = useState(false);
-
   const [timer, setTimer] = useState(true);
   const [search, setSearch] = useState(true);
   const [side, setSide] = useState(true);
   const [notes, setNotes] = useState(true);
+
+  const [playingWind, toggleWind] = useAudio(AncientWindAudio);
+  const [playingOcean, toggleOcean] = useAudio(DeepInTheOceanAudio);
+  const [playingForest, toggleForest] = useAudio(ForestAudio);
+  const [playingLofi, toggleLofi] = useAudio(Lofi);
+  const [playingPiano, togglePiano] = useAudio(PeacefulPianoAudio);
+  const [playingRain, toggleRain] = useAudio(RainAudio);
+  const [playingSoftAmbient, toggleSoftAmbient] = useAudio(SoftAmbientAudio);
+  const [playingSpace, toggleSpace] = useAudio(SpaceJourneyAudio);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -57,6 +100,7 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
               <Modal.Title className="modalTitle">Settings</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+            <h4>Hide Gadget</h4>
               <input
                 onClick={() => {
                   setTimer(!timer);
@@ -96,6 +140,42 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
               ></input>
               <label for="notes"> Notes</label>
               <br />
+
+              {/* Audio */}
+              <h4>Audio</h4>
+              <div className="inBlock">
+                <div>Ancient Wind</div>
+              <button className="homeButton" onClick={toggleWind}>{playingWind ? "Pause" : "Play"}</button>
+              </div>
+              <div className="inBlock">
+                <div>Deep In The Ocean</div>
+              <button className="homeButton" onClick={toggleOcean}>{playingOcean ? "Pause" : "Play"}</button>
+              </div>
+              <div className="inBlock">
+                <div>Forest</div>
+              <button className="homeButton" onClick={toggleForest}>{playingForest ? "Pause" : "Play"}</button>
+              </div>
+              <div className="inBlock">
+                <div>Lofi Study</div>
+              <button className="homeButton" onClick={toggleLofi}>{playingLofi ? "Pause" : "Play"}</button>
+              </div>
+              <div className="inBlock">
+                <div>Peaceful Piano</div>
+              <button className="homeButton" onClick={togglePiano}>{playingPiano ? "Pause" : "Play"}</button>
+              </div>
+              <div className="inBlock">
+                <div>Rain</div>
+              <button className="homeButton" onClick={toggleRain}>{playingRain ? "Pause" : "Play"}</button>
+              </div>
+              <div className="inBlock">
+                <div>Soft Ambient</div>
+              <button className="homeButton" onClick={toggleSoftAmbient}>{playingSoftAmbient ? "Pause" : "Play"}</button>
+              </div>
+              <div className="inBlock">
+                <div>Space Journey</div>
+              <button className="homeButton" onClick={toggleSpace}>{playingSpace ? "Pause" : "Play"}</button>
+              </div>
+
             </Modal.Body>
             <Modal.Footer>
               <button className="homeButton" onClick={handleClose}>
