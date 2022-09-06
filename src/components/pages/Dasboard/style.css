@@ -89,7 +89,7 @@ h4 {
   background-color: var(--inspirationalQ-color);
   max-height: 100%;
   border-radius: 10px;
-  opacity: 0;
+  display: none;
 }
 
 /* Google Search Bar */
@@ -105,7 +105,7 @@ h4 {
 .hideSearchBar {
   grid-area: search;
   border-radius: 10px;
-  opacity: 0;
+  display: none;
 }
 .search-bar:hover {
   opacity: 0.9;
@@ -129,7 +129,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
+  display: none;
 }
 .timer:hover {
   opacity: 0.9;
@@ -153,7 +153,7 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  display: none;
 }
 
 .calender-img{
@@ -178,7 +178,7 @@ border-radius: 10px;
 .hideSide {
   grid-area: side;
   border-radius: 10px;
-  opacity: 0;
+  display: none;
 }
 .side:hover {
   opacity: 0.9;
@@ -195,7 +195,7 @@ border-radius: 10px;
   grid-area: main;
   border-radius: 10px;
   opacity: 0.7;
-  opacity: 0;
+  display: none;
 }
 .notes-main:hover {
   opacity: 0.9;

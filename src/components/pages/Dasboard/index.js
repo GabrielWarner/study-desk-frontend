@@ -6,7 +6,9 @@ import Inspirational from "../../Inspirational";
 import Weather from "../../Weather";
 import Notes from "../../Notes";
 import Calculator from "../../Calculator";
-import Modal from "react-bootstrap/Modal";
+import Modal from "react-bootstrap/Modal"
+import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time;
+import Resizable from "re-resizable";
 
 import calenderpic from "../../../img/Calender.JPG";
 
@@ -62,8 +64,16 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  useEffect(()=>{
+    localStorage.setItem('weather', weather)
+    console.log(weather)
+  }, [weather])
+
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
+    const weatherToggle =JSON.parse(localStorage.getItem("weather"))
     fetch("http://localhost:3001/api/users/check-token", {
       headers: {
         Authorization: `Bearer ${storedToken}`,
@@ -81,7 +91,9 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             email: data.email,
             username: data.username,
           });
+          setWeather(weatherToggle)
         });
+        
       }
     });
   }, []);
@@ -90,6 +102,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
     <div className="dashboard">
       <div className="grid-container">
         <div className="lofiBackground"></div>
+        <Draggable>
         <div id="quote" className="quote-widget">
           <button className="homeButton gadgetSetting" onClick={handleShow}>
             GADGET SETTINGS
@@ -104,15 +117,18 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <input
                 onClick={() => {
                   setWeather(!weather);
+
                 }}
                 id="weather"
                 type="checkbox"
               ></input>
               <label for="timer"> Weather</label>
               <br />
+
               <input
                 onClick={() => {
                   setTimer(!timer);
+                  console.log(timer)
                 }}
                 id="timer"
                 type="checkbox"
@@ -222,14 +238,19 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             </Modal.Footer>
           </Modal>
           <Inspirational />
+          
         </div>
+        </Draggable>
 
-        {/* TODO: add ability to hide weather gadget */}
+
 
         {weather ? (
+          
+          <Draggable>
           <div id="weather" className="weather-gadget">
             <Weather />
           </div>
+          </Draggable>
         ) : (
           <div id="weather" className="hide-weather">
             <Weather />
@@ -237,11 +258,13 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         )}
 
         {timer ? (
+          <Draggable>
           <div id="timer" className="timer">
             {/* <div className="textOpacity"> */}
             <Pomodoro />
             {/* </div> */}
           </div>
+          </Draggable>
         ) : (
           <div id="timer" className="hideTimer">
             <Pomodoro />
@@ -249,7 +272,9 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         )}
 
         {/* TODO: add ability to hide weather gadget */}
-        {calender? (        <div id="calender" className="calender-gadget">
+        {calender? (
+        <Draggable>
+        <div id="calender" className="calender-gadget">
           <h2>Calender</h2>
           <img
             onClick={() => {
@@ -257,8 +282,8 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             }}
             className="calender-img"
             src={calenderpic}
-          ></img>
-        </div>): (<div id="calender" className="calender-hide">
+          ></img></div></Draggable>
+          ): (<div id="calender" className="calender-hide">
           <h2>Calender</h2>
           <img
             onClick={() => {
@@ -271,9 +296,11 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
 
 
         {search ? (
+          <Draggable>
           <div id="search" className="search-bar">
             <GoogleSearch />
           </div>
+          </Draggable>
         ) : (
           <div id="search" className="hideSearchBar">
             <GoogleSearch />
@@ -281,9 +308,11 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         )}
 
         {side ? (
+          <Draggable>
           <div id="side" className="side">
             <Calculator />
           </div>
+          </Draggable>
         ) : (
           <div id="side" className="hideSide">
             <Weather />
@@ -291,9 +320,11 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         )}
 
         {notes ? (
+          <Draggable>
           <div id="main" className="notes-main">
             <Notes />
           </div>
+          </Draggable>
         ) : (
           <div id="main" className="hideNote">
             <Notes />
