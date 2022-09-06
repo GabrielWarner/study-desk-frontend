@@ -45,7 +45,7 @@ const useAudio = url => {
   return [playing, toggle];
 };
 
-export default function Dashboard({ setUser, setToken, setTimerToggle }) {
+export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const [show, setShow] = useState(false);
   const [timer, setTimer] = useState(true);
   const [search, setSearch] = useState(true);
@@ -189,6 +189,8 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
           </Modal>
           <Inspirational />
         </div>
+
+        {/* TODO: add ability to hide weather gadget */}
         <div id="weather" className="weather-gadget"><Weather/></div>
         {timer ? (
           <div id="timer" className="timer">
@@ -203,7 +205,10 @@ export default function Dashboard({ setUser, setToken, setTimerToggle }) {
         )
         }
 
-        <div id="calender" className="calender-gadget">CALENDER</div>
+        {/* TODO: add ability to hide weather gadget */}
+        <div id="calender" className="calender-gadget">
+          <button onClick={()=>{setCurrentPage("CalenderPage")}}>CALENDER</button>
+        </div>
 
         {search ? (
           <div id="search" className="search-bar">

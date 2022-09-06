@@ -163,7 +163,7 @@ function App() {
       password={password} />;
     }
     if (currentPage === "Dashboard") {
-      return <Dashboard setUser={setUser} setToken={setToken}/>;
+      return <Dashboard setCurrentPage={setCurrentPage} setUser={setUser} setToken={setToken}/>;
     }
     if (currentPage === "Calender") {
       return <CalenderPage setUser={setUser} setToken={setToken}/>
