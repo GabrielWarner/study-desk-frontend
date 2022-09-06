@@ -5,11 +5,8 @@ import Homepage from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Dashboard from "./components/pages/Dasboard";
+import CalenderPage from "./components/pages/CalenderPage/CalenderPage";
 
-import Inspirational from "./components/Inspirational";
-import GoogleSearch from "./components/GoogleSearch";
-import Weather from "./components/Weather";
-import Pomodoro from "./components/Pomodoro";
 
 // import Weather from "./components/Weather";
 import Notes from "./components/Notes";
@@ -167,6 +164,9 @@ function App() {
     }
     if (currentPage === "Dashboard") {
       return <Dashboard setUser={setUser} setToken={setToken}/>;
+    }
+    if (currentPage === "Calender") {
+      return <CalenderPage setUser={setUser} setToken={setToken}/>
     }
   };
 
