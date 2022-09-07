@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    fetch("https://dh-focus.herokuapp.com/api/users/check-token", {
+    fetch("http://localhost:3001/api/users/check-token", {
       headers: {
         Authorization: `Bearer ${storedToken}`,
       },
@@ -72,7 +72,7 @@ function App() {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
 
-    fetch("https://dh-focus.herokuapp.com/api/users/login", {
+    fetch("http://localhost:3001/api/users/login", {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -130,7 +130,7 @@ function App() {
                 alert('Password must be less than 50 characters')
               }
 
-         fetch("https://dh-focus.herokuapp.com/api/users/signup",{
+         fetch("http://localhost:3001/api/users/signup",{
           method:"POST",
           body:JSON.stringify({
             username,
