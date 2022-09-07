@@ -30,13 +30,11 @@
 
   
   .timerForm input {
-    
     background: transparent;
     flex: 1;
     border: 0;
     outline: none;
-   
-    font-size: 20px;
+    font-size: 1rem;
     color: #000000;
     margin: 0.5em;
   }
