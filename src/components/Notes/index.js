@@ -5,6 +5,10 @@ import Search from './notes-components/Search';
 import Header from './notes-components/Header';
 import "./index.css";
 
+const devLink = "https://dh-focus.herokuapp.com/";
+
+const testLink ="http://localhost:3001";
+
 
 const Notes = () => {
 
@@ -58,7 +62,7 @@ const Notes = () => {
 
 	const getNote = () => {
 		const userid = localStorage.getItem('userid')
-		fetch(`http://localhost:3001/api/notes/${userid}`, {
+		fetch(`${testLink}/api/notes/${userid}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 			},
@@ -112,7 +116,7 @@ const Notes = () => {
 			userId: localStorage.getItem('userid'),
 			date: date.toLocaleDateString(),		
 		};
-		fetch("http://localhost:3001/api/notes/", {
+		fetch(`${testLink}/api/notes/`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 				'Content-Type': 'application/json'
@@ -150,7 +154,7 @@ const Notes = () => {
 		console.log(id)
 		const newNotes = notes.filter((note) => note._id !== id);
 		setNotes(newNotes);
-		fetch(`http://localhost:3001/api/notes/${id}`, {
+		fetch(`${testLink}/api/notes/${id}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 				
