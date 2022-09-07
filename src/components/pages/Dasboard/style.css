@@ -1,4 +1,5 @@
 :root {
+  width: 100%;
   --pomodoro-color: rgba(251, 121, 116, 0.6);
   --calc-color: rgba(255, 184, 69, 0.6);
   --searchbar-color: rgba(103, 74, 179, 0.6);
@@ -17,20 +18,21 @@
 .grid-container5,
 .grid-container6,
 .grid-container7 {
-  padding: 1em;
+  padding :1em;
   gap: 1rem;
   width: 100%;
   display: grid;
   height: 90vh;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr .5fr .5fr;
   grid-template-rows: 0.2fr 0.2fr 2fr;
   grid-template-areas:
     "quote quote quote quote quote"
-    "side timer calender main main"
-    "side weather search main main";
+    "side timer search weather calender"
+    "side main main main main";
   background-size: cover;
   background-position: center;
   z-index: 3;
+  /* overflow: auto; */
 }
 
 .grid-container {
@@ -239,9 +241,59 @@ h4 {
   opacity: 0.9;
 }
 
-@media only screen and (max-width: 766px) {
-  .grid-container {
+@media only screen and (max-width: 1562px) {
+  .grid-container,
+  .grid-container2,
+.grid-container3,
+.grid-container4,
+.grid-container5,
+.grid-container6,
+.grid-container7  {
     /* background-image: url(../../../img/Rain.gif); */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr 5fr;
+    grid-template-areas:
+      "quote quote quote quote"
+      "timer calender weather search"
+      "side main main main";
+  }
+
+  .notes-main {
+    overflow-y: visible;
+  }
+}
+
+@media only screen and (max-width: 1380px) {
+  .grid-container,
+  .grid-container2,
+.grid-container3,
+.grid-container4,
+.grid-container5,
+.grid-container6,
+.grid-container7  {
+    /* background-image: url(../../../img/Rain.gif); */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr 5fr;
+    grid-template-areas:
+      "timer quote quote"
+      "weather calender search"
+      "side main main";
+  }
+
+  .notes-main {
+    overflow-y: visible;
+  }
+}
+
+@media only screen and (max-width: 1048px) {
+  .grid-container,
+  .grid-container2,
+.grid-container3,
+.grid-container4,
+.grid-container5,
+.grid-container6,
+.grid-container7 {
+    background-image: none;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.25fr 0.25fr 0.25fr 1fr 5fr;
     grid-template-areas:

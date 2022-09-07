@@ -1,10 +1,12 @@
 .navContainer {
   height: 10vh;
+  width: 100%;
 }
 
 .navColor {
   background-color: #ddbdd5;
   height: 100%;
+  width: 100%;
 }
 
 .homeButton {

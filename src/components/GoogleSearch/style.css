@@ -8,8 +8,7 @@
 
 .searchbar {
   height: 3em;
-  width: 75%;
-  max-width: 700px;
+  width: 65%;
   background-color: bisque;
   display: flex;
   align-items: center;
@@ -21,8 +20,7 @@
   flex: 1;
   border: 0;
   outline: none;
-  padding: 24px 20px;
-  font-size: 20px;
+  font-size: 1rem;
   color: #000000;
   margin: 0.5em;
 }
