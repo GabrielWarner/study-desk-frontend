@@ -94,7 +94,10 @@ function App() {
         setToken(data.token);
         localStorage.setItem("token", data.token);
         localStorage.setItem("userid", data.user._id);
-      });
+      })
+      .catch(() => {
+        alert("Sorry, invalid login credentials 😿. Please try again or create a new account")
+    });
     // If everything goes according to plan, we want to clear out the input after a successful registration.
     setPassword("");
     setEmail("");
@@ -103,7 +106,30 @@ function App() {
         const handleFormCreate = (e) => {
           // Preventing the default behavior of the form submit (which is to refresh the page)
           e.preventDefault();
-  
+          
+            // Validation
+              const emailFormat = /^([a-zA-Z0-9_\.-]+)@([\da-zA-Z\.-]+)\.([a-z\.]{2,6})$/
+
+              if(!username){
+                alert('Username is required')
+              } else if (username.length > 50){
+                alert('Username must be less than 50 characters')
+              }
+
+              if(!email){
+                alert('Email is required')
+              } else if(!email.match(emailFormat)){
+                alert('Invalid email')
+              } 
+
+              if (!password){
+                alert('Password is required')
+              } else if (password.length < 8){
+                alert('Password must be at least 8 characters')
+              } else if (password.length > 50){
+                alert('Password must be less than 50 characters')
+              }
+
          fetch("http://localhost:3001/api/users/signup",{
           method:"POST",
           body:JSON.stringify({
@@ -125,7 +151,9 @@ function App() {
           })
           setToken(data.token)
           localStorage.setItem("token", data.token)
-         })
+         }).catch(() => {
+          alert("Something went wrong. Please try again using different inputs")
+        });
           // If everything goes according to plan, we want to clear out the input after a successful registration.
           setPassword('');
           setEmail('');
