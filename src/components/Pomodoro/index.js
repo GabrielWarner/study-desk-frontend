@@ -71,7 +71,7 @@ export default function Pomodoro() {
 
   return (
     <div className='pomodoro-container'>
-        <h1>Pomodoro Timer</h1>
+        <h2>Pomodoro Timer</h2>
         <button className='timerBtn' onClick={()=>{startToggle()}}>Start/Stop</button>
 
         <p className='timer-text'>Or choose your own time</p>
