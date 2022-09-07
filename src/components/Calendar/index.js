@@ -66,7 +66,7 @@ function App() {
         // fetch the backend
         const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
-        fetch(`${testLink}/api/events/${userId}`, {
+        fetch(`${devLink}/api/events/${userId}`, {
             // method:"GET", default get route unleast specify
             headers: {
                 Authorization: `Bearer ${storedToken}`,
@@ -89,7 +89,7 @@ function App() {
     function handleAddEvent() {
         const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
-        fetch(`${testLink}/api/events/${userId}`, {
+        fetch(`${devLink}/api/events/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 ...newEvent
@@ -167,7 +167,7 @@ function App() {
                         const userId = localStorage.getItem('userid')
                         const eventId = event._id
                         console.log(event)
-                        fetch(`${testLink}/api/events/${userId}/${eventId}`, {
+                        fetch(`${devLink}/api/events/${userId}/${eventId}`, {
                             method: "DELETE",
                             headers: {
                                 Authorization: `Bearer ${storedToken}`,
