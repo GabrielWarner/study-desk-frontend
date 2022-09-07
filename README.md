@@ -20,14 +20,23 @@ A dashboard style application designed for a user to be able to login and focus 
 
 ## Installation
 npm i 
+
 bootstrap,  date-fns,  moment,
+
 netlify-cli,  progress,  react,
+
 react-accessible-accordion,  react-big-calendar,
-react-bootstrap,  react-datepicker,  
+
+react-bootstrap,  react-datepicker,
+
 react-dnd,  react-dnd-html5-backend,
+
 react-dom,  react-draggable,
+
 react-icons,  react-modal,
+
 react-select,  react-select-async-paginate,
+
 react-textfit
 
 ## Usage
