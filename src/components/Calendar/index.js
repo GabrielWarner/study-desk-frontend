@@ -53,38 +53,8 @@ function App() {
     const [allEvents, setAllEvents] = useState([]);
     // const formatted = moment(time).toDate();
 
-    // Add Calendar Event to DB
-    function handleAddEvent() {
-        const storedToken = localStorage.getItem("token");
-        const userId = localStorage.getItem('userid')
-        fetch(`http://localhost:3001/api/events/${userId}`, {
-            method: "POST",
-            body: JSON.stringify({
-                ...newEvent
-            }),
-            headers: {
-                Authorization: `Bearer ${storedToken}`,
-                "Content-Type": "application/json"
-            }
-        }).then(res => {
-            return res.json()
-        }).then(data => {
-            console.log(data)
-            setNewEvent({
-                userId: localStorage.getItem('userid'),
-                title: newEvent.title,
-                start: newEvent.start,
-                end: newEvent.end
-            })
-        })
 
-
-
-        setAllEvents([...allEvents, newEvent]);
-
-    }
-
-    // Fetch DB and Render to page
+        // Fetch DB and Render to page
     // onMount - before
     // useEffect - callback
     useEffect(() => {
@@ -110,6 +80,34 @@ function App() {
                 setAllEvents(data);
             })
     }, [])
+
+    // Add Calendar Event to DB
+    function handleAddEvent() {
+        const storedToken = localStorage.getItem("token");
+        const userId = localStorage.getItem('userid')
+        fetch(`http://localhost:3001/api/events/${userId}`, {
+            method: "POST",
+            body: JSON.stringify({
+                ...newEvent
+            }),
+            headers: {
+                Authorization: `Bearer ${storedToken}`,
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            return res.json()
+        }).then(eventData => {
+            setNewEvent({
+                userId: localStorage.getItem('userid'),
+                title: newEvent.title,
+                start: newEvent.start,
+                end: newEvent.end
+            })
+            console.log(eventData)
+            setAllEvents([...allEvents, newEvent]);
+            console.log(allEvents)
+        })
+    }
 
     return (
         <div className="App">
@@ -157,9 +155,27 @@ function App() {
                     events={allEvents}
                     startAccessor="start"
                     endAccessor="end"
-                    // selectable={false}
+                    selectable={true}
                     // defaultDate={new Date()}
                     // view='month' 
+                    onSelectEvent={function removeEvent(event) {
+                        const storedToken = localStorage.getItem("token")
+                        const userId = localStorage.getItem('userid')
+                        const eventId = event._id
+                        console.log(event)
+                        fetch(`http://localhost:3001/api/events/${userId}/${eventId}`, {
+                            method: "DELETE",
+                            headers: {
+                                Authorization: `Bearer ${storedToken}`,
+                                "Content-Type": "application/json"
+                            }
+                        }).then(res => {
+                            return res.json()
+                        }).then(eventData => {
+                            setAllEvents(eventData)
+                            console.log(eventData)
+                        })
+                    }}
                     views={['month']}
                     style={{ height: "75vh", margin: "10px", backgroundColor: "#ddbdd5", fontFamily: "Roboto" }}
                 />
