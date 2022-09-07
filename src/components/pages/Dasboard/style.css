@@ -1,4 +1,5 @@
 :root {
+  width: 100%;
   --pomodoro-color: rgba(251, 121, 116, 0.6);
   --calc-color: rgba(255, 184, 69, 0.6);
   --searchbar-color: rgba(103, 74, 179, 0.6);
@@ -17,7 +18,7 @@
 .grid-container5,
 .grid-container6,
 .grid-container7 {
-  padding: 1em;
+  padding :1em;
   gap: 1rem;
   width: 100%;
   display: grid;
@@ -34,7 +35,7 @@
 }
 
 .grid-container {
-  background-image: url(../../../img/Rain.gif);
+  /* background-image: url(../../../img/Rain.gif); */
 }
 
 .grid-container2 {
@@ -239,8 +240,30 @@ h4 {
   opacity: 0.9;
 }
 
-@media only screen and (max-width: 766px) {
+@media only screen and (max-width: 1562px) {
   .grid-container {
+    /* background-image: url(../../../img/Rain.gif); */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr 5fr;
+    grid-template-areas:
+      "quote quote quote quote"
+      "timer calender weather search"
+      "side main main main";
+  }
+
+  .notes-main {
+    overflow-y: visible;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  .grid-container,
+  .grid-container2,
+.grid-container3,
+.grid-container4,
+.grid-container5,
+.grid-container6,
+.grid-container7 {
     /* background-image: url(../../../img/Rain.gif); */
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.25fr 0.25fr 0.25fr 1fr 5fr;
