@@ -14,7 +14,7 @@
   width: 100%;
   display: grid;
   height: 90vh;
-  grid-template-columns: 0.5fr .5fr 1.5fr;
+  grid-template-columns: 0.5fr 0.5fr 1.5fr;
   grid-template-rows: 0.25fr 0.25fr 2fr;
   grid-template-areas:
     "weather quote quote"
@@ -34,9 +34,10 @@
   margin: 0 auto;
 }
 .gadgetSetting {
-  margin-top: 1em;
+  /* margin-top: 1em; */
   position: relative;
   padding: 1.2em;
+  margin: 1em 1em 1em 0;
 }
 
 h4 {
@@ -77,14 +78,14 @@ h4 {
   opacity: 0.9;
 }
 
-.weather-gadget{
+.weather-gadget {
   grid-area: weather;
   background-color: var(--inspirationalQ-color);
   max-height: 100%;
   border-radius: 10px;
 }
 
-.hide-weather{
+.hide-weather {
   grid-area: weather;
   background-color: var(--inspirationalQ-color);
   max-height: 100%;
@@ -135,7 +136,7 @@ h4 {
   opacity: 0.9;
 }
 
-.calender-gadget{
+.calender-gadget {
   grid-area: calender;
   background-color: var(--pomodoro-color);
   border-radius: 10px;
@@ -145,7 +146,7 @@ h4 {
   align-items: center;
 }
 
-.calender-hide{
+.calender-hide {
   grid-area: calender;
   background-color: var(--pomodoro-color);
   border-radius: 10px;
@@ -156,18 +157,17 @@ h4 {
   display: none;
 }
 
-.calender-img{
+.calender-img {
   margin: 1em;
-border-radius: 10px;
+  border-radius: 10px;
   height: 150px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .calender-img:hover {
   opacity: 1;
   cursor: pointer;
 }
-
 
 /* Weather + Calendar */
 .side {
@@ -203,9 +203,9 @@ border-radius: 10px;
 
 @media only screen and (max-width: 766px) {
   .grid-container {
-    background-image: url();
+    background-image: url(../../../img/Rain.gif);
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 0.25fr .25fr 0.25fr 1fr 5fr;
+    grid-template-rows: 1fr 0.25fr 0.25fr 0.25fr 1fr 5fr;
     grid-template-areas:
       "quote"
       "weather"

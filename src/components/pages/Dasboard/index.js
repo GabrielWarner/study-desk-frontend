@@ -7,8 +7,9 @@ import Weather from "../../Weather";
 import Notes from "../../Notes";
 import Calculator from "../../Calculator";
 import Modal from "react-bootstrap/Modal"
-import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time;
-import Resizable from "re-resizable";
+import Draggable from 'react-draggable'; // Both at the same time;
+// import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time;
+// import Resizable from "re-resizable";
 
 import calenderpic from "../../../img/Calender.JPG";
 
@@ -33,25 +34,28 @@ const useAudio = (url) => {
     } else {
       audio.pause();
     }
-  }, [playing]);
+  }, [audio, playing]);
+
   useEffect(() => {
-    audio.addEventListener("ended", () => setPlaying(false));
     return () => {
       audio.removeEventListener("ended", () => setPlaying(false));
     };
-  }, []);
+  }, [audio]);
   return [playing, toggle];
 };
 
 export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const [show, setShow] = useState(false);
-  const [timer, setTimer] = useState(true);
-  const [search, setSearch] = useState(true);
-  const [side, setSide] = useState(true);
-  const [notes, setNotes] = useState(true);
-  const [calender, setCalender] = useState(true);
-  const [weather, setWeather] = useState(true);
 
+  // Gadget
+  const [weather, setWeather] = useState(JSON.parse(localStorage.getItem("Weather")));
+  const [timer, setTimer] = useState(JSON.parse(localStorage.getItem("Pomodoro")));
+  const [calender, setCalender] = useState(JSON.parse(localStorage.getItem("Calendar")));
+  const [search, setSearch] = useState(JSON.parse(localStorage.getItem("Search")));
+  const [side, setSide] = useState(JSON.parse(localStorage.getItem("Calculator")));
+  const [notes, setNotes] = useState(JSON.parse(localStorage.getItem("Note")));
+
+  // Audio
   const [playingWind, toggleWind] = useAudio(AncientWindAudio);
   const [playingOcean, toggleOcean] = useAudio(DeepInTheOceanAudio);
   const [playingForest, toggleForest] = useAudio(ForestAudio);
@@ -64,16 +68,19 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
+  // Set Local Storage
   useEffect(()=>{
-    localStorage.setItem('weather', weather)
-    console.log(weather)
-  }, [weather])
+    localStorage.setItem('Weather', weather)
+    localStorage.setItem('Pomodoro', timer)
+    localStorage.setItem('Calendar', calender)
+    localStorage.setItem('Search', search)
+    localStorage.setItem('Calculator', side)
+    localStorage.setItem('Note', notes)
+  }, [weather, timer, calender, search, side, notes])
 
-
+  // Set Token
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    const weatherToggle =JSON.parse(localStorage.getItem("weather"))
     fetch("http://localhost:3001/api/users/check-token", {
       headers: {
         Authorization: `Bearer ${storedToken}`,
@@ -91,12 +98,10 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             email: data.email,
             username: data.username,
           });
-          setWeather(weatherToggle)
         });
-        
       }
     });
-  }, []);
+  }, [setToken, setUser]);
 
   return (
     <div className="dashboard">
@@ -117,7 +122,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <input
                 onClick={() => {
                   setWeather(!weather);
-
+                  weather? localStorage.setItem('Weather', true) : localStorage.setItem('Weather', false)
                 }}
                 id="weather"
                 type="checkbox"
@@ -140,6 +145,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <input
                 onClick={() => {
                   setCalender(!calender);
+                  calender? localStorage.setItem('Calender', true) : localStorage.setItem('Calendar', false)
                 }}
                 id="calender"
                 type="checkbox"
@@ -150,6 +156,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <input
                 onClick={() => {
                   setSearch(!search);
+                  search? localStorage.setItem('Search', true) : localStorage.setItem('Search', false)
                 }}
                 id="search"
                 type="checkbox"
@@ -160,6 +167,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <input
                 onClick={() => {
                   setSide(!side);
+                  side? localStorage.setItem('Calculator', true) : localStorage.setItem('Calculator', false)
                 }}
                 id="side"
                 type="checkbox"
@@ -170,6 +178,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <input
                 onClick={() => {
                   setNotes(!notes);
+                  notes? localStorage.setItem('Note', true) : localStorage.setItem('Note', false)
                 }}
                 id="notes"
                 type="checkbox"
@@ -238,7 +247,6 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             </Modal.Footer>
           </Modal>
           <Inspirational />
-          
         </div>
         </Draggable>
 
@@ -282,6 +290,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             }}
             className="calender-img"
             src={calenderpic}
+            alt="Calender Img"
           ></img></div></Draggable>
           ): (<div id="calender" className="calender-hide">
           <h2>Calender</h2>
@@ -291,6 +300,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             }}
             className="calender-img"
             src={calenderpic}
+            alt="Calender Img"
           ></img>
         </div>)}
 
