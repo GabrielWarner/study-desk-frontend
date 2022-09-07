@@ -14,6 +14,9 @@ import Notes from "./components/Notes";
 import Calendar from "./components/Calendar";
 import Calculator from "./components/Calculator";
 
+const devLink = "https://dh-focus.herokuapp.com/";
+
+const testLink ="http://localhost:3001";
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -29,7 +32,7 @@ function App() {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    fetch("http://localhost:3001/api/users/check-token", {
+    fetch(`${testLink}/api/users/check-token`, {
       headers: {
         Authorization: `Bearer ${storedToken}`,
       },
@@ -72,7 +75,7 @@ function App() {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
 
-    fetch("http://localhost:3001/api/users/login", {
+    fetch(`${testLink}/api/users/login`, {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -130,7 +133,7 @@ function App() {
                 alert('Password must be less than 50 characters')
               }
 
-         fetch("http://localhost:3001/api/users/signup",{
+         fetch(`${testLink}/api/users/signup`,{
           method:"POST",
           body:JSON.stringify({
             username,

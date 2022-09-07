@@ -20,6 +20,8 @@ import PeacefulPianoAudio from "../audio/Peaceful-Piano.mp3";
 import RainAudio from "../audio/Rain.mp3";
 import SoftAmbientAudio from "../audio/Soft-Ambient.mp3";
 import SpaceJourneyAudio from "../audio/Space-Journey.mp3";
+import PrettyCool from "../audio/prettycool.mp4";
+
 import "./style.css";
 
 const useAudio = (url) => {
@@ -64,6 +66,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const [playingRain, toggleRain] = useAudio(RainAudio);
   const [playingSoftAmbient, toggleSoftAmbient] = useAudio(SoftAmbientAudio);
   const [playingSpace, toggleSpace] = useAudio(SpaceJourneyAudio);
+  const [playingPrettyCool, togglePrettyCool] = useAudio(PrettyCool);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -238,6 +241,12 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
                 <div>Space Journey</div>
                 <button className="homeButton" onClick={toggleSpace}>
                   {playingSpace ? "Pause" : "Play"}
+                </button>
+              </div>
+              <div className="inBlock">
+                <div>Pretty Pretty Cool</div>
+                <button className="homeButton" onClick={togglePrettyCool}>
+                  {playingPrettyCool ? "Pause" : "Play"}
                 </button>
               </div>
             </Modal.Body>
