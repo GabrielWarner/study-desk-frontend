@@ -5,7 +5,7 @@ import Search from './notes-components/Search';
 import Header from './notes-components/Header';
 import "./index.css";
 
-const devLink = "https://dh-focus.herokuapp.com/";
+const devLink = "https://dh-focus.herokuapp.com";
 
 const testLink ="http://localhost:3001";
 
