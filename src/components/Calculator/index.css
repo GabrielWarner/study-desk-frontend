@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
+  /* color: white; */
 }
 
 .Calcbody {
@@ -21,6 +21,7 @@
   height: 4rem;
   margin-bottom: 2rem;
   /* max-width:fit-content; */
+  color: white;
 }
 
 .wrapper {
