@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import NotesList from './notes-components/NotesList';
 import Search from './notes-components/Search';
 import Header from './notes-components/Header';

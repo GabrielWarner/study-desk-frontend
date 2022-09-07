@@ -7,8 +7,8 @@ import Weather from "../../Weather";
 import Notes from "../../Notes";
 import Calculator from "../../Calculator";
 import Modal from "react-bootstrap/Modal"
-import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time;
-import Resizable from "re-resizable";
+import Draggable from 'react-draggable'; // Both at the same time;
+// import Resizable from "re-resizable";
 
 import calenderpic from "../../../img/Calender.JPG";
 

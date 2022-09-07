@@ -1,6 +1,6 @@
 import React from "react";
 import githubIcon from "../../../img/github_icon.png";
-import linkedInIcon from "../../../img/linkedin_icon.png";
+// import linkedInIcon from "../../../img/linkedin_icon.png";
 import "./style.css";
 
 export default function Footer() {
