@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import { CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar';
+// import { CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import ProgressProvider from '../ProgressProvider.js';
+// import ProgressProvider from '../ProgressProvider.js';
 import './style.css';
 
 export default function Pomodoro() {
@@ -67,7 +67,7 @@ export default function Pomodoro() {
     
     const timerMinutes = minutes  < 10 ? `0${minutes}` : minutes;
     const timerSeconds = seconds  < 10 ? `0${seconds}` : seconds;
-    const timeInSeconds = (minutes * 60) + seconds
+    // const timeInSeconds = (minutes * 60) + seconds
 
   return (
     <div className='pomodoro-container'>

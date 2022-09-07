@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Search from "./weather-components/search/search";
 import CurrentWeather from "./weather-components/current-weather/current-weather";
 // import Forecast from "./components/forecast/forecast";
-import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
+import { WEATHER_API_URL } from "./api";
 import "./index.css";
+
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -20,7 +21,7 @@ function App() {
       setLong(position.coords.longitude);
     });
 
-    await fetch(`${WEATHER_API_URL}/weather?lat=${lats}&lon=${long}&appid=${WEATHER_API_KEY}&units=metric`)
+    await fetch(`${WEATHER_API_URL}/weather?lat=${lats}&lon=${long}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`)
     .then(res => res.json() )
     .then(result => {
       setData(result);
@@ -41,7 +42,7 @@ function App() {
     const [lat, lon] = searchData.value.split(" ");
 
     const currentWeatherFetch = fetch(
-      `${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
+      `${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
     );
     // const forecastFetch = fetch(
     //   `${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
