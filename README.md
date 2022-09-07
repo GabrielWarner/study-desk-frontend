@@ -72,9 +72,13 @@ create an account and test out the features
 
 Deployed Link:
 
-
+https://focus-study-desk.netlify.app/
 
 Screenshot Below:
+
+![focus-study](https://user-images.githubusercontent.com/106774335/188980092-e05b1171-d6c4-49ae-b353-972644039579.jpg)
+
+
 
 
 
