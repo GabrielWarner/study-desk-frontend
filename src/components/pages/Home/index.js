@@ -19,14 +19,19 @@ export default function index({
       <li></li>
       <h1 className="homeTitle">Focus</h1>
       {/* place logo? */}
-      <p> Welcome to our application</p>
+      <p> 
+        {/* Welcome to our application */}
+        A Customerizable Study Dashboard
+      </p>
       {user.id ? (
         setCurrentPage("Dashboard")
       ) : (
         <div className="homeBorder">
           <p className="welcome">
-            Welcome to Focus. Please login or make an
-            account to proceed to the study dashboard.
+            {/* Welcome to Focus. Please login or make an
+            account to proceed to the study dashboard. */}
+            Ready to start focusing?<br></br>
+            Login or make an account to proceed.
           </p>
         </div>
       )}
