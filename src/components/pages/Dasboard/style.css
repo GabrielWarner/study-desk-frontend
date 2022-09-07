@@ -1,29 +1,64 @@
 :root {
   --pomodoro-color: rgba(251, 121, 116, 0.6);
-  --weather-color: rgba(255, 184, 69, 0.6);
+  --calc-color: rgba(255, 184, 69, 0.6);
   --searchbar-color: rgba(103, 74, 179, 0.6);
   --inspirationalQ-color: rgba(163, 72, 166, 0.4);
   --notes-color: rgba(206, 95, 159, 0.6);
+  --weather-color: rgba(85, 109, 200, 0.6);
   --trim-color: rgba(103, 74, 179, 0.6);
+  --calender-color: rgba(133, 73, 173, 0.6);
   --light-color: rgba(206, 95, 159, 0.6);
 }
 
-.grid-container {
+.grid-container,
+.grid-container2,
+.grid-container3,
+.grid-container4,
+.grid-container5,
+.grid-container6,
+.grid-container7 {
   padding: 1em;
   gap: 1rem;
   width: 100%;
   display: grid;
   height: 90vh;
-  grid-template-columns: 0.5fr 0.5fr 1.5fr;
-  grid-template-rows: 0.25fr 0.25fr 2fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-rows: 0.2fr 0.2fr 2fr;
   grid-template-areas:
-    "weather quote quote"
-    "timer calender search"
-    "side main main";
-  background-image: url(../../../img/Rain.gif);
+    "quote quote quote quote quote"
+    "side timer calender main main"
+    "side weather search main main";
   background-size: cover;
   background-position: center;
   z-index: 3;
+}
+
+.grid-container {
+  background-image: url(../../../img/Rain.gif);
+}
+
+.grid-container2 {
+  background-image: url(../../../img/Sunset.jpg);
+}
+
+.grid-container3 {
+  background-image: url(../../../img/After_Dark.gif);
+}
+
+.grid-container4 {
+  background-image: url(../../../img/Disco.jpg);
+}
+
+.grid-container5 {
+  background-image: url(../../../img/Forest.gif);
+}
+
+.grid-container6 {
+  background-image: url(../../../img/YourName.png);
+}
+
+.grid-container7 {
+  background-image: url(../../../img/Waterfall.gif);
 }
 
 /* Modal */
@@ -38,6 +73,10 @@
   position: relative;
   padding: 1.2em;
   margin: 1em 1em 1em 0;
+}
+
+.modalButton {
+  margin: 0.5em 
 }
 
 h4 {
@@ -80,14 +119,13 @@ h4 {
 
 .weather-gadget {
   grid-area: weather;
-  background-color: var(--inspirationalQ-color);
+  background-color: var(--weather-color);
   max-height: 100%;
   border-radius: 10px;
 }
 
 .hide-weather {
   grid-area: weather;
-  background-color: var(--inspirationalQ-color);
   max-height: 100%;
   border-radius: 10px;
   display: none;
@@ -138,7 +176,7 @@ h4 {
 
 .calender-gadget {
   grid-area: calender;
-  background-color: var(--pomodoro-color);
+  background-color: var(--calender-color);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -171,7 +209,7 @@ h4 {
 
 /* Weather + Calendar */
 .side {
-  background-color: var(--weather-color);
+  background-color: var(--calc-color);
   grid-area: side;
   border-radius: 10px;
 }
@@ -203,7 +241,7 @@ h4 {
 
 @media only screen and (max-width: 766px) {
   .grid-container {
-    background-image: url(../../../img/Rain.gif);
+    /* background-image: url(../../../img/Rain.gif); */
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.25fr 0.25fr 0.25fr 1fr 5fr;
     grid-template-areas:

@@ -1,3 +1,4 @@
+import "./header.css"
 import { useState } from 'react';
 
 const AddNote = ({ handleAddNote }) => {
@@ -30,7 +31,7 @@ const AddNote = ({ handleAddNote }) => {
 				<small>
 					{characterLimit - noteText.length} Remaining
 				</small>
-				<button className='save' onClick={handleSaveClick}>
+				<button className='save noteBtn' onClick={handleSaveClick}>
 					Save
 				</button>
 			</div>

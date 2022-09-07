@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 // import { Grid, GridItem } from "@chakra-ui/react";
 import Pomodoro from "../../Pomodoro";
 import GoogleSearch from "../../GoogleSearch";
@@ -44,9 +44,10 @@ const useAudio = (url) => {
   return [playing, toggle];
 };
 
+
 export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const [show, setShow] = useState(false);
-
+  const [background, setBackground] = useState("grid-container");
   // Gadget
   const [weather, setWeather] = useState(JSON.parse(localStorage.getItem("Weather")));
   const [timer, setTimer] = useState(JSON.parse(localStorage.getItem("Pomodoro")));
@@ -78,6 +79,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
     localStorage.setItem('Note', notes)
   }, [weather, timer, calender, search, side, notes])
 
+  
   // Set Token
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -98,6 +100,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             email: data.email,
             username: data.username,
           });
+          console.log(background)
         });
       }
     });
@@ -105,9 +108,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
 
   return (
     <div className="dashboard">
-      <div className="grid-container">
-        <div className="lofiBackground"></div>
-        <Draggable>
+      <div className={background}>
         <div id="quote" className="quote-widget">
           <button className="homeButton gadgetSetting" onClick={handleShow}>
             GADGET SETTINGS
@@ -117,74 +118,78 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
               <Modal.Title className="modalTitle">Settings</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+              <h4>Background Change</h4>
+              {/* button --> onClick className="grid-container" --> style = "background-image: url(../../../img/Rain.gif);" */}
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container")}}>Rain</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container2")}}>Sunset</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container3")}}>After Dark</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container4")}}>Disco</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container5")}}>Forest</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container6")}}>Your Name</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container7")}}>Waterfall</button>
+              {/* <button className="homeButton" onClick={()=> }>Sunset</button> */}
               <h4>Hide Gadget</h4>
 
-              <input
+              <button
+              className="homeButton modalButton"
                 onClick={() => {
                   setWeather(!weather);
                   weather? localStorage.setItem('Weather', true) : localStorage.setItem('Weather', false)
                 }}
                 id="weather"
-                type="checkbox"
-              ></input>
-              <label for="timer"> Weather</label>
-              <br />
+              >Weather</button>
+              
 
-              <input
+
+              <button
+              className="homeButton modalButton"
                 onClick={() => {
                   setTimer(!timer);
                   console.log(timer)
                 }}
                 id="timer"
-                type="checkbox"
-              ></input>
-              <label for="timer"> Pomodoro</label>
-              <br />
+              >Pomodoro</button>
 
 
-              <input
+              <button
+              className="homeButton modalButton"
                 onClick={() => {
                   setCalender(!calender);
                   calender? localStorage.setItem('Calender', true) : localStorage.setItem('Calendar', false)
                 }}
                 id="calender"
-                type="checkbox"
-              ></input>
-              <label for="timer"> Calender</label>
-              <br />
+              >Calender</button>  
 
-              <input
+
+              <button
+              className="homeButton modalButton"
                 onClick={() => {
                   setSearch(!search);
                   search? localStorage.setItem('Search', true) : localStorage.setItem('Search', false)
                 }}
                 id="search"
-                type="checkbox"
-              ></input>
-              <label for="search"> Search</label>
-              <br />
+              >Search Bar</button>
 
-              <input
+
+              <button
+              className="homeButton modalButton"
                 onClick={() => {
                   setSide(!side);
                   side? localStorage.setItem('Calculator', true) : localStorage.setItem('Calculator', false)
                 }}
                 id="side"
-                type="checkbox"
-              ></input>
-              <label for="side"> Calculator</label>
-              <br />
+              >Calculator</button>
 
-              <input
+              
+              <button
+              className="homeButton modalButton"
                 onClick={() => {
                   setNotes(!notes);
                   notes? localStorage.setItem('Note', true) : localStorage.setItem('Note', false)
                 }}
                 id="notes"
-                type="checkbox"
-              ></input>
-              <label for="notes"> Notes</label>
-              <br />
+              >Notes</button>
+
 
               {/* Audio */}
               <h4>Audio</h4>
@@ -248,8 +253,6 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
           </Modal>
           <Inspirational />
         </div>
-        </Draggable>
-
 
 
         {weather ? (
