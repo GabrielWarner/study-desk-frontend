@@ -9,6 +9,10 @@ import "react-datepicker/dist/react-datepicker.css";
 // import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "./index.css";
 
+const devLink = "https://dh-focus.herokuapp.com/";
+
+const testLink ="http://localhost:3001";
+
 // import { flexbox } from "@chakra-ui/react";
 
 //   Modal.setAppElement('main');
@@ -62,7 +66,7 @@ function App() {
         // fetch the backend
         const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
-        fetch(`http://localhost:3001/api/events/${userId}`, {
+        fetch(`${testLink}/api/events/${userId}`, {
             // method:"GET", default get route unleast specify
             headers: {
                 Authorization: `Bearer ${storedToken}`,
@@ -85,7 +89,7 @@ function App() {
     function handleAddEvent() {
         const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
-        fetch(`http://localhost:3001/api/events/${userId}`, {
+        fetch(`${testLink}/api/events/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 ...newEvent
@@ -163,7 +167,7 @@ function App() {
                         const userId = localStorage.getItem('userid')
                         const eventId = event._id
                         console.log(event)
-                        fetch(`http://localhost:3001/api/events/${userId}/${eventId}`, {
+                        fetch(`${testLink}/api/events/${userId}/${eventId}`, {
                             method: "DELETE",
                             headers: {
                                 Authorization: `Bearer ${storedToken}`,
