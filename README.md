@@ -51,8 +51,11 @@ create an account and test out the features
 
 ## Questions
 [https://github.com/GabrielWarner](https://github.com/GabrielWarner)
+
 [https://www.github.com/dhruza88](https://www.github.com/dhruza88)
+
 [https://github.com/jiajie-he](https://github.com/jiajie-he)
+
 [https://github.com/zmzhong1](https://github.com/zmzhong1) <br />
 
 Deployed Link:
