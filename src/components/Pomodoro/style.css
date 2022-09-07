@@ -1,5 +1,6 @@
 .pomodoro-container{
   margin: 1em;
+
 }
 
 .timer-text{
@@ -29,11 +30,12 @@
 
   
   .timerForm input {
+    
     background: transparent;
     flex: 1;
     border: 0;
     outline: none;
-    padding: 24px 20px;
+   
     font-size: 20px;
     color: #000000;
     margin: 0.5em;

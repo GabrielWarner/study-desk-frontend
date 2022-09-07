@@ -311,7 +311,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         {search ? (
           <Draggable>
           <div id="search" className="search-bar">
-            <GoogleSearch />
+            {/* <GoogleSearch /> */}
           </div>
           </Draggable>
         ) : (
@@ -323,7 +323,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         {side ? (
           <Draggable>
           <div id="side" className="side">
-            <Calculator />
+            {/* <Calculator /> */}
           </div>
           </Draggable>
         ) : (
@@ -335,7 +335,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
         {notes ? (
           <Draggable>
           <div id="main" className="notes-main">
-            <Notes />
+            {/* <Notes /> */}
           </div>
           </Draggable>
         ) : (
