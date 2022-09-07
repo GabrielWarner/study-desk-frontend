@@ -44,7 +44,10 @@ Google.com, Stackoverflow. freecodecamp, npmjs
 over 7 different utility gadgets
 
 ## Contributions
-Gabriel Warner, David Hruza, Jiajie He, Zhao-Ming Zhong
+Gabriel Warner,
+David Hruza,
+Jiajie He,
+Zhao-Ming Zhong
 
 ## Tests
 create an account and test out the features
