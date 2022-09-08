@@ -27,7 +27,7 @@
   grid-template-rows: 0.2fr 0.2fr 2fr;
   grid-template-areas:
     "quote quote quote quote quote"
-    "side timer search weather calender"
+    "side timer weather search calender"
     "side main main main main";
   background-size: cover;
   background-position: center;
@@ -241,6 +241,7 @@ h4 {
   opacity: 0.9;
 }
 
+
 @media only screen and (max-width: 1562px) {
   .grid-container,
   .grid-container2,
@@ -250,35 +251,12 @@ h4 {
 .grid-container6,
 .grid-container7  {
     /* background-image: url(../../../img/Rain.gif); */
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: .5fr 1fr 5fr;
+    grid-template-columns: .5fr  .5fr .5fr .5fr;
+    grid-template-rows: .2fr .2fr 1fr;
     grid-template-areas:
-      "timer quote quote quote"
-      "side calender weather search"
-      "side main main main";
-  }
-
-  .notes-main {
-    overflow-y: visible;
-  }
-}
-
-@media only screen and (max-width: 1380px) {
-  .grid-container,
-  .grid-container2,
-.grid-container3,
-.grid-container4,
-.grid-container5,
-.grid-container6,
-.grid-container7  {
-    /* background-image: url(../../../img/Rain.gif); */
-    grid-template-columns: .7fr 1fr 1fr;
-    grid-template-rows: .2fr .2fr 5fr;
-    grid-template-areas:
-      "timer quote quote"
-      "calender search weather"
-      "side main"
-      "side main";
+      "quote quote timer calender"
+      "side search main main"
+      "side weather main main";
   }
 
   .notes-main {

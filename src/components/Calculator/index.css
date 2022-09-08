@@ -7,39 +7,41 @@
   /* color: white; */
 }
 
-.Calcbody {
-  max-width:100vh ;
-  max-height: 10vh;
-  background: #f4fefe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Roboto', sans-serif;
-}
+
 
 .screen {
-  height: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: .4rem;
+  height: 2rem;
   /* max-width:fit-content; */
   color: white;
 }
 
+.CalcBody {
+margin-left: 1rem;
+  width: 90%;
+  background-color: grey;
+  border-radius: 5%;
+ 
+}
+
 .wrapper {
-  padding: 2rem;
+  margin: 1rem;
+  padding: .5rem;
   border-radius: 1rem;
 }
 
 .buttonBox {
-  height: 100000px;
+  margin-top: .5rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: .5rem;
-  height: 50%;
+  justify-content: center;
+  grid-template-columns: repeat(4, .2fr);
+  gap: .3rem;
+  height: 20%;
 }
 
 .button {
   background: #e9f0f4;
-  height: 90%;
+  height: 60%;
   padding: 10px;
   border-radius: 10px;
   display: flex;
