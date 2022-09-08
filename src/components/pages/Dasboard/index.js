@@ -85,6 +85,10 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
     localStorage.setItem('Note', notes)
   }, [weather, timer, calender, search, side, notes])
 
+  const saveBG = () => {
+    setCurrentPage
+  }
+
   
   // Set Token
   useEffect(() => {
