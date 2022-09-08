@@ -171,7 +171,8 @@ const Notes = () => {
 
 	return (
 		<div className={`${darkMode && 'dark-mode'}`}>
-			<div className='notes-container'>
+			<div className='notes-container' style="
+    overflow-x: hidden;">
 				<Header handleToggleDarkMode={setDarkMode} />
 				<Search handleSearchNote={setSearchText} />
 				<NotesList
