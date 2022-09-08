@@ -62,7 +62,7 @@ const Notes = () => {
 
 	const getNote = () => {
 		const userid = localStorage.getItem('userid')
-		fetch(`${devLink}/api/notes/${userid}`, {
+		fetch(`${testLink}/api/notes/${userid}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 			},
@@ -118,7 +118,7 @@ const Notes = () => {
 			userId: localStorage.getItem('userid'),
 			date: date.toLocaleDateString(),		
 		};
-		fetch(`${devLink}/api/notes/`, {
+		fetch(`${testLink}/api/notes/${userId}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 				'Content-Type': 'application/json'
@@ -156,7 +156,7 @@ const Notes = () => {
 		console.log(id)
 		const newNotes = notes.filter((note) => note._id !== id);
 		setNotes(newNotes);
-		fetch(`${devLink}/api/notes/${id}`, {
+		fetch(`${testLink}/api/notes/${id}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 				

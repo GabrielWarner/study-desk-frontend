@@ -32,7 +32,7 @@ function App() {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    fetch(`${devLink}/api/users/check-token`, {
+    fetch(`${testLink}/api/users/check-token`, {
       headers: {
         Authorization: `Bearer ${storedToken}`,
       },
@@ -75,7 +75,7 @@ function App() {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
 
-    fetch(`${devLink}/api/users/login`, {
+    fetch(`${testLink}/api/users/login`, {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -133,7 +133,7 @@ function App() {
                 alert('Password must be less than 50 characters')
               }
 
-         fetch(`${devLink}/api/users/signup`,{
+         fetch(`${testLink}/api/users/signup`,{
           method:"POST",
           body:JSON.stringify({
             username,
