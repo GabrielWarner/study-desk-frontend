@@ -133,7 +133,7 @@ function App() {
                 alert('Password must be less than 50 characters')
               }
 
-         fetch(`${testLink}/api/users/signup`,{
+         fetch(`${devLink}/api/users/signup`,{
           method:"POST",
           body:JSON.stringify({
             username,
@@ -197,7 +197,7 @@ function App() {
       return <Dashboard setCurrentPage={setCurrentPage} setUser={setUser} setToken={setToken}/>;
     }
     if (currentPage === "CalenderPage") {
-      return <CalenderPage setUser={setUser} setToken={setToken}/>
+      return <CalenderPage setCurrentPage={setCurrentPage} setUser={setUser} setToken={setToken}/>
     }
   };
 
