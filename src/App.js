@@ -14,7 +14,7 @@ import Notes from "./components/Notes";
 import Calendar from "./components/Calendar";
 import Calculator from "./components/Calculator";
 
-const devLink = "https://dh-focus.herokuapp.com";
+const devLink = "https://dh-focus-backend.herokuapp.com";
 
 const testLink ="http://localhost:3001";
 

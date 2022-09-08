@@ -24,7 +24,7 @@ import PrettyCool from "../audio/prettycool.mp4";
 
 import "./style.css";
 
-const devLink = "https://dh-focus.herokuapp.com";
+const devLink = "https://dh-focus-backend.herokuapp.com";
 
 const testLink ="http://localhost:3001";
 
