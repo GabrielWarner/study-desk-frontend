@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "./index.css";
 
-const devLink = "https://dh-focus.herokuapp.com";
+const devLink = "https://dh-focus-backend.herokuapp.com";
 
 const testLink ="http://localhost:3001";
 
