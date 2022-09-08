@@ -24,6 +24,10 @@ import PrettyCool from "../audio/prettycool.mp4";
 
 import "./style.css";
 
+const devLink = "https://dh-focus.herokuapp.com";
+
+const testLink ="http://localhost:3001";
+
 const useAudio = (url) => {
   const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(false);
@@ -85,7 +89,7 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   // Set Token
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    fetch("http://localhost:3001/api/users/check-token", {
+    fetch(`${devLink}/api/users/check-token`, {
       headers: {
         Authorization: `Bearer ${storedToken}`,
       },
