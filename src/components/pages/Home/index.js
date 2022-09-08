@@ -21,7 +21,7 @@ export default function index({
       {/* place logo? */}
       <p> 
         {/* Welcome to our application */}
-        A Customerizable Study Dashboard
+        A Customizable Study Dashboard
       </p>
       {user.id ? (
         setCurrentPage("Dashboard")
