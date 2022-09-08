@@ -32,7 +32,7 @@ function App() {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    fetch(`${testLink}/api/users/check-token`, {
+    fetch(`${devLink}/api/users/check-token`, {
       headers: {
         Authorization: `Bearer ${storedToken}`,
       },
@@ -75,7 +75,7 @@ function App() {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
 
-    fetch(`${testLink}/api/users/login`, {
+    fetch(`${devLink}/api/users/login`, {
       method: "POST",
       body: JSON.stringify({
         email,
