@@ -1,5 +1,6 @@
-.notes-container{
-padding: 1em;
+.notes-container {
+  padding: 1em;
+  overflow-x: hidden;
 }
 
 .header {
@@ -29,7 +30,7 @@ padding: 1em;
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 32% 32% 32%;
-  grid-auto-rows: .3fr;
+  grid-auto-rows: 0.3fr;
 }
 
 .note.new {
@@ -99,19 +100,15 @@ textarea:focus {
   outline: none;
 }
 
-
-
 @media only screen and (max-width: 1025px) {
-  
-  .notes-list{
+  .notes-list {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: .3fr .3fr .3fr;
+    grid-template-rows: 0.3fr 0.3fr 0.3fr;
   }
 }
 
 @media only screen and (max-width: 766px) {
-
-  .notes-list{
+  .notes-list {
     grid-template-columns: 1fr;
   }
 }
