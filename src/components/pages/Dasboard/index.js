@@ -75,6 +75,15 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  useEffect(()=>{
+    const BG = localStorage.getItem('background')
+    if(BG == null){
+      setBackground('grid-container')
+    }else{
+      setBackground(`${BG}`)
+    }
+  },[])
+
   // Set Local Storage
   useEffect(()=>{
     localStorage.setItem('Weather', weather)
@@ -85,9 +94,8 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
     localStorage.setItem('Note', notes)
   }, [weather, timer, calender, search, side, notes])
 
-  const saveBG = () => {
-    setCurrentPage
-  }
+
+
 
   
   // Set Token
@@ -130,13 +138,21 @@ export default function Dashboard({ setUser, setToken, setCurrentPage }) {
             <Modal.Body>
               <h4>Background Change</h4>
               {/* button --> onClick className="grid-container" --> style = "background-image: url(../../../img/Rain.gif);" */}
-              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container")}}>Rain</button>
-              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container2")}}>Sunset</button>
-              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container3")}}>After Dark</button>
-              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container4")}}>Disco</button>
-              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container5")}}>Forest</button>
-              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container6")}}>Your Name</button>
-              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container7")}}>Waterfall</button>
+              <button className="homeButton modalButton" onClick={()=> {
+              setBackground("grid-container")
+              localStorage.setItem('background', 'grid-container' )}}>Rain</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container2")
+            localStorage.setItem('background','grid-container2')}}>Sunset</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container3")
+            localStorage.setItem('background','grid-container3')}}>After Dark</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container4")
+            localStorage.setItem('background','grid-container4')}}>Disco</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container5")
+            localStorage.setItem('background','grid-container5')}}>Forest</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container6")
+            localStorage.setItem('background','grid-container6')}}>Your Name</button>
+              <button className="homeButton modalButton" onClick={()=> {setBackground("grid-container7")
+            localStorage.setItem('background','grid-container7')}}>Waterfall</button>
               {/* <button className="homeButton" onClick={()=> }>Sunset</button> */}
               <h4>Hide Gadget</h4>
 
