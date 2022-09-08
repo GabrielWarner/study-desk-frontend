@@ -34,8 +34,9 @@ const customStyles = {
     },
 };
 
-function App() {
 
+export default function CalendarPage(setCurrentPage) {
+    
     // Modal
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -123,85 +124,83 @@ function App() {
             setAllEvents([...allEvents, eventData]);
             console.log(allEvents)
             forceUpdate()
+            setCurrentPage("Dashboard")
+            
         })
     }
+  return (
+    <div className="App">
 
-    return (
-        <div className="App">
-
-            <h2 className="cTitle">Calendar</h2>
-
-
-            <div className="ccc">
-                <button className="cButton" onClick={openModal}>Add Event</button>
-
-                <Modal
-                    ariaHideApp={false}
-                    isOpen={modalIsOpen}
-                    onAfterOpen={afterOpenModal}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    contentLabel="Calendar Modal"
-                >
-                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Add New Event</h2>
+    <h2 className="cTitle">Calendar</h2>
 
 
+    <div className="ccc">
+        <button className="cButton" onClick={openModal}>Add Event</button>
 
-                    <div>
-                        <input type="text" className="cInput" placeholder="Add Title" value={newEvent.title}
-                            onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-                        <DatePicker placeholderText="Start Date" className="cInput" selected={newEvent.start}
-                            onChange={(start) => setNewEvent({ ...newEvent, start })} />
-                        <DatePicker placeholderText="End Date" className="cInput" selected={newEvent.end}
-                            onChange={(end) => setNewEvent({ ...newEvent, end, userId: localStorage.getItem('userid')  })} />
-                        <button className="cButton" onClick={handleAddEvent}>
-                            Add Event
-                        </button>
-                        <button className="cButton" onClick={closeModal}>
-                            Close
-                        </button>
-                    </div>
+        <Modal
+            ariaHideApp={false}
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Calendar Modal"
+        >
+            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Add New Event</h2>
 
 
-                </Modal>
-            </div>
 
-            <div className="cDiv">
-                <Calendar
-                    localizer={localizer}
-                    events={allEvents}
-                    startAccessor="start"
-                    endAccessor="end"
-                    selectable={true}
-                    // defaultDate={new Date()}
-                    // view='month' 
-                    onSelectEvent={function removeEvent(event) {
-                        const storedToken = localStorage.getItem("token")
-                        const userId = localStorage.getItem('userid')
-                        const eventId = event._id
-                        console.log(event)
-                        fetch(`${devLink}/api/events/${userId}/${eventId}`, {
-                            method: "DELETE",
-                            headers: {
-                                Authorization: `Bearer ${storedToken}`,
-                                "Content-Type": "application/json"
-                            }
-                        }).then(res => {
-                            return res.json()
-                        }).then(eventData => {
-                            setAllEvents(eventData)
-                            console.log(eventData)
-                        })
-                    }}
-                    views={['month']}
-                    style={{ height: "75vh", margin: "10px", backgroundColor: "#ddbdd5", fontFamily: "Roboto" }}
-                />
+            <div>
+                <input type="text" className="cInput" placeholder="Add Title" value={newEvent.title}
+                    onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
+                <DatePicker placeholderText="Start Date" className="cInput" selected={newEvent.start}
+                    onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                <DatePicker placeholderText="End Date" className="cInput" selected={newEvent.end}
+                    onChange={(end) => setNewEvent({ ...newEvent, end, userId: localStorage.getItem('userid')  })} />
+                <button className="cButton" onClick={handleAddEvent}>
+                    Add Event
+                </button>
+                <button className="cButton" onClick={(closeModal)}>
+                    Close
+                </button>
             </div>
 
 
-        </div>
-    );
+        </Modal>
+    </div>
+
+    <div className="cDiv">
+        <Calendar
+            localizer={localizer}
+            events={allEvents}
+            startAccessor="start"
+            endAccessor="end"
+            selectable={true}
+            // defaultDate={new Date()}
+            // view='month' 
+            onSelectEvent={function removeEvent(event) {
+                const storedToken = localStorage.getItem("token")
+                const userId = localStorage.getItem('userid')
+                const eventId = event._id
+                console.log(event)
+                fetch(`${devLink}/api/events/${userId}/${eventId}`, {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${storedToken}`,
+                        "Content-Type": "application/json"
+                    }
+                }).then(res => {
+                    return res.json()
+                }).then(eventData => {
+                    setAllEvents(eventData)
+                    console.log(eventData)
+                })
+            }}
+            views={['month']}
+            style={{ height: "75vh", margin: "10px", backgroundColor: "#ddbdd5", fontFamily: "Roboto" }}
+        />
+    </div>
+
+
+</div>
+  )
 }
-
-
-export default App;
