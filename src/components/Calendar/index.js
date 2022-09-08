@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "./index.css";
 
-const devLink = "https://dh-focus.herokuapp.com/";
+const devLink = "https://dh-focus.herokuapp.com";
 
 const testLink ="http://localhost:3001";
 
@@ -51,14 +51,17 @@ function App() {
     function closeModal() {
         setIsOpen(false);
     }
-
+    
     // Calendar 
-    const [newEvent, setNewEvent] = useState({ userId: "", title: "", start: "", end: "" });
+    const [newEvent, setNewEvent] = useState({ userId: "", title: "", start: "", end: "" , _id:""});
     const [allEvents, setAllEvents] = useState([]);
+    // const [test, setTest] =useState({key1: "", key2: ""})
+    const [, updateState] = React.useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
     // const formatted = moment(time).toDate();
 
 
-        // Fetch DB and Render to page
+    // Fetch DB and Render to page
     // onMount - before
     // useEffect - callback
     useEffect(() => {
@@ -66,7 +69,7 @@ function App() {
         // fetch the backend
         const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
-        fetch(`${testLink}/api/events/${userId}`, {
+        fetch(`${devLink}/api/events/${userId}`, {
             // method:"GET", default get route unleast specify
             headers: {
                 Authorization: `Bearer ${storedToken}`,
@@ -84,12 +87,14 @@ function App() {
                 setAllEvents(data);
             })
     }, [])
-
+    
     // Add Calendar Event to DB
     function handleAddEvent() {
         const storedToken = localStorage.getItem("token");
         const userId = localStorage.getItem('userid')
-        fetch(`${testLink}/api/events/${userId}`, {
+        console.log(newEvent)
+        
+        fetch(`${devLink}/api/events/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 ...newEvent
@@ -99,17 +104,25 @@ function App() {
                 "Content-Type": "application/json"
             }
         }).then(res => {
+            // setNewEvent({ ...newEvent, })
             return res.json()
         }).then(eventData => {
-            setNewEvent({
-                userId: localStorage.getItem('userid'),
-                title: newEvent.title,
-                start: newEvent.start,
-                end: newEvent.end
-            })
+            // console.log()
+            // setNewEvent({
+            //     userId: localStorage.getItem('userid'),
+            //     title: newEvent.title,
+            //     start: newEvent.start,
+            //     end: newEvent.end,
+            //     _id: eventData._id
+            // })
+            // // console.log(eventData)
+            // // console.log(allEvents)
+            // console.log(eventData);
+            // // setAllEvents(eventData);
             console.log(eventData)
-            setAllEvents([...allEvents, newEvent]);
+            setAllEvents([...allEvents, eventData]);
             console.log(allEvents)
+            forceUpdate()
         })
     }
 
@@ -140,7 +153,7 @@ function App() {
                         <DatePicker placeholderText="Start Date" className="cInput" selected={newEvent.start}
                             onChange={(start) => setNewEvent({ ...newEvent, start })} />
                         <DatePicker placeholderText="End Date" className="cInput" selected={newEvent.end}
-                            onChange={(end) => setNewEvent({ ...newEvent, end })} />
+                            onChange={(end) => setNewEvent({ ...newEvent, end, userId: localStorage.getItem('userid')  })} />
                         <button className="cButton" onClick={handleAddEvent}>
                             Add Event
                         </button>
@@ -167,7 +180,7 @@ function App() {
                         const userId = localStorage.getItem('userid')
                         const eventId = event._id
                         console.log(event)
-                        fetch(`${testLink}/api/events/${userId}/${eventId}`, {
+                        fetch(`${devLink}/api/events/${userId}/${eventId}`, {
                             method: "DELETE",
                             headers: {
                                 Authorization: `Bearer ${storedToken}`,

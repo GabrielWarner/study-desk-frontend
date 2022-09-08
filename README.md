@@ -20,14 +20,23 @@ A dashboard style application designed for a user to be able to login and focus 
 
 ## Installation
 npm i 
+
 bootstrap,  date-fns,  moment,
+
 netlify-cli,  progress,  react,
+
 react-accessible-accordion,  react-big-calendar,
-react-bootstrap,  react-datepicker,  
+
+react-bootstrap,  react-datepicker,
+
 react-dnd,  react-dnd-html5-backend,
+
 react-dom,  react-draggable,
+
 react-icons,  react-modal,
+
 react-select,  react-select-async-paginate,
+
 react-textfit
 
 ## Usage
@@ -44,7 +53,10 @@ Google.com, Stackoverflow. freecodecamp, npmjs
 over 7 different utility gadgets
 
 ## Contributions
-Gabriel Warner, David Hruza, Jiajie He, Zhao-Ming Zhong
+Gabriel Warner,
+David Hruza,
+Jiajie He,
+Zhao-Ming Zhong
 
 ## Tests
 create an account and test out the features
@@ -60,9 +72,13 @@ create an account and test out the features
 
 Deployed Link:
 
-
+https://focus-study-desk.netlify.app/
 
 Screenshot Below:
+
+![focus-study](https://user-images.githubusercontent.com/106774335/188980092-e05b1171-d6c4-49ae-b353-972644039579.jpg)
+
+
 
 
 
