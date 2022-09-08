@@ -111,12 +111,14 @@ const Notes = () => {
 
 	const addNote = (text) => {
 		const date = new Date();
+		const storedToken = localStorage.getItem("token");
+		const userId = localStorage.getItem('userid');
 		const newNote = {
 			text: text,
 			userId: localStorage.getItem('userid'),
 			date: date.toLocaleDateString(),		
 		};
-		fetch(`${testLink}/api/notes/`, {
+		fetch(`${testLink}/api/notes/${userId}`, {
 			headers: {
 				Authorization: `Bearer ${storedToken}`,
 				'Content-Type': 'application/json'
