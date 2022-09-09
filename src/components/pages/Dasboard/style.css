@@ -24,7 +24,7 @@
   display: grid;
   height: 90vh;
   grid-template-columns: 0.5fr 0.5fr 0.5fr .5fr .5fr;
-  grid-template-rows: 0.2fr 0.2fr 2fr;
+  grid-template-rows: 0.2fr 0.2fr 1fr;
   grid-template-areas:
     "quote quote quote quote quote"
     "side timer weather search calender"
