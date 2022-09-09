@@ -15,9 +15,11 @@ export default function NavigationBar({
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userid");
     setUser("");
     handlePageChange("Home");
     setToken("");
+
   };
   return (
     <div className="navContainer">
