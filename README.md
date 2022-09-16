@@ -1,5 +1,4 @@
-
-        # Focus Studydesk
+# Focus Studydesk
 
 ## Description
 A dashboard style application designed for a user to be able to login and focus on a task/study session that needs no distractions. It gives the user multiple utilities right on the page, so instead of having to venture off to multiple different applications. We are giving you a one stop shop.
